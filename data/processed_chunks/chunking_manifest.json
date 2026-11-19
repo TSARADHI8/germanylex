@@ -1,0 +1,42 @@
+{
+  "settings": {
+    "target_tokens": 400,
+    "max_tokens": 450,
+    "min_tokens": 100,
+    "counter": "tokenizer",
+    "tokenizer": "intfloat/multilingual-e5-base",
+    "tokens_are_estimates": false
+  },
+  "stats": {
+    "sections": 398,
+    "chunks": 718,
+    "sections_split": 131,
+    "chunk_tokens": {
+      "min": 11,
+      "median": 267.0,
+      "mean": 250.8,
+      "max": 450
+    },
+    "chunks_per_law": {
+      "arbzg": 36,
+      "aufenthg_2004": 478,
+      "beschv_2013": 57,
+      "bgb": 114,
+      "milog": 33
+    },
+    "split_methods": {
+      "whole_section": 267,
+      "paragraph": 367,
+      "list_item": 80,
+      "sentence": 2,
+      "letter_item": 2
+    }
+  },
+  "input_sha256": {
+    "arbzg": "4824991abcb2e50094acdcaac72533c539c7a103d424cc2bc8018cf4897334fe",
+    "aufenthg_2004": "815938b48708d243dcea46e1f11e805585b23238cf4988361309eda6895f2424",
+    "beschv_2013": "ec1fd867ff5f108124d7fa36b4f38ed2fec87bbc3a87402e8ae2a6034f3fa178",
+    "bgb": "409ea88387423d8232bbb5790285b710b3c5c9e4218020e7cd0d6124a87b14a8",
+    "milog": "7a646e1064512b501c61dcfecce23b361e88339033e4b74727ec3bdf5a2e4efc"
+  }
+}
