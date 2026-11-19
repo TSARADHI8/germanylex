@@ -6,6 +6,8 @@ import xml.etree.ElementTree as ET
 from datetime import date
 from pathlib import Path
 
+from download_laws import LAWS
+
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 OUT_DIR = ROOT / "data" / "processed"
@@ -13,6 +15,21 @@ BASE = "https://www.gesetze-im-internet.de"
 
 # Only the tenancy part of the BGB (§§ 535-580a) is used in the first version.
 BGB_RANGE = (535, 580)
+
+# Router categories from the proposal. One label per law. A question can involve
+# several areas, so the retrieval filter must accept a list of areas.
+AREAS = {
+    "aufenthg_2004": "visa",
+    "beschv_2013": "work",
+    "bgb": "housing",
+    "arbzg": "employment",
+    "milog": "employment",
+}
+assert set(AREAS) == set(LAWS), "AREAS and LAWS must list the same laws"
+
+# Tags where the XML has no space between neighbouring text. We add one in memory
+# (the XML file itself is never changed).
+SPACED_TAGS = {"DL", "DT", "DD", "LA", "BR"}
 
 
 def text_of(el) -> str:
@@ -29,22 +46,29 @@ def section_url(slug: str, enbez: str) -> str:
     return f"{BASE}/{slug}/__{m[0]}{m[1]}.html" if m else f"{BASE}/{slug}/"
 
 
+def is_repealed(body: str) -> bool:
+    return " ".join(body.split()) == "(weggefallen)"
+
+
 def chunk_law(slug: str):
     xml_files = sorted((RAW_DIR / slug).glob("*.xml"))
     if not xml_files:
         print(f"[SKIP] {slug}: no XML in data/raw/{slug}")
         return []
     root = ET.parse(xml_files[0]).getroot()
-    today = date.today().isoformat()
+    for el in root.iter():
+        if el.tag in SPACED_TAGS:
+            el.text = " " + (el.text or "")
+            el.tail = " " + (el.tail or "")
+    # Date the XML file was written to disk, i.e. when it was downloaded.
+    retrieved = date.fromtimestamp(xml_files[0].stat().st_mtime).isoformat()
     chunks = []
-    law_abbr = law_title = None
+    law_title = None
     for norm in root.iter("norm"):
         meta = norm.find("metadaten")
         if meta is None:
             continue
-        abbr = text_of(meta.find("jurabk"))
-        if law_abbr is None:
-            law_abbr = abbr
+        if law_title is None:
             law_title = text_of(meta.find("langue"))
         enbez = text_of(meta.find("enbez"))
         num = section_number(enbez)
@@ -57,34 +81,38 @@ def chunk_law(slug: str):
         body = "\n".join(p for p in paras if p) or text_of(content)
         if not body:
             continue
+        if is_repealed(body):  # "(weggefallen)" = repealed, no legal content
+            continue
         chunks.append({
-            "law": abbr or law_abbr,
+            "id": f"{slug}__{num[0]}{num[1]}",
+            "law": LAWS[slug],
             "law_title": law_title,
+            "area": AREAS[slug],
             "section": enbez,
             "heading": text_of(meta.find("titel")),
             "text": body,
             "source_url": section_url(slug, enbez),
-            "retrieval_date": today,
+            "retrieval_date": retrieved,
         })
     return chunks
 
 
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    slugs = sorted(p.name for p in RAW_DIR.iterdir() if p.is_dir()) if RAW_DIR.exists() else []
-    if not slugs:
-        print("No raw data. Run src/download_laws.py first.")
-        return 1
     total = 0
-    for slug in slugs:
+    failed = 0
+    for slug in sorted(LAWS):
         chunks = chunk_law(slug)
+        if not chunks:  # keep any existing output instead of overwriting it with nothing
+            failed += 1
+            continue
         with open(OUT_DIR / f"{slug}.jsonl", "w", encoding="utf-8") as f:
             for c in chunks:
                 f.write(json.dumps(c, ensure_ascii=False) + "\n")
         print(f"[OK]   {slug}: {len(chunks)} sections")
         total += len(chunks)
     print(f"Total: {total} sections")
-    return 0
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
