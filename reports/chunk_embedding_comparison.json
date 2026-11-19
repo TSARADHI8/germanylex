@@ -1,0 +1,1436 @@
+{
+  "meta": {
+    "script": "src/compare_chunk_embeddings.py",
+    "run_date": "2026-11-20",
+    "split_used": "dev only",
+    "n_questions": 10,
+    "question_ids": [
+      "q001",
+      "q002",
+      "q005",
+      "q013",
+      "q014",
+      "q015",
+      "q019",
+      "q022",
+      "q023",
+      "q026"
+    ],
+    "n_test_skipped": 29,
+    "n_with_supporting": 8,
+    "n_chunks": 718,
+    "n_sections": 398,
+    "passage_format": "heading_text",
+    "aggregation": "section score = max cosine over its chunks",
+    "input_sha256": {
+      "arbzg.jsonl": "9f7b50d1a5d769f34b449fa111a53b902b7beaa3d083b0435db5596d3754822a",
+      "aufenthg_2004.jsonl": "8ddee03daa602a4cc686c30586f863f2dc070f9882f93258c3b0b686890794ce",
+      "beschv_2013.jsonl": "237e93c123b2962b184b5e0c999c926d73d8ebf3ca9c1ead14256a75d6c14b83",
+      "bgb.jsonl": "7105cdf01713c3a53e9da2009785c964ec7037becae426f3ca6a89c91a152123",
+      "chunking_manifest.json": "a12e4db50b4b49d92a23792a9a9b4cbd9746f99cfaa5b40dde8bf71050932972",
+      "milog.jsonl": "d1c0fa097ba1bd489fe78b11ec6bac250ee29aa4ba02ea3eb17e5447896b2d7e",
+      "questions_v1.jsonl": "4304ea4598e0b6202ca1a1863713df64388c1a79f5f2fba43fc54fdf897d900e"
+    },
+    "inputs_unchanged": true,
+    "caveat": "10 dev questions: one question = 10 percentage points. Indicative only."
+  },
+  "pairs": [
+    {
+      "a": "e5_prefix",
+      "b": "bge_m3",
+      "a_better": 3,
+      "b_better": 6,
+      "tie": 1
+    },
+    {
+      "a": "e5_prefix",
+      "b": "e5_noprefix",
+      "a_better": 4,
+      "b_better": 4,
+      "tie": 2
+    }
+  ],
+  "results": {
+    "e5_prefix": {
+      "n_questions": 10,
+      "n_sections": 398,
+      "n_chunks": 718,
+      "hit_at_1": 0.2,
+      "hit_at_3": 0.3,
+      "hit_at_5": 0.5,
+      "mrr": 0.3286,
+      "any_gold_hit_at_1": 0.3,
+      "any_gold_hit_at_3": 0.4,
+      "any_gold_hit_at_5": 0.6,
+      "any_gold_mrr": 0.4337,
+      "mean_margin_gold_minus_best_other": -0.0104,
+      "score_range": {
+        "min": 0.6558,
+        "mean": 0.7322,
+        "max": 0.8166
+      },
+      "per_question": [
+        {
+          "question_id": "q001",
+          "primary_gold": [
+            "aufenthg_2004__16b"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__16b": 2
+          },
+          "best_primary_rank": 2,
+          "best_any_gold_rank": 2,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__4a": 52
+          },
+          "gold_section_n_chunks": 4,
+          "best_gold_chunk": "aufenthg_2004__16b__c02",
+          "best_gold_chunk_paragraphs": [
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 2,
+          "gold_score": 0.8095,
+          "best_non_gold_score": 0.8166,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__15",
+              "score": 0.8166,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__16b",
+              "score": 0.8095,
+              "is_gold": true
+            },
+            {
+              "id": "beschv_2013__14",
+              "score": 0.8044,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q002",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 9
+          },
+          "best_primary_rank": 9,
+          "best_any_gold_rank": 9,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)",
+            "(5)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 10,
+          "gold_score": 0.7843,
+          "best_non_gold_score": 0.7921,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__81",
+              "score": 0.7921,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__18g",
+              "score": 0.7898,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__60d",
+              "score": 0.7887,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q005",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__21": 4
+          },
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)",
+            "(5)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.7939,
+          "best_non_gold_score": 0.7896,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__4a",
+              "score": 0.7939,
+              "is_gold": true
+            },
+            {
+              "id": "beschv_2013__19",
+              "score": 0.7896,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__16b",
+              "score": 0.7874,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q013",
+          "primary_gold": [
+            "bgb__536"
+          ],
+          "primary_gold_ranks": {
+            "bgb__536": 12
+          },
+          "best_primary_rank": 12,
+          "best_any_gold_rank": 8,
+          "supporting_gold_ranks": {
+            "bgb__543": 8
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__536__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(1a)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 12,
+          "gold_score": 0.7827,
+          "best_non_gold_score": 0.7899,
+          "top3_sections": [
+            {
+              "id": "bgb__538",
+              "score": 0.7899,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__580a",
+              "score": 0.7893,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__555c",
+              "score": 0.788,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q014",
+          "primary_gold": [
+            "bgb__573c"
+          ],
+          "primary_gold_ranks": {
+            "bgb__573c": 31
+          },
+          "best_primary_rank": 31,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "bgb__542": 1
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__573c__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 32,
+          "gold_score": 0.7688,
+          "best_non_gold_score": 0.7925,
+          "top3_sections": [
+            {
+              "id": "bgb__542",
+              "score": 0.8063,
+              "is_gold": true
+            },
+            {
+              "id": "bgb__550",
+              "score": 0.7925,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__546a",
+              "score": 0.7907,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q015",
+          "primary_gold": [
+            "bgb__566a"
+          ],
+          "primary_gold_ranks": {
+            "bgb__566a": 41
+          },
+          "best_primary_rank": 41,
+          "best_any_gold_rank": 15,
+          "supporting_gold_ranks": {
+            "bgb__566": 15
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__566a__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 42,
+          "gold_score": 0.7438,
+          "best_non_gold_score": 0.7638,
+          "top3_sections": [
+            {
+              "id": "bgb__570",
+              "score": 0.7638,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__546",
+              "score": 0.7622,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__535",
+              "score": 0.7602,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q019",
+          "primary_gold": [
+            "bgb__574"
+          ],
+          "primary_gold_ranks": {
+            "bgb__574": 29
+          },
+          "best_primary_rank": 29,
+          "best_any_gold_rank": 29,
+          "supporting_gold_ranks": {
+            "bgb__574b": 57
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__574__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 31,
+          "gold_score": 0.7583,
+          "best_non_gold_score": 0.7802,
+          "top3_sections": [
+            {
+              "id": "bgb__538",
+              "score": 0.7802,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__537",
+              "score": 0.775,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__541",
+              "score": 0.7748,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q022",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.8162,
+          "best_non_gold_score": 0.8082,
+          "top3_sections": [
+            {
+              "id": "arbzg__3",
+              "score": 0.8162,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.8082,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__4",
+              "score": 0.8081,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q023",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 4
+          },
+          "best_primary_rank": 4,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {
+            "arbzg__4": 5
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 4,
+          "gold_score": 0.7817,
+          "best_non_gold_score": 0.7934,
+          "top3_sections": [
+            {
+              "id": "arbzg__12",
+              "score": 0.7934,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.7913,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__5",
+              "score": 0.7891,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q026",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 4
+          },
+          "best_primary_rank": 4,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {
+            "arbzg__4": 11
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 5,
+          "gold_score": 0.7834,
+          "best_non_gold_score": 0.8004,
+          "top3_sections": [
+            {
+              "id": "arbzg__13",
+              "score": 0.8004,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__10",
+              "score": 0.7965,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__12",
+              "score": 0.795,
+              "is_gold": false
+            }
+          ]
+        }
+      ],
+      "info": {
+        "hf_id": "intfloat/multilingual-e5-base",
+        "pooling": "mean",
+        "dim": 768,
+        "max_length_used": 512,
+        "documented_input_limit": 512,
+        "load_seconds": 19.5,
+        "parameters": 278043648,
+        "weights_mb_fp32": 1112,
+        "rss_mb_before_load": null,
+        "peak_rss_mb_during_load": null,
+        "variant": "e5_prefix",
+        "label": "E5 with query:/passage: prefixes",
+        "query_prefix": "query: ",
+        "passage_prefix": "passage: ",
+        "passage_format": "heading_text",
+        "chunks_over_max_length": 0,
+        "chunk_tokens": {
+          "min": 17,
+          "median": 280,
+          "max": 471
+        },
+        "encode_chunks_seconds": 222.9,
+        "encode_questions_seconds": 0.38,
+        "ms_per_chunk": 310.5,
+        "peak_rss_mb_during_encode": null,
+        "rss_mb_after_encode": null
+      },
+      "vector_checks_chunks": {
+        "shape": [
+          718,
+          768
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      },
+      "vector_checks_questions": {
+        "shape": [
+          10,
+          768
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      }
+    },
+    "e5_noprefix": {
+      "n_questions": 10,
+      "n_sections": 398,
+      "n_chunks": 718,
+      "hit_at_1": 0.1,
+      "hit_at_3": 0.4,
+      "hit_at_5": 0.5,
+      "mrr": 0.2931,
+      "any_gold_hit_at_1": 0.1,
+      "any_gold_hit_at_3": 0.5,
+      "any_gold_hit_at_5": 0.7,
+      "any_gold_mrr": 0.3617,
+      "mean_margin_gold_minus_best_other": -0.0108,
+      "score_range": {
+        "min": 0.6719,
+        "mean": 0.742,
+        "max": 0.8204
+      },
+      "per_question": [
+        {
+          "question_id": "q001",
+          "primary_gold": [
+            "aufenthg_2004__16b"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__16b": 2
+          },
+          "best_primary_rank": 2,
+          "best_any_gold_rank": 2,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__4a": 57
+          },
+          "gold_section_n_chunks": 4,
+          "best_gold_chunk": "aufenthg_2004__16b__c02",
+          "best_gold_chunk_paragraphs": [
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 2,
+          "gold_score": 0.8106,
+          "best_non_gold_score": 0.8173,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__15",
+              "score": 0.8173,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__16b",
+              "score": 0.8106,
+              "is_gold": true
+            },
+            {
+              "id": "beschv_2013__15a",
+              "score": 0.8032,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q002",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 3
+          },
+          "best_primary_rank": 3,
+          "best_any_gold_rank": 3,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)",
+            "(5)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 3,
+          "gold_score": 0.7931,
+          "best_non_gold_score": 0.7965,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__60d",
+              "score": 0.7965,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__26",
+              "score": 0.7939,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__4a",
+              "score": 0.7931,
+              "is_gold": true
+            }
+          ]
+        },
+        {
+          "question_id": "q005",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 2
+          },
+          "best_primary_rank": 2,
+          "best_any_gold_rank": 2,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__21": 4
+          },
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)",
+            "(5)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 2,
+          "gold_score": 0.8003,
+          "best_non_gold_score": 0.8026,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__30",
+              "score": 0.8026,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__4a",
+              "score": 0.8003,
+              "is_gold": true
+            },
+            {
+              "id": "aufenthg_2004__16b",
+              "score": 0.7995,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q013",
+          "primary_gold": [
+            "bgb__536"
+          ],
+          "primary_gold_ranks": {
+            "bgb__536": 5
+          },
+          "best_primary_rank": 5,
+          "best_any_gold_rank": 5,
+          "supporting_gold_ranks": {
+            "bgb__543": 11
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__536__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(1a)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 5,
+          "gold_score": 0.7935,
+          "best_non_gold_score": 0.8012,
+          "top3_sections": [
+            {
+              "id": "bgb__538",
+              "score": 0.8012,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__580a",
+              "score": 0.7975,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__557b",
+              "score": 0.795,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q014",
+          "primary_gold": [
+            "bgb__573c"
+          ],
+          "primary_gold_ranks": {
+            "bgb__573c": 60
+          },
+          "best_primary_rank": 60,
+          "best_any_gold_rank": 2,
+          "supporting_gold_ranks": {
+            "bgb__542": 2
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__573c__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 62,
+          "gold_score": 0.7674,
+          "best_non_gold_score": 0.7975,
+          "top3_sections": [
+            {
+              "id": "bgb__550",
+              "score": 0.7975,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__542",
+              "score": 0.7969,
+              "is_gold": true
+            },
+            {
+              "id": "bgb__546a",
+              "score": 0.793,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q015",
+          "primary_gold": [
+            "bgb__566a"
+          ],
+          "primary_gold_ranks": {
+            "bgb__566a": 14
+          },
+          "best_primary_rank": 14,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {
+            "bgb__566": 4
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__566a__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 14,
+          "gold_score": 0.7686,
+          "best_non_gold_score": 0.7794,
+          "top3_sections": [
+            {
+              "id": "bgb__570",
+              "score": 0.7794,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__563b",
+              "score": 0.776,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__545",
+              "score": 0.7746,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q019",
+          "primary_gold": [
+            "bgb__574"
+          ],
+          "primary_gold_ranks": {
+            "bgb__574": 24
+          },
+          "best_primary_rank": 24,
+          "best_any_gold_rank": 24,
+          "supporting_gold_ranks": {
+            "bgb__574b": 40
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__574__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 24,
+          "gold_score": 0.7717,
+          "best_non_gold_score": 0.7845,
+          "top3_sections": [
+            {
+              "id": "bgb__538",
+              "score": 0.7845,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__543",
+              "score": 0.7831,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__537",
+              "score": 0.7823,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q022",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.8204,
+          "best_non_gold_score": 0.8173,
+          "top3_sections": [
+            {
+              "id": "arbzg__3",
+              "score": 0.8204,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__4",
+              "score": 0.8173,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.8126,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q023",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 7
+          },
+          "best_primary_rank": 7,
+          "best_any_gold_rank": 6,
+          "supporting_gold_ranks": {
+            "arbzg__4": 6
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 7,
+          "gold_score": 0.7852,
+          "best_non_gold_score": 0.7971,
+          "top3_sections": [
+            {
+              "id": "arbzg__5",
+              "score": 0.7971,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__12",
+              "score": 0.7947,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.7933,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q026",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 8
+          },
+          "best_primary_rank": 8,
+          "best_any_gold_rank": 8,
+          "supporting_gold_ranks": {
+            "arbzg__4": 13
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 9,
+          "gold_score": 0.7875,
+          "best_non_gold_score": 0.8135,
+          "top3_sections": [
+            {
+              "id": "arbzg__10",
+              "score": 0.8135,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__12",
+              "score": 0.8046,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__13",
+              "score": 0.8045,
+              "is_gold": false
+            }
+          ]
+        }
+      ],
+      "info": {
+        "hf_id": "intfloat/multilingual-e5-base",
+        "pooling": "mean",
+        "dim": 768,
+        "max_length_used": 512,
+        "documented_input_limit": 512,
+        "load_seconds": 19.5,
+        "parameters": 278043648,
+        "weights_mb_fp32": 1112,
+        "rss_mb_before_load": null,
+        "peak_rss_mb_during_load": null,
+        "variant": "e5_noprefix",
+        "label": "E5 without prefixes",
+        "query_prefix": "",
+        "passage_prefix": "",
+        "passage_format": "heading_text",
+        "chunks_over_max_length": 0,
+        "chunk_tokens": {
+          "min": 15,
+          "median": 278,
+          "max": 469
+        },
+        "encode_chunks_seconds": 205.7,
+        "encode_questions_seconds": 0.3,
+        "ms_per_chunk": 286.5,
+        "peak_rss_mb_during_encode": null,
+        "rss_mb_after_encode": null
+      },
+      "vector_checks_chunks": {
+        "shape": [
+          718,
+          768
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      },
+      "vector_checks_questions": {
+        "shape": [
+          10,
+          768
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      }
+    },
+    "bge_m3": {
+      "n_questions": 10,
+      "n_sections": 398,
+      "n_chunks": 718,
+      "hit_at_1": 0.4,
+      "hit_at_3": 0.5,
+      "hit_at_5": 0.7,
+      "mrr": 0.4921,
+      "any_gold_hit_at_1": 0.6,
+      "any_gold_hit_at_3": 0.7,
+      "any_gold_hit_at_5": 0.9,
+      "any_gold_mrr": 0.7053,
+      "mean_margin_gold_minus_best_other": -0.0157,
+      "score_range": {
+        "min": 0.1838,
+        "mean": 0.3702,
+        "max": 0.6304
+      },
+      "per_question": [
+        {
+          "question_id": "q001",
+          "primary_gold": [
+            "aufenthg_2004__16b"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__16b": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__4a": 88
+          },
+          "gold_section_n_chunks": 4,
+          "best_gold_chunk": "aufenthg_2004__16b__c02",
+          "best_gold_chunk_paragraphs": [
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.5448,
+          "best_non_gold_score": 0.5409,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__16b",
+              "score": 0.5448,
+              "is_gold": true
+            },
+            {
+              "id": "aufenthg_2004__17",
+              "score": 0.5409,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__15d",
+              "score": 0.5389,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q002",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 19
+          },
+          "best_primary_rank": 19,
+          "best_any_gold_rank": 19,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)",
+            "(5)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 26,
+          "gold_score": 0.5054,
+          "best_non_gold_score": 0.5732,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__15c",
+              "score": 0.5732,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__81a",
+              "score": 0.5614,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__42",
+              "score": 0.5569,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q005",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 4
+          },
+          "best_primary_rank": 4,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__21": 1
+          },
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 5,
+          "gold_score": 0.5073,
+          "best_non_gold_score": 0.5173,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__21",
+              "score": 0.535,
+              "is_gold": true
+            },
+            {
+              "id": "beschv_2013__15d",
+              "score": 0.5173,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__15",
+              "score": 0.5089,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q013",
+          "primary_gold": [
+            "bgb__536"
+          ],
+          "primary_gold_ranks": {
+            "bgb__536": 34
+          },
+          "best_primary_rank": 34,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {
+            "bgb__543": 4
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__536__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(1a)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 37,
+          "gold_score": 0.4839,
+          "best_non_gold_score": 0.5319,
+          "top3_sections": [
+            {
+              "id": "bgb__550",
+              "score": 0.5319,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__556g",
+              "score": 0.5293,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__575",
+              "score": 0.523,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q014",
+          "primary_gold": [
+            "bgb__573c"
+          ],
+          "primary_gold_ranks": {
+            "bgb__573c": 18
+          },
+          "best_primary_rank": 18,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {
+            "bgb__542": 4
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__573c__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 19,
+          "gold_score": 0.5446,
+          "best_non_gold_score": 0.5773,
+          "top3_sections": [
+            {
+              "id": "bgb__543",
+              "score": 0.5773,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__82",
+              "score": 0.5763,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__576",
+              "score": 0.573,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q015",
+          "primary_gold": [
+            "bgb__566a"
+          ],
+          "primary_gold_ranks": {
+            "bgb__566a": 3
+          },
+          "best_primary_rank": 3,
+          "best_any_gold_rank": 2,
+          "supporting_gold_ranks": {
+            "bgb__566": 2
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__566a__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 3,
+          "gold_score": 0.5079,
+          "best_non_gold_score": 0.5426,
+          "top3_sections": [
+            {
+              "id": "bgb__563b",
+              "score": 0.5426,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__566",
+              "score": 0.5248,
+              "is_gold": true
+            },
+            {
+              "id": "bgb__566a",
+              "score": 0.5079,
+              "is_gold": true
+            }
+          ]
+        },
+        {
+          "question_id": "q019",
+          "primary_gold": [
+            "bgb__574"
+          ],
+          "primary_gold_ranks": {
+            "bgb__574": 5
+          },
+          "best_primary_rank": 5,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "bgb__574b": 1
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__574__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 5,
+          "gold_score": 0.5206,
+          "best_non_gold_score": 0.5385,
+          "top3_sections": [
+            {
+              "id": "bgb__574b",
+              "score": 0.5468,
+              "is_gold": true
+            },
+            {
+              "id": "bgb__540",
+              "score": 0.5385,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__556b",
+              "score": 0.5355,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q022",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.6304,
+          "best_non_gold_score": 0.6154,
+          "top3_sections": [
+            {
+              "id": "arbzg__3",
+              "score": 0.6304,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.6154,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__15",
+              "score": 0.6025,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q023",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "arbzg__4": 2
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.5897,
+          "best_non_gold_score": 0.5705,
+          "top3_sections": [
+            {
+              "id": "arbzg__3",
+              "score": 0.5897,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__4",
+              "score": 0.5717,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.5705,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q026",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "arbzg__4": 16
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.5592,
+          "best_non_gold_score": 0.5429,
+          "top3_sections": [
+            {
+              "id": "arbzg__3",
+              "score": 0.5592,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.5429,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__13",
+              "score": 0.5376,
+              "is_gold": false
+            }
+          ]
+        }
+      ],
+      "info": {
+        "hf_id": "BAAI/bge-m3",
+        "pooling": "cls",
+        "dim": 1024,
+        "max_length_used": 1024,
+        "documented_input_limit": 8192,
+        "load_seconds": 3.7,
+        "parameters": 567754752,
+        "weights_mb_fp32": 2271,
+        "rss_mb_before_load": null,
+        "peak_rss_mb_during_load": null,
+        "variant": "bge_m3",
+        "label": "BGE-M3 (dense, no prefixes)",
+        "query_prefix": "",
+        "passage_prefix": "",
+        "passage_format": "heading_text",
+        "chunks_over_max_length": 0,
+        "chunk_tokens": {
+          "min": 15,
+          "median": 278,
+          "max": 469
+        },
+        "encode_chunks_seconds": 745.1,
+        "encode_questions_seconds": 1.3,
+        "ms_per_chunk": 1037.8,
+        "peak_rss_mb_during_encode": null,
+        "rss_mb_after_encode": null
+      },
+      "vector_checks_chunks": {
+        "shape": [
+          718,
+          1024
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      },
+      "vector_checks_questions": {
+        "shape": [
+          10,
+          1024
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      }
+    }
+  }
+}
