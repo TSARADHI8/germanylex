@@ -1,6 +1,9 @@
-"""Chunk-level comparison: intfloat/multilingual-e5-base vs BAAI/bge-m3 on the DEV questions.
+"""Chunk-level comparison: intfloat/multilingual-e5-base vs BAAI/bge-m3.
 
-Task: same 718 chunks, same development questions, same scoring for every model.
+Default (--split dev): same 718 chunks, same development questions, same scoring for every
+model. This is where the model was chosen.
+Final check (--split test): BGE-M3 only, on the 29 test questions, run once with the settings
+chosen on dev. Nothing is tuned on test (see the guards in main()).
 NOT the final embedding run. No ChromaDB. The legal records, the chunk files and the
 evaluation file are only read (their SHA256 is compared before and after the run).
 
@@ -17,8 +20,9 @@ Variants
   e5_noprefix  E5 without prefixes (ablation)
   bge_m3       BGE-M3, dense vector only, no prefixes
 
-Only questions with split == "dev" are evaluated. The test split is skipped on purpose and
-must not be used to choose a model.
+Only the questions of the chosen --split are evaluated (default dev). The test split may only
+be used with the single variant bge_m3, so it cannot be used to choose between models, and a
+test run never overwrites existing files (dev reports included).
 
 Reused from src/embedding_smoke_test.py: MODELS (specs, prefixes, pooling), HFEmbedder (manual
 mean / CLS pooling + L2 normalisation), read_jsonl, rss_mb, _to_builtin.
@@ -26,6 +30,7 @@ mean / CLS pooling + L2 normalisation), read_jsonl, rss_mb, _to_builtin.
 Usage (repo root):
     python src/compare_chunk_embeddings.py
     python src/compare_chunk_embeddings.py --variants bge_m3 --output reports/bge_only.json
+    python src/compare_chunk_embeddings.py --split test        # final check, BGE-M3 only, run once
 """
 from __future__ import annotations
 
@@ -46,8 +51,11 @@ from embedding_smoke_test import MODELS, HFEmbedder, _to_builtin, read_jsonl, rs
 ROOT = HERE.parent
 CHUNK_DIR = ROOT / "data" / "processed_chunks"
 EVAL_FILE = ROOT / "data" / "eval" / "questions_v1.jsonl"
-DEFAULT_JSON = ROOT / "reports" / "chunk_embedding_comparison.json"
-DEFAULT_MD = ROOT / "reports" / "chunk_embedding_comparison.md"
+DEFAULT_PATHS = {   # (json, markdown) per split; the dev names are the ones used so far
+    "dev": (ROOT / "reports" / "chunk_embedding_comparison.json", ROOT / "reports" / "chunk_embedding_comparison.md"),
+    "test": (ROOT / "reports" / "chunk_embedding_comparison_test.json", ROOT / "reports" / "chunk_embedding_comparison_test.md"),
+}
+TEST_ALLOWED_VARIANTS = ["bge_m3"]
 
 LAW_ORDER = ["arbzg", "aufenthg_2004", "beschv_2013", "bgb", "milog"]
 VARIANTS = {
@@ -95,12 +103,16 @@ def load_chunks(chunk_dir: Path, expect: int | None):
     return chunks, sec_ids, [np.array(m) for m in members]
 
 
-def load_dev_questions(eval_file: Path, sec_ids):
+def load_questions(eval_file: Path, sec_ids, split: str):
     rows = read_jsonl(eval_file)
-    dev = [q for q in rows if q["split"] == "dev"]
+    dev = [q for q in rows if q["split"] == split]
     skipped = len(rows) - len(dev)
     known = set(sec_ids)
     for q in dev:
+        if not q["gold"]:    # out-of-scope questions have no gold: retrieved and listed, not scored
+            if q.get("scope_status") != "out_of_scope":
+                sys.exit(f"{q['question_id']}: no gold but scope_status is {q.get('scope_status')!r}")
+            continue
         missing = [g["gold_id"] for g in q["gold"] if g["gold_id"] not in known]
         if missing:
             sys.exit(f"{q['question_id']}: gold section(s) not in the chunk files: {missing}")
@@ -167,10 +179,17 @@ def encode(emb, texts, label, block=64):
 def evaluate(q_emb, c_emb, questions, chunks, sec_ids, members, top_n=3):
     sims = q_emb @ c_emb.T                                           # (questions, chunks)
     sec = np.stack([sims[:, m].max(axis=1) for m in members], axis=1)  # best chunk per section
-    nq = len(questions)
+    nq = sum(1 for q in questions if q["gold"])                      # scored questions (out-of-scope ones have no gold)
     hit, hit_any, rr, rr_any, margin = {1: 0, 3: 0, 5: 0}, {1: 0, 3: 0, 5: 0}, 0.0, 0.0, 0.0
     rows = []
     for qi, q in enumerate(questions):
+        if not q["gold"]:                                            # out-of-scope: show what is retrieved, no metrics
+            order = np.argsort(-sec[qi], kind="stable")
+            rows.append({"question_id": q["question_id"], "out_of_scope": True, "primary_gold": [],
+                         "best_primary_rank": None,
+                         "top3_sections": [{"id": sec_ids[j], "score": round(float(sec[qi, j]), 4), "is_gold": False}
+                                           for j in order[:top_n]]})
+            continue
         prim = [g["gold_id"] for g in q["gold"] if g["role"] == "primary"]
         allg = {g["gold_id"] for g in q["gold"]}
         order = np.argsort(-sec[qi], kind="stable")
@@ -202,7 +221,7 @@ def evaluate(q_emb, c_emb, questions, chunks, sec_ids, members, top_n=3):
                               for j in order[:top_n]],
         })
     return {
-        "n_questions": nq, "n_sections": len(sec_ids), "n_chunks": len(chunks),
+        "n_questions": nq, "n_out_of_scope_not_scored": len(questions) - nq, "n_sections": len(sec_ids), "n_chunks": len(chunks),
         "hit_at_1": hit[1] / nq, "hit_at_3": hit[3] / nq, "hit_at_5": hit[5] / nq, "mrr": round(rr / nq, 4),
         "any_gold_hit_at_1": hit_any[1] / nq, "any_gold_hit_at_3": hit_any[3] / nq,
         "any_gold_hit_at_5": hit_any[5] / nq, "any_gold_mrr": round(rr_any / nq, 4),
@@ -264,8 +283,8 @@ def run_model(model_key, variant_keys, args, questions, chunks, sec_ids, members
 
 
 def paired(results, a, b):
-    ra = [r["best_primary_rank"] for r in results[a]["per_question"]]
-    rb = [r["best_primary_rank"] for r in results[b]["per_question"]]
+    ra = [r["best_primary_rank"] for r in results[a]["per_question"] if r["best_primary_rank"] is not None]
+    rb = [r["best_primary_rank"] for r in results[b]["per_question"] if r["best_primary_rank"] is not None]
     return {"a": a, "b": b, "a_better": sum(x < y for x, y in zip(ra, rb)),
             "b_better": sum(y < x for x, y in zip(ra, rb)), "tie": sum(x == y for x, y in zip(ra, rb))}
 
@@ -276,12 +295,17 @@ def pct(x):
 
 def write_markdown(path, results, questions, meta, pairs):
     names = list(results)
-    L = ["# Chunk-level embedding comparison: E5 vs BGE-M3 (DEV split)", "",
+    sp = meta["split"]
+    title = ("# Chunk-level embedding comparison: E5 vs BGE-M3 (DEV split)" if sp == "dev" else
+             "# Final evaluation: BGE-M3 on the TEST split (settings fixed on dev, run once)")
+    L = [title, "",
          f"Generated by `src/compare_chunk_embeddings.py` on {meta['run_date']}.", "",
          "## Setup", "",
          f"- **Chunks:** {meta['n_chunks']} (from {meta['n_sections']} sections), identical for every variant. "
          f"Passage string: `{meta['passage_format']}`, the same for all models.",
-         f"- **Questions:** {meta['n_questions']} development questions (test split skipped: {meta['n_test_skipped']}).",
+         f"- **Questions:** {meta['n_scored']} scored {sp} questions"
+         + (f" + {meta['n_out_of_scope']} out-of-scope (retrieved and listed below, not in the metrics)" if meta["n_out_of_scope"] else "")
+         + f"; questions of the other split skipped: {meta['n_other_split_skipped']}.",
          "- **Scoring:** cosine similarity, section score = best chunk of the section, rank over all sections; "
          "hit/MRR use the best primary gold section.",
          "- **Truncation:** " + ("no chunk is cut for any variant." if not any(
@@ -313,25 +337,35 @@ def write_markdown(path, results, questions, meta, pairs):
           "|---|---|" + "---|" * len(names) + "---|"]
     for k, q in enumerate(questions):
         rows = [results[n]["per_question"][k] for n in names]
-        L.append(f"| {q['question_id']} | {', '.join(rows[0]['primary_gold'])} | " +
-                 " | ".join(str(r["best_primary_rank"]) for r in rows) + f" | {q['question'][:70]} |")
+        L.append(f"| {q['question_id']} | {', '.join(rows[0]['primary_gold']) or '(out of scope)'} | " +
+                 " | ".join("-" if r["best_primary_rank"] is None else str(r["best_primary_rank"]) for r in rows)
+                 + f" | {q['question'][:70]} |")
+    oos = [(q, results[names[0]]["per_question"][k]) for k, q in enumerate(questions) if not q["gold"]]
+    if oos:
+        L += ["", f"## Out-of-scope questions (not scored): top-3 sections retrieved by {names[0]}", "",
+              "| Question | Reason | Top-3 sections (cosine) |", "|---|---|---|"]
+        for q, r in oos:
+            L.append(f"| {q['question_id']} | {(q.get('out_of_scope_reason') or '')[:70]} | "
+                     + ", ".join(f"{t['id']} ({t['score']:.3f})" for t in r["top3_sections"]) + " |")
     if pairs:
         L += ["", "## Paired comparison (questions where one variant ranks the gold section higher)", "",
               "| A | B | A better | B better | tie |", "|---|---|---|---|---|"]
         for p in pairs:
             L.append(f"| {p['a']} | {p['b']} | {p['a_better']} | {p['b_better']} | {p['tie']} |")
     L += ["", "## Reading the numbers", "",
-          f"- With {meta['n_questions']} questions, one question moves a metric by {100 / meta['n_questions']:.0f} "
+          f"- With {meta['n_scored']} scored questions, one question moves a metric by {100 / meta['n_scored']:.0f} "
           "percentage points. Differences of one or two questions are noise.",
-          f"- {meta['n_with_supporting']} of {meta['n_questions']} dev questions also have a supporting gold section; "
+          f"- {meta['n_with_supporting']} of {meta['n_scored']} scored {sp} questions also have a supporting gold section; "
           "the 'any gold' columns show how much counting those changes the picture.",
-          "- This report used the dev split only. The test split is reserved for one confirmation of the chosen setup.", ""]
+          ("- This report used the dev split only. The test split is reserved for one confirmation of the chosen setup."
+           if sp == "dev" else
+           "- Test split, one run. The model and settings were chosen on dev; nothing here may be used to change them."), ""]
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(L), encoding="utf-8", newline="\n")
 
 
-def print_summary(results, questions, pairs):
-    print("\n================ SUMMARY (dev split, section-level, primary gold) ================")
+def print_summary(results, questions, pairs, split):
+    print(f"\n================ SUMMARY ({split} split, section-level, primary gold) ================")
     print(f"{'variant':13}{'hit@1':>7}{'hit@3':>7}{'hit@5':>7}{'MRR':>8}{'margin':>9}{'enc s':>8}{'ms/chk':>8}{'RAM MB':>8}")
     for n, r in results.items():
         i = r["info"]
@@ -342,8 +376,8 @@ def print_summary(results, questions, pairs):
     print(f"{'question':10}{'gold':26}" + "".join(f"{n:>13}" for n in results))
     for k, q in enumerate(questions):
         rows = [results[n]["per_question"][k] for n in results]
-        print(f"{q['question_id']:10}{','.join(rows[0]['primary_gold'])[:25]:26}" +
-              "".join(f"{x['best_primary_rank']:>13}" for x in rows))
+        print(f"{q['question_id']:10}{(','.join(rows[0]['primary_gold']) or '(out of scope)')[:25]:26}" +
+              "".join(f"{'-' if x['best_primary_rank'] is None else x['best_primary_rank']:>13}" for x in rows))
     for p in pairs:
         print(f"{p['a']} vs {p['b']}: {p['a']} better on {p['a_better']}, {p['b']} better on {p['b_better']}, tie {p['tie']}")
 
@@ -352,11 +386,14 @@ def main(make_embedder=HFEmbedder, argv=None):
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--variants", nargs="+", choices=list(VARIANTS), default=list(VARIANTS))
+    ap.add_argument("--split", choices=["dev", "test"], default="dev",
+                    help="question split to evaluate; test allows only --variants bge_m3 (default: dev)")
+    ap.add_argument("--variants", nargs="+", choices=list(VARIANTS), default=None,
+                    help="default: all variants for dev, bge_m3 for test")
     ap.add_argument("--chunk-dir", type=Path, default=CHUNK_DIR)
     ap.add_argument("--eval-file", type=Path, default=EVAL_FILE)
-    ap.add_argument("--output", type=Path, default=DEFAULT_JSON)
-    ap.add_argument("--report", type=Path, default=DEFAULT_MD)
+    ap.add_argument("--output", type=Path, default=None, help="default depends on --split")
+    ap.add_argument("--report", type=Path, default=None, help="default depends on --split")
     ap.add_argument("--expect-chunks", type=int, default=718)
     ap.add_argument("--passage-format", choices=["heading_text", "text"], default="heading_text")
     ap.add_argument("--e5-max-length", type=int, default=512)
@@ -364,11 +401,30 @@ def main(make_embedder=HFEmbedder, argv=None):
     ap.add_argument("--batch-size", type=int, default=4)
     args = ap.parse_args(argv)
 
+    # --- split guards: the test split is a one-shot check of the chosen model, never a model selection
+    if args.variants is None:
+        args.variants = TEST_ALLOWED_VARIANTS if args.split == "test" else list(VARIANTS)
+    args.output = args.output or DEFAULT_PATHS[args.split][0]
+    args.report = args.report or DEFAULT_PATHS[args.split][1]
+    if args.split == "test":
+        if args.variants != TEST_ALLOWED_VARIANTS:
+            sys.exit(f"--split test allows only --variants {' '.join(TEST_ALLOWED_VARIANTS)}; "
+                     f"the model is chosen on dev, not on test.")
+        protected = {p.resolve() for p in DEFAULT_PATHS["dev"]}
+        for p in (args.output, args.report):
+            if p.resolve() in protected:
+                sys.exit(f"Refusing to write the test results to a dev report file: {p}")
+            if p.exists():
+                sys.exit(f"{p} already exists. The test split is evaluated once; choose a new file name "
+                         f"only if you really intend to repeat it.")
+        print("*** TEST SPLIT: final one-shot evaluation of bge_m3 with the settings chosen on dev. ***")
+
     before = fingerprint(args.chunk_dir, args.eval_file)
     chunks, sec_ids, members = load_chunks(args.chunk_dir, args.expect_chunks)
-    questions, n_skipped = load_dev_questions(args.eval_file, sec_ids)
-    print(f"{len(chunks)} chunks | {len(sec_ids)} sections | {len(questions)} DEV questions "
-          f"({n_skipped} test questions skipped, not used)")
+    questions, n_skipped = load_questions(args.eval_file, sec_ids, args.split)
+    other = "test" if args.split == "dev" else "dev"
+    print(f"{len(chunks)} chunks | {len(sec_ids)} sections | {len(questions)} {args.split.upper()} questions "
+          f"({n_skipped} {other} questions skipped, not used)")
 
     results = {}
     for model_key in dict.fromkeys(VARIANTS[v]["model"] for v in args.variants):   # load each model once
@@ -384,19 +440,22 @@ def main(make_embedder=HFEmbedder, argv=None):
 
     after = fingerprint(args.chunk_dir, args.eval_file)
     unchanged = before == after
+    n_scored = sum(1 for q in questions if q["gold"])
     meta = {"script": "src/compare_chunk_embeddings.py", "run_date": time.strftime("%Y-%m-%d"),
-            "split_used": "dev only", "n_questions": len(questions), "question_ids": [q["question_id"] for q in questions],
-            "n_test_skipped": n_skipped,
+            "split": args.split, "split_used": f"{args.split} only", "n_questions": len(questions),
+            "n_scored": sum(1 for q in questions if q["gold"]), "n_out_of_scope": sum(1 for q in questions if not q["gold"]),
+            "question_ids": [q["question_id"] for q in questions],
+            "n_other_split_skipped": n_skipped,
             "n_with_supporting": sum(any(g["role"] != "primary" for g in q["gold"]) for q in questions), "n_chunks": len(chunks), "n_sections": len(sec_ids),
             "passage_format": args.passage_format, "aggregation": "section score = max cosine over its chunks",
             "input_sha256": before, "inputs_unchanged": unchanged,
-            "caveat": "10 dev questions: one question = 10 percentage points. Indicative only."}
+            "caveat": f"{n_scored} scored {args.split} questions: one question = {100 / n_scored:.1f} percentage points. Indicative only."}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with open(args.output, "w", encoding="utf-8", newline="\n") as fh:
         json.dump({"meta": meta, "pairs": pairs, "results": results}, fh, ensure_ascii=False, indent=2,
                   default=_to_builtin)
     write_markdown(args.report, results, questions, meta, pairs)
-    print_summary(results, questions, pairs)
+    print_summary(results, questions, pairs, args.split)
     print(f"\nInput chunk files and evaluation file unchanged: {unchanged}")
     print(f"Report written to {args.report}\nJSON written to  {args.output}")
     return 0 if unchanged else 1

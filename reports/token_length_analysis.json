@@ -1,0 +1,3700 @@
+{
+  "meta": {
+    "generated_utc": "2026-11-19T17:33:42+00:00",
+    "script": "src/analyze_token_lengths.py",
+    "records_analysed": 398,
+    "record_files": [
+      "arbzg.jsonl",
+      "aufenthg_2004.jsonl",
+      "beschv_2013.jsonl",
+      "bgb.jsonl",
+      "milog.jsonl"
+    ],
+    "python": "3.11.1",
+    "library_versions": {
+      "transformers": "5.23.0",
+      "tokenizers": "0.23.3",
+      "huggingface_hub": "2.4.0"
+    },
+    "weights_downloaded": false,
+    "embeddings_computed": false,
+    "text_measured": "record['text'] only; special tokens included; no truncation",
+    "models": {
+      "e5": {
+        "hf_id": "intfloat/multilingual-e5-base",
+        "text_prefix": "passage: ",
+        "input_limit": {
+          "used": 512,
+          "tokenizer_model_max_length": 512,
+          "matches_tokenizer": true
+        },
+        "tokenizer_class": "XLMRobertaTokenizer"
+      },
+      "bge_m3": {
+        "hf_id": "BAAI/bge-m3",
+        "text_prefix": "",
+        "input_limit": {
+          "used": 8192,
+          "tokenizer_model_max_length": 8192,
+          "matches_tokenizer": true
+        },
+        "tokenizer_class": "XLMRobertaTokenizer"
+      }
+    }
+  },
+  "token_stats": {
+    "e5_with_passage_prefix": {
+      "count": 398,
+      "min": 15,
+      "max": 3400,
+      "mean": 456.52,
+      "median": 279.0,
+      "p90": 1111.6,
+      "p95": 1406.6,
+      "p99": 2168.08
+    },
+    "bge_m3": {
+      "count": 398,
+      "min": 13,
+      "max": 3398,
+      "mean": 454.52,
+      "median": 277.0,
+      "p90": 1109.6,
+      "p95": 1404.6,
+      "p99": 2166.08
+    }
+  },
+  "over_limit": {
+    "e5": {
+      "limit": 512,
+      "records_over_limit": 120,
+      "share_over_limit_pct": 30.15,
+      "min_chunks_needed_extra": 188
+    },
+    "bge_m3": {
+      "limit": 8192,
+      "records_over_limit": 0,
+      "share_over_limit_pct": 0.0,
+      "min_chunks_needed_extra": 0
+    }
+  },
+  "records_above_thresholds": {
+    "e5": {
+      ">128": 302,
+      ">256": 214,
+      ">384": 150,
+      ">512": 120,
+      ">1024": 43,
+      ">2048": 6
+    },
+    "bge_m3": {
+      ">128": 301,
+      ">256": 214,
+      ">384": 150,
+      ">512": 120,
+      ">1024": 43,
+      ">2048": 6
+    }
+  },
+  "comparison": {
+    "note": "e5 counts include the 'passage: ' prefix; bge_m3 counts have no prefix.",
+    "diff_e5_minus_bge_m3": {
+      "min": 2,
+      "max": 2,
+      "mean": 2.0,
+      "median": 2.0
+    },
+    "ratio_e5_over_bge_m3": {
+      "mean": 1.0127,
+      "median": 1.0072,
+      "min": 1.0006,
+      "max": 1.1538
+    },
+    "records_e5_longer": 398,
+    "records_equal": 0,
+    "records_bge_m3_longer": 0,
+    "pearson_correlation": 1.0
+  },
+  "per_law": {
+    "ArbZG": {
+      "records": 26,
+      "e5": {
+        "count": 26,
+        "min": 58,
+        "max": 1214,
+        "mean": 313.62,
+        "median": 200.0,
+        "p90": 672.5,
+        "p95": 765.75,
+        "p99": 1106.0,
+        "over_limit": 6
+      },
+      "bge_m3": {
+        "count": 26,
+        "min": 56,
+        "max": 1212,
+        "mean": 311.62,
+        "median": 198.0,
+        "p90": 670.5,
+        "p95": 763.75,
+        "p99": 1104.0,
+        "over_limit": 0
+      }
+    },
+    "AufenthG": {
+      "records": 199,
+      "e5": {
+        "count": 199,
+        "min": 24,
+        "max": 3400,
+        "mean": 674.15,
+        "median": 507,
+        "p90": 1394.4,
+        "p95": 1795.0,
+        "p99": 2411.26,
+        "over_limit": 98
+      },
+      "bge_m3": {
+        "count": 199,
+        "min": 22,
+        "max": 3398,
+        "mean": 672.15,
+        "median": 505,
+        "p90": 1392.4,
+        "p95": 1793.0,
+        "p99": 2409.26,
+        "over_limit": 0
+      }
+    },
+    "BGB": {
+      "records": 105,
+      "e5": {
+        "count": 105,
+        "min": 25,
+        "max": 698,
+        "mean": 197.67,
+        "median": 150,
+        "p90": 383.2,
+        "p95": 530.2,
+        "p99": 689.36,
+        "over_limit": 7
+      },
+      "bge_m3": {
+        "count": 105,
+        "min": 23,
+        "max": 696,
+        "mean": 195.67,
+        "median": 148,
+        "p90": 381.2,
+        "p95": 528.2,
+        "p99": 687.36,
+        "over_limit": 0
+      }
+    },
+    "BeschV": {
+      "records": 45,
+      "e5": {
+        "count": 45,
+        "min": 33,
+        "max": 1421,
+        "mean": 254.6,
+        "median": 174,
+        "p90": 534.8,
+        "p95": 629.2,
+        "p99": 1104.64,
+        "over_limit": 6
+      },
+      "bge_m3": {
+        "count": 45,
+        "min": 31,
+        "max": 1419,
+        "mean": 252.6,
+        "median": 172,
+        "p90": 532.8,
+        "p95": 627.2,
+        "p99": 1102.64,
+        "over_limit": 0
+      }
+    },
+    "MiLoG": {
+      "records": 23,
+      "e5": {
+        "count": 23,
+        "min": 15,
+        "max": 1495,
+        "mean": 311.83,
+        "median": 185,
+        "p90": 784.6,
+        "p95": 1182.5,
+        "p99": 1434.06,
+        "over_limit": 3
+      },
+      "bge_m3": {
+        "count": 23,
+        "min": 13,
+        "max": 1493,
+        "mean": 309.83,
+        "median": 183,
+        "p90": 782.6,
+        "p95": 1180.5,
+        "p99": 1432.06,
+        "over_limit": 0
+      }
+    }
+  },
+  "top10_longest_by_e5": [
+    {
+      "rank": 1,
+      "id": "aufenthg_2004__73",
+      "law": "AufenthG",
+      "section": "§ 73",
+      "heading": "Sonstige Beteiligungserfordernisse im Visumverfahren, im Registrier- und Asylverfahren und bei der Erteilung von Aufenthaltstiteln; Prüfung von Personen",
+      "characters": 15454,
+      "e5_tokens_with_prefix": 3400,
+      "bge_m3_tokens": 3398,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 2,
+      "id": "aufenthg_2004__99",
+      "law": "AufenthG",
+      "section": "§ 99",
+      "heading": "Verordnungsermächtigung",
+      "characters": 14149,
+      "e5_tokens_with_prefix": 3159,
+      "bge_m3_tokens": 3157,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 3,
+      "id": "aufenthg_2004__91f",
+      "law": "AufenthG",
+      "section": "§ 91f",
+      "heading": "Auskünfte zur Durchführung der Richtlinie (EU) 2021/1883 innerhalb der Europäischen Union",
+      "characters": 11234,
+      "e5_tokens_with_prefix": 2396,
+      "bge_m3_tokens": 2394,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 4,
+      "id": "aufenthg_2004__54",
+      "law": "AufenthG",
+      "section": "§ 54",
+      "heading": "Ausweisungsinteresse",
+      "characters": 9628,
+      "e5_tokens_with_prefix": 2203,
+      "bge_m3_tokens": 2201,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 5,
+      "id": "aufenthg_2004__2",
+      "law": "AufenthG",
+      "section": "§ 2",
+      "heading": "Begriffsbestimmungen",
+      "characters": 9608,
+      "e5_tokens_with_prefix": 2167,
+      "bge_m3_tokens": 2165,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 6,
+      "id": "aufenthg_2004__78",
+      "law": "AufenthG",
+      "section": "§ 78",
+      "heading": "Dokumente mit elektronischem Speicher- und Verarbeitungsmedium",
+      "characters": 9560,
+      "e5_tokens_with_prefix": 2147,
+      "bge_m3_tokens": 2145,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 7,
+      "id": "aufenthg_2004__71",
+      "law": "AufenthG",
+      "section": "§ 71",
+      "heading": "Zuständigkeit; Verordnungsermächtigung",
+      "characters": 8564,
+      "e5_tokens_with_prefix": 2005,
+      "bge_m3_tokens": 2003,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 8,
+      "id": "aufenthg_2004__12a",
+      "law": "AufenthG",
+      "section": "§ 12a",
+      "heading": "Wohnsitzregelung",
+      "characters": 9019,
+      "e5_tokens_with_prefix": 1910,
+      "bge_m3_tokens": 1908,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 9,
+      "id": "aufenthg_2004__60a",
+      "law": "AufenthG",
+      "section": "§ 60a",
+      "heading": "Vorübergehende Aussetzung der Abschiebung (Duldung)",
+      "characters": 8336,
+      "e5_tokens_with_prefix": 1852,
+      "bge_m3_tokens": 1850,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 10,
+      "id": "aufenthg_2004__16d",
+      "law": "AufenthG",
+      "section": "§ 16d",
+      "heading": "Maßnahmen zur Anerkennung ausländischer Berufsqualifikationen",
+      "characters": 9348,
+      "e5_tokens_with_prefix": 1831,
+      "bge_m3_tokens": 1829,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    }
+  ],
+  "top10_longest_by_bge_m3": [
+    {
+      "rank": 1,
+      "id": "aufenthg_2004__73",
+      "law": "AufenthG",
+      "section": "§ 73",
+      "heading": "Sonstige Beteiligungserfordernisse im Visumverfahren, im Registrier- und Asylverfahren und bei der Erteilung von Aufenthaltstiteln; Prüfung von Personen",
+      "characters": 15454,
+      "e5_tokens_with_prefix": 3400,
+      "bge_m3_tokens": 3398,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 2,
+      "id": "aufenthg_2004__99",
+      "law": "AufenthG",
+      "section": "§ 99",
+      "heading": "Verordnungsermächtigung",
+      "characters": 14149,
+      "e5_tokens_with_prefix": 3159,
+      "bge_m3_tokens": 3157,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 3,
+      "id": "aufenthg_2004__91f",
+      "law": "AufenthG",
+      "section": "§ 91f",
+      "heading": "Auskünfte zur Durchführung der Richtlinie (EU) 2021/1883 innerhalb der Europäischen Union",
+      "characters": 11234,
+      "e5_tokens_with_prefix": 2396,
+      "bge_m3_tokens": 2394,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 4,
+      "id": "aufenthg_2004__54",
+      "law": "AufenthG",
+      "section": "§ 54",
+      "heading": "Ausweisungsinteresse",
+      "characters": 9628,
+      "e5_tokens_with_prefix": 2203,
+      "bge_m3_tokens": 2201,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 5,
+      "id": "aufenthg_2004__2",
+      "law": "AufenthG",
+      "section": "§ 2",
+      "heading": "Begriffsbestimmungen",
+      "characters": 9608,
+      "e5_tokens_with_prefix": 2167,
+      "bge_m3_tokens": 2165,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 6,
+      "id": "aufenthg_2004__78",
+      "law": "AufenthG",
+      "section": "§ 78",
+      "heading": "Dokumente mit elektronischem Speicher- und Verarbeitungsmedium",
+      "characters": 9560,
+      "e5_tokens_with_prefix": 2147,
+      "bge_m3_tokens": 2145,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 7,
+      "id": "aufenthg_2004__71",
+      "law": "AufenthG",
+      "section": "§ 71",
+      "heading": "Zuständigkeit; Verordnungsermächtigung",
+      "characters": 8564,
+      "e5_tokens_with_prefix": 2005,
+      "bge_m3_tokens": 2003,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 8,
+      "id": "aufenthg_2004__12a",
+      "law": "AufenthG",
+      "section": "§ 12a",
+      "heading": "Wohnsitzregelung",
+      "characters": 9019,
+      "e5_tokens_with_prefix": 1910,
+      "bge_m3_tokens": 1908,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 9,
+      "id": "aufenthg_2004__60a",
+      "law": "AufenthG",
+      "section": "§ 60a",
+      "heading": "Vorübergehende Aussetzung der Abschiebung (Duldung)",
+      "characters": 8336,
+      "e5_tokens_with_prefix": 1852,
+      "bge_m3_tokens": 1850,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    },
+    {
+      "rank": 10,
+      "id": "aufenthg_2004__16d",
+      "law": "AufenthG",
+      "section": "§ 16d",
+      "heading": "Maßnahmen zur Anerkennung ausländischer Berufsqualifikationen",
+      "characters": 9348,
+      "e5_tokens_with_prefix": 1831,
+      "bge_m3_tokens": 1829,
+      "exceeds_e5_limit": true,
+      "exceeds_bge_m3_limit": false
+    }
+  ],
+  "secondary_with_heading_context": {
+    "note": "Same measurement when 'LAW § section heading' is prepended to the text.",
+    "e5_with_passage_prefix": {
+      "count": 398,
+      "min": 22,
+      "max": 3439,
+      "mean": 471.14,
+      "median": 292.0,
+      "p90": 1122.6,
+      "p95": 1417.75,
+      "p99": 2177.11,
+      "over_limit": 124
+    },
+    "bge_m3": {
+      "count": 398,
+      "min": 20,
+      "max": 3437,
+      "mean": 469.14,
+      "median": 290.0,
+      "p90": 1120.6,
+      "p95": 1415.75,
+      "p99": 2175.11,
+      "over_limit": 0
+    }
+  },
+  "records": [
+    {
+      "id": "arbzg__1",
+      "law": "ArbZG",
+      "section": "§ 1",
+      "characters": 423,
+      "e5_tokens_with_prefix": 78,
+      "bge_m3_tokens": 76
+    },
+    {
+      "id": "arbzg__2",
+      "law": "ArbZG",
+      "section": "§ 2",
+      "characters": 828,
+      "e5_tokens_with_prefix": 177,
+      "bge_m3_tokens": 175
+    },
+    {
+      "id": "arbzg__3",
+      "law": "ArbZG",
+      "section": "§ 3",
+      "characters": 279,
+      "e5_tokens_with_prefix": 58,
+      "bge_m3_tokens": 56
+    },
+    {
+      "id": "arbzg__4",
+      "law": "ArbZG",
+      "section": "§ 4",
+      "characters": 437,
+      "e5_tokens_with_prefix": 88,
+      "bge_m3_tokens": 86
+    },
+    {
+      "id": "arbzg__5",
+      "law": "ArbZG",
+      "section": "§ 5",
+      "characters": 974,
+      "e5_tokens_with_prefix": 206,
+      "bge_m3_tokens": 204
+    },
+    {
+      "id": "arbzg__6",
+      "law": "ArbZG",
+      "section": "§ 6",
+      "characters": 2598,
+      "e5_tokens_with_prefix": 537,
+      "bge_m3_tokens": 535
+    },
+    {
+      "id": "arbzg__7",
+      "law": "ArbZG",
+      "section": "§ 7",
+      "characters": 5627,
+      "e5_tokens_with_prefix": 1214,
+      "bge_m3_tokens": 1212
+    },
+    {
+      "id": "arbzg__8",
+      "law": "ArbZG",
+      "section": "§ 8",
+      "characters": 686,
+      "e5_tokens_with_prefix": 142,
+      "bge_m3_tokens": 140
+    },
+    {
+      "id": "arbzg__9",
+      "law": "ArbZG",
+      "section": "§ 9",
+      "characters": 493,
+      "e5_tokens_with_prefix": 115,
+      "bge_m3_tokens": 113
+    },
+    {
+      "id": "arbzg__10",
+      "law": "ArbZG",
+      "section": "§ 10",
+      "characters": 3539,
+      "e5_tokens_with_prefix": 782,
+      "bge_m3_tokens": 780
+    },
+    {
+      "id": "arbzg__11",
+      "law": "ArbZG",
+      "section": "§ 11",
+      "characters": 1004,
+      "e5_tokens_with_prefix": 229,
+      "bge_m3_tokens": 227
+    },
+    {
+      "id": "arbzg__12",
+      "law": "ArbZG",
+      "section": "§ 12",
+      "characters": 1112,
+      "e5_tokens_with_prefix": 277,
+      "bge_m3_tokens": 275
+    },
+    {
+      "id": "arbzg__13",
+      "law": "ArbZG",
+      "section": "§ 13",
+      "characters": 2836,
+      "e5_tokens_with_prefix": 619,
+      "bge_m3_tokens": 617
+    },
+    {
+      "id": "arbzg__14",
+      "law": "ArbZG",
+      "section": "§ 14",
+      "characters": 1183,
+      "e5_tokens_with_prefix": 280,
+      "bge_m3_tokens": 278
+    },
+    {
+      "id": "arbzg__15",
+      "law": "ArbZG",
+      "section": "§ 15",
+      "characters": 2819,
+      "e5_tokens_with_prefix": 628,
+      "bge_m3_tokens": 626
+    },
+    {
+      "id": "arbzg__16",
+      "law": "ArbZG",
+      "section": "§ 16",
+      "characters": 878,
+      "e5_tokens_with_prefix": 192,
+      "bge_m3_tokens": 190
+    },
+    {
+      "id": "arbzg__17",
+      "law": "ArbZG",
+      "section": "§ 17",
+      "characters": 2221,
+      "e5_tokens_with_prefix": 491,
+      "bge_m3_tokens": 489
+    },
+    {
+      "id": "arbzg__18",
+      "law": "ArbZG",
+      "section": "§ 18",
+      "characters": 870,
+      "e5_tokens_with_prefix": 194,
+      "bge_m3_tokens": 192
+    },
+    {
+      "id": "arbzg__19",
+      "law": "ArbZG",
+      "section": "§ 19",
+      "characters": 304,
+      "e5_tokens_with_prefix": 64,
+      "bge_m3_tokens": 62
+    },
+    {
+      "id": "arbzg__20",
+      "law": "ArbZG",
+      "section": "§ 20",
+      "characters": 326,
+      "e5_tokens_with_prefix": 67,
+      "bge_m3_tokens": 65
+    },
+    {
+      "id": "arbzg__21",
+      "law": "ArbZG",
+      "section": "§ 21",
+      "characters": 1489,
+      "e5_tokens_with_prefix": 285,
+      "bge_m3_tokens": 283
+    },
+    {
+      "id": "arbzg__21a",
+      "law": "ArbZG",
+      "section": "§ 21a",
+      "characters": 3230,
+      "e5_tokens_with_prefix": 717,
+      "bge_m3_tokens": 715
+    },
+    {
+      "id": "arbzg__22",
+      "law": "ArbZG",
+      "section": "§ 22",
+      "characters": 1761,
+      "e5_tokens_with_prefix": 435,
+      "bge_m3_tokens": 433
+    },
+    {
+      "id": "arbzg__23",
+      "law": "ArbZG",
+      "section": "§ 23",
+      "characters": 449,
+      "e5_tokens_with_prefix": 117,
+      "bge_m3_tokens": 115
+    },
+    {
+      "id": "arbzg__24",
+      "law": "ArbZG",
+      "section": "§ 24",
+      "characters": 318,
+      "e5_tokens_with_prefix": 64,
+      "bge_m3_tokens": 62
+    },
+    {
+      "id": "arbzg__25",
+      "law": "ArbZG",
+      "section": "§ 25",
+      "characters": 421,
+      "e5_tokens_with_prefix": 98,
+      "bge_m3_tokens": 96
+    },
+    {
+      "id": "aufenthg_2004__1",
+      "law": "AufenthG",
+      "section": "§ 1",
+      "characters": 1338,
+      "e5_tokens_with_prefix": 275,
+      "bge_m3_tokens": 273
+    },
+    {
+      "id": "aufenthg_2004__2",
+      "law": "AufenthG",
+      "section": "§ 2",
+      "characters": 9608,
+      "e5_tokens_with_prefix": 2167,
+      "bge_m3_tokens": 2165
+    },
+    {
+      "id": "aufenthg_2004__3",
+      "law": "AufenthG",
+      "section": "§ 3",
+      "characters": 629,
+      "e5_tokens_with_prefix": 142,
+      "bge_m3_tokens": 140
+    },
+    {
+      "id": "aufenthg_2004__4",
+      "law": "AufenthG",
+      "section": "§ 4",
+      "characters": 1309,
+      "e5_tokens_with_prefix": 340,
+      "bge_m3_tokens": 338
+    },
+    {
+      "id": "aufenthg_2004__4a",
+      "law": "AufenthG",
+      "section": "§ 4a",
+      "characters": 3388,
+      "e5_tokens_with_prefix": 718,
+      "bge_m3_tokens": 716
+    },
+    {
+      "id": "aufenthg_2004__5",
+      "law": "AufenthG",
+      "section": "§ 5",
+      "characters": 2400,
+      "e5_tokens_with_prefix": 563,
+      "bge_m3_tokens": 561
+    },
+    {
+      "id": "aufenthg_2004__6",
+      "law": "AufenthG",
+      "section": "§ 6",
+      "characters": 1690,
+      "e5_tokens_with_prefix": 403,
+      "bge_m3_tokens": 401
+    },
+    {
+      "id": "aufenthg_2004__7",
+      "law": "AufenthG",
+      "section": "§ 7",
+      "characters": 691,
+      "e5_tokens_with_prefix": 163,
+      "bge_m3_tokens": 161
+    },
+    {
+      "id": "aufenthg_2004__8",
+      "law": "AufenthG",
+      "section": "§ 8",
+      "characters": 2040,
+      "e5_tokens_with_prefix": 444,
+      "bge_m3_tokens": 442
+    },
+    {
+      "id": "aufenthg_2004__9",
+      "law": "AufenthG",
+      "section": "§ 9",
+      "characters": 4226,
+      "e5_tokens_with_prefix": 911,
+      "bge_m3_tokens": 909
+    },
+    {
+      "id": "aufenthg_2004__9a",
+      "law": "AufenthG",
+      "section": "§ 9a",
+      "characters": 3069,
+      "e5_tokens_with_prefix": 658,
+      "bge_m3_tokens": 656
+    },
+    {
+      "id": "aufenthg_2004__9b",
+      "law": "AufenthG",
+      "section": "§ 9b",
+      "characters": 4666,
+      "e5_tokens_with_prefix": 1011,
+      "bge_m3_tokens": 1009
+    },
+    {
+      "id": "aufenthg_2004__9c",
+      "law": "AufenthG",
+      "section": "§ 9c",
+      "characters": 1301,
+      "e5_tokens_with_prefix": 290,
+      "bge_m3_tokens": 288
+    },
+    {
+      "id": "aufenthg_2004__10",
+      "law": "AufenthG",
+      "section": "§ 10",
+      "characters": 2123,
+      "e5_tokens_with_prefix": 497,
+      "bge_m3_tokens": 495
+    },
+    {
+      "id": "aufenthg_2004__11",
+      "law": "AufenthG",
+      "section": "§ 11",
+      "characters": 7768,
+      "e5_tokens_with_prefix": 1779,
+      "bge_m3_tokens": 1777
+    },
+    {
+      "id": "aufenthg_2004__12",
+      "law": "AufenthG",
+      "section": "§ 12",
+      "characters": 1542,
+      "e5_tokens_with_prefix": 356,
+      "bge_m3_tokens": 354
+    },
+    {
+      "id": "aufenthg_2004__12a",
+      "law": "AufenthG",
+      "section": "§ 12a",
+      "characters": 9019,
+      "e5_tokens_with_prefix": 1910,
+      "bge_m3_tokens": 1908
+    },
+    {
+      "id": "aufenthg_2004__13",
+      "law": "AufenthG",
+      "section": "§ 13",
+      "characters": 1333,
+      "e5_tokens_with_prefix": 302,
+      "bge_m3_tokens": 300
+    },
+    {
+      "id": "aufenthg_2004__14",
+      "law": "AufenthG",
+      "section": "§ 14",
+      "characters": 1238,
+      "e5_tokens_with_prefix": 289,
+      "bge_m3_tokens": 287
+    },
+    {
+      "id": "aufenthg_2004__14a",
+      "law": "AufenthG",
+      "section": "§ 14a",
+      "characters": 2528,
+      "e5_tokens_with_prefix": 543,
+      "bge_m3_tokens": 541
+    },
+    {
+      "id": "aufenthg_2004__15",
+      "law": "AufenthG",
+      "section": "§ 15",
+      "characters": 2295,
+      "e5_tokens_with_prefix": 536,
+      "bge_m3_tokens": 534
+    },
+    {
+      "id": "aufenthg_2004__15a",
+      "law": "AufenthG",
+      "section": "§ 15a",
+      "characters": 4057,
+      "e5_tokens_with_prefix": 903,
+      "bge_m3_tokens": 901
+    },
+    {
+      "id": "aufenthg_2004__15b",
+      "law": "AufenthG",
+      "section": "§ 15b",
+      "characters": 4176,
+      "e5_tokens_with_prefix": 895,
+      "bge_m3_tokens": 893
+    },
+    {
+      "id": "aufenthg_2004__16",
+      "law": "AufenthG",
+      "section": "§ 16",
+      "characters": 414,
+      "e5_tokens_with_prefix": 82,
+      "bge_m3_tokens": 80
+    },
+    {
+      "id": "aufenthg_2004__16a",
+      "law": "AufenthG",
+      "section": "§ 16a",
+      "characters": 2595,
+      "e5_tokens_with_prefix": 529,
+      "bge_m3_tokens": 527
+    },
+    {
+      "id": "aufenthg_2004__16b",
+      "law": "AufenthG",
+      "section": "§ 16b",
+      "characters": 6020,
+      "e5_tokens_with_prefix": 1275,
+      "bge_m3_tokens": 1273
+    },
+    {
+      "id": "aufenthg_2004__16c",
+      "law": "AufenthG",
+      "section": "§ 16c",
+      "characters": 4120,
+      "e5_tokens_with_prefix": 901,
+      "bge_m3_tokens": 899
+    },
+    {
+      "id": "aufenthg_2004__16d",
+      "law": "AufenthG",
+      "section": "§ 16d",
+      "characters": 9348,
+      "e5_tokens_with_prefix": 1831,
+      "bge_m3_tokens": 1829
+    },
+    {
+      "id": "aufenthg_2004__16e",
+      "law": "AufenthG",
+      "section": "§ 16e",
+      "characters": 1808,
+      "e5_tokens_with_prefix": 384,
+      "bge_m3_tokens": 382
+    },
+    {
+      "id": "aufenthg_2004__16f",
+      "law": "AufenthG",
+      "section": "§ 16f",
+      "characters": 2045,
+      "e5_tokens_with_prefix": 401,
+      "bge_m3_tokens": 399
+    },
+    {
+      "id": "aufenthg_2004__16g",
+      "law": "AufenthG",
+      "section": "§ 16g",
+      "characters": 7102,
+      "e5_tokens_with_prefix": 1526,
+      "bge_m3_tokens": 1524
+    },
+    {
+      "id": "aufenthg_2004__17",
+      "law": "AufenthG",
+      "section": "§ 17",
+      "characters": 1656,
+      "e5_tokens_with_prefix": 361,
+      "bge_m3_tokens": 359
+    },
+    {
+      "id": "aufenthg_2004__18",
+      "law": "AufenthG",
+      "section": "§ 18",
+      "characters": 4227,
+      "e5_tokens_with_prefix": 891,
+      "bge_m3_tokens": 889
+    },
+    {
+      "id": "aufenthg_2004__18a",
+      "law": "AufenthG",
+      "section": "§ 18a",
+      "characters": 124,
+      "e5_tokens_with_prefix": 28,
+      "bge_m3_tokens": 26
+    },
+    {
+      "id": "aufenthg_2004__18b",
+      "law": "AufenthG",
+      "section": "§ 18b",
+      "characters": 131,
+      "e5_tokens_with_prefix": 28,
+      "bge_m3_tokens": 26
+    },
+    {
+      "id": "aufenthg_2004__18c",
+      "law": "AufenthG",
+      "section": "§ 18c",
+      "characters": 2739,
+      "e5_tokens_with_prefix": 571,
+      "bge_m3_tokens": 569
+    },
+    {
+      "id": "aufenthg_2004__18d",
+      "law": "AufenthG",
+      "section": "§ 18d",
+      "characters": 3001,
+      "e5_tokens_with_prefix": 623,
+      "bge_m3_tokens": 621
+    },
+    {
+      "id": "aufenthg_2004__18e",
+      "law": "AufenthG",
+      "section": "§ 18e",
+      "characters": 3727,
+      "e5_tokens_with_prefix": 797,
+      "bge_m3_tokens": 795
+    },
+    {
+      "id": "aufenthg_2004__18f",
+      "law": "AufenthG",
+      "section": "§ 18f",
+      "characters": 1595,
+      "e5_tokens_with_prefix": 330,
+      "bge_m3_tokens": 328
+    },
+    {
+      "id": "aufenthg_2004__18g",
+      "law": "AufenthG",
+      "section": "§ 18g",
+      "characters": 5158,
+      "e5_tokens_with_prefix": 1141,
+      "bge_m3_tokens": 1139
+    },
+    {
+      "id": "aufenthg_2004__18h",
+      "law": "AufenthG",
+      "section": "§ 18h",
+      "characters": 1199,
+      "e5_tokens_with_prefix": 251,
+      "bge_m3_tokens": 249
+    },
+    {
+      "id": "aufenthg_2004__18i",
+      "law": "AufenthG",
+      "section": "§ 18i",
+      "characters": 2178,
+      "e5_tokens_with_prefix": 465,
+      "bge_m3_tokens": 463
+    },
+    {
+      "id": "aufenthg_2004__19",
+      "law": "AufenthG",
+      "section": "§ 19",
+      "characters": 4630,
+      "e5_tokens_with_prefix": 998,
+      "bge_m3_tokens": 996
+    },
+    {
+      "id": "aufenthg_2004__19a",
+      "law": "AufenthG",
+      "section": "§ 19a",
+      "characters": 5329,
+      "e5_tokens_with_prefix": 1152,
+      "bge_m3_tokens": 1150
+    },
+    {
+      "id": "aufenthg_2004__19b",
+      "law": "AufenthG",
+      "section": "§ 19b",
+      "characters": 2257,
+      "e5_tokens_with_prefix": 499,
+      "bge_m3_tokens": 497
+    },
+    {
+      "id": "aufenthg_2004__19c",
+      "law": "AufenthG",
+      "section": "§ 19c",
+      "characters": 1310,
+      "e5_tokens_with_prefix": 269,
+      "bge_m3_tokens": 267
+    },
+    {
+      "id": "aufenthg_2004__19d",
+      "law": "AufenthG",
+      "section": "§ 19d",
+      "characters": 3166,
+      "e5_tokens_with_prefix": 663,
+      "bge_m3_tokens": 661
+    },
+    {
+      "id": "aufenthg_2004__19e",
+      "law": "AufenthG",
+      "section": "§ 19e",
+      "characters": 1274,
+      "e5_tokens_with_prefix": 260,
+      "bge_m3_tokens": 258
+    },
+    {
+      "id": "aufenthg_2004__19f",
+      "law": "AufenthG",
+      "section": "§ 19f",
+      "characters": 5346,
+      "e5_tokens_with_prefix": 1182,
+      "bge_m3_tokens": 1180
+    },
+    {
+      "id": "aufenthg_2004__20",
+      "law": "AufenthG",
+      "section": "§ 20",
+      "characters": 1643,
+      "e5_tokens_with_prefix": 362,
+      "bge_m3_tokens": 360
+    },
+    {
+      "id": "aufenthg_2004__20a",
+      "law": "AufenthG",
+      "section": "§ 20a",
+      "characters": 4428,
+      "e5_tokens_with_prefix": 938,
+      "bge_m3_tokens": 936
+    },
+    {
+      "id": "aufenthg_2004__20b",
+      "law": "AufenthG",
+      "section": "§ 20b",
+      "characters": 3646,
+      "e5_tokens_with_prefix": 790,
+      "bge_m3_tokens": 788
+    },
+    {
+      "id": "aufenthg_2004__21",
+      "law": "AufenthG",
+      "section": "§ 21",
+      "characters": 3681,
+      "e5_tokens_with_prefix": 772,
+      "bge_m3_tokens": 770
+    },
+    {
+      "id": "aufenthg_2004__22",
+      "law": "AufenthG",
+      "section": "§ 22",
+      "characters": 380,
+      "e5_tokens_with_prefix": 80,
+      "bge_m3_tokens": 78
+    },
+    {
+      "id": "aufenthg_2004__23",
+      "law": "AufenthG",
+      "section": "§ 23",
+      "characters": 1914,
+      "e5_tokens_with_prefix": 413,
+      "bge_m3_tokens": 411
+    },
+    {
+      "id": "aufenthg_2004__23a",
+      "law": "AufenthG",
+      "section": "§ 23a",
+      "characters": 2412,
+      "e5_tokens_with_prefix": 526,
+      "bge_m3_tokens": 524
+    },
+    {
+      "id": "aufenthg_2004__24",
+      "law": "AufenthG",
+      "section": "§ 24",
+      "characters": 2002,
+      "e5_tokens_with_prefix": 440,
+      "bge_m3_tokens": 438
+    },
+    {
+      "id": "aufenthg_2004__25",
+      "law": "AufenthG",
+      "section": "§ 25",
+      "characters": 5948,
+      "e5_tokens_with_prefix": 1351,
+      "bge_m3_tokens": 1349
+    },
+    {
+      "id": "aufenthg_2004__25a",
+      "law": "AufenthG",
+      "section": "§ 25a",
+      "characters": 3747,
+      "e5_tokens_with_prefix": 801,
+      "bge_m3_tokens": 799
+    },
+    {
+      "id": "aufenthg_2004__25b",
+      "law": "AufenthG",
+      "section": "§ 25b",
+      "characters": 4422,
+      "e5_tokens_with_prefix": 971,
+      "bge_m3_tokens": 969
+    },
+    {
+      "id": "aufenthg_2004__26",
+      "law": "AufenthG",
+      "section": "§ 26",
+      "characters": 3957,
+      "e5_tokens_with_prefix": 934,
+      "bge_m3_tokens": 932
+    },
+    {
+      "id": "aufenthg_2004__27",
+      "law": "AufenthG",
+      "section": "§ 27",
+      "characters": 3604,
+      "e5_tokens_with_prefix": 833,
+      "bge_m3_tokens": 831
+    },
+    {
+      "id": "aufenthg_2004__28",
+      "law": "AufenthG",
+      "section": "§ 28",
+      "characters": 1959,
+      "e5_tokens_with_prefix": 448,
+      "bge_m3_tokens": 446
+    },
+    {
+      "id": "aufenthg_2004__29",
+      "law": "AufenthG",
+      "section": "§ 29",
+      "characters": 4049,
+      "e5_tokens_with_prefix": 949,
+      "bge_m3_tokens": 947
+    },
+    {
+      "id": "aufenthg_2004__30",
+      "law": "AufenthG",
+      "section": "§ 30",
+      "characters": 4926,
+      "e5_tokens_with_prefix": 1181,
+      "bge_m3_tokens": 1179
+    },
+    {
+      "id": "aufenthg_2004__31",
+      "law": "AufenthG",
+      "section": "§ 31",
+      "characters": 3597,
+      "e5_tokens_with_prefix": 815,
+      "bge_m3_tokens": 813
+    },
+    {
+      "id": "aufenthg_2004__32",
+      "law": "AufenthG",
+      "section": "§ 32",
+      "characters": 3789,
+      "e5_tokens_with_prefix": 876,
+      "bge_m3_tokens": 874
+    },
+    {
+      "id": "aufenthg_2004__33",
+      "law": "AufenthG",
+      "section": "§ 33",
+      "characters": 839,
+      "e5_tokens_with_prefix": 204,
+      "bge_m3_tokens": 202
+    },
+    {
+      "id": "aufenthg_2004__34",
+      "law": "AufenthG",
+      "section": "§ 34",
+      "characters": 957,
+      "e5_tokens_with_prefix": 232,
+      "bge_m3_tokens": 230
+    },
+    {
+      "id": "aufenthg_2004__35",
+      "law": "AufenthG",
+      "section": "§ 35",
+      "characters": 2278,
+      "e5_tokens_with_prefix": 507,
+      "bge_m3_tokens": 505
+    },
+    {
+      "id": "aufenthg_2004__36",
+      "law": "AufenthG",
+      "section": "§ 36",
+      "characters": 1641,
+      "e5_tokens_with_prefix": 401,
+      "bge_m3_tokens": 399
+    },
+    {
+      "id": "aufenthg_2004__36a",
+      "law": "AufenthG",
+      "section": "§ 36a",
+      "characters": 3727,
+      "e5_tokens_with_prefix": 832,
+      "bge_m3_tokens": 830
+    },
+    {
+      "id": "aufenthg_2004__37",
+      "law": "AufenthG",
+      "section": "§ 37",
+      "characters": 2869,
+      "e5_tokens_with_prefix": 625,
+      "bge_m3_tokens": 623
+    },
+    {
+      "id": "aufenthg_2004__38",
+      "law": "AufenthG",
+      "section": "§ 38",
+      "characters": 1274,
+      "e5_tokens_with_prefix": 259,
+      "bge_m3_tokens": 257
+    },
+    {
+      "id": "aufenthg_2004__38a",
+      "law": "AufenthG",
+      "section": "§ 38a",
+      "characters": 1678,
+      "e5_tokens_with_prefix": 357,
+      "bge_m3_tokens": 355
+    },
+    {
+      "id": "aufenthg_2004__39",
+      "law": "AufenthG",
+      "section": "§ 39",
+      "characters": 4955,
+      "e5_tokens_with_prefix": 1004,
+      "bge_m3_tokens": 1002
+    },
+    {
+      "id": "aufenthg_2004__40",
+      "law": "AufenthG",
+      "section": "§ 40",
+      "characters": 2753,
+      "e5_tokens_with_prefix": 596,
+      "bge_m3_tokens": 594
+    },
+    {
+      "id": "aufenthg_2004__41",
+      "law": "AufenthG",
+      "section": "§ 41",
+      "characters": 263,
+      "e5_tokens_with_prefix": 55,
+      "bge_m3_tokens": 53
+    },
+    {
+      "id": "aufenthg_2004__42",
+      "law": "AufenthG",
+      "section": "§ 42",
+      "characters": 3569,
+      "e5_tokens_with_prefix": 749,
+      "bge_m3_tokens": 747
+    },
+    {
+      "id": "aufenthg_2004__43",
+      "law": "AufenthG",
+      "section": "§ 43",
+      "characters": 2160,
+      "e5_tokens_with_prefix": 432,
+      "bge_m3_tokens": 430
+    },
+    {
+      "id": "aufenthg_2004__44",
+      "law": "AufenthG",
+      "section": "§ 44",
+      "characters": 2088,
+      "e5_tokens_with_prefix": 460,
+      "bge_m3_tokens": 458
+    },
+    {
+      "id": "aufenthg_2004__44a",
+      "law": "AufenthG",
+      "section": "§ 44a",
+      "characters": 3568,
+      "e5_tokens_with_prefix": 768,
+      "bge_m3_tokens": 766
+    },
+    {
+      "id": "aufenthg_2004__45",
+      "law": "AufenthG",
+      "section": "§ 45",
+      "characters": 1056,
+      "e5_tokens_with_prefix": 205,
+      "bge_m3_tokens": 203
+    },
+    {
+      "id": "aufenthg_2004__45a",
+      "law": "AufenthG",
+      "section": "§ 45a",
+      "characters": 1667,
+      "e5_tokens_with_prefix": 348,
+      "bge_m3_tokens": 346
+    },
+    {
+      "id": "aufenthg_2004__45b",
+      "law": "AufenthG",
+      "section": "§ 45b",
+      "characters": 2846,
+      "e5_tokens_with_prefix": 604,
+      "bge_m3_tokens": 602
+    },
+    {
+      "id": "aufenthg_2004__45c",
+      "law": "AufenthG",
+      "section": "§ 45c",
+      "characters": 635,
+      "e5_tokens_with_prefix": 143,
+      "bge_m3_tokens": 141
+    },
+    {
+      "id": "aufenthg_2004__46",
+      "law": "AufenthG",
+      "section": "§ 46",
+      "characters": 650,
+      "e5_tokens_with_prefix": 149,
+      "bge_m3_tokens": 147
+    },
+    {
+      "id": "aufenthg_2004__47",
+      "law": "AufenthG",
+      "section": "§ 47",
+      "characters": 1716,
+      "e5_tokens_with_prefix": 335,
+      "bge_m3_tokens": 333
+    },
+    {
+      "id": "aufenthg_2004__47a",
+      "law": "AufenthG",
+      "section": "§ 47a",
+      "characters": 766,
+      "e5_tokens_with_prefix": 184,
+      "bge_m3_tokens": 182
+    },
+    {
+      "id": "aufenthg_2004__47b",
+      "law": "AufenthG",
+      "section": "§ 47b",
+      "characters": 519,
+      "e5_tokens_with_prefix": 121,
+      "bge_m3_tokens": 119
+    },
+    {
+      "id": "aufenthg_2004__48",
+      "law": "AufenthG",
+      "section": "§ 48",
+      "characters": 4883,
+      "e5_tokens_with_prefix": 1093,
+      "bge_m3_tokens": 1091
+    },
+    {
+      "id": "aufenthg_2004__48a",
+      "law": "AufenthG",
+      "section": "§ 48a",
+      "characters": 1039,
+      "e5_tokens_with_prefix": 233,
+      "bge_m3_tokens": 231
+    },
+    {
+      "id": "aufenthg_2004__49",
+      "law": "AufenthG",
+      "section": "§ 49",
+      "characters": 6153,
+      "e5_tokens_with_prefix": 1376,
+      "bge_m3_tokens": 1374
+    },
+    {
+      "id": "aufenthg_2004__50",
+      "law": "AufenthG",
+      "section": "§ 50",
+      "characters": 2808,
+      "e5_tokens_with_prefix": 616,
+      "bge_m3_tokens": 614
+    },
+    {
+      "id": "aufenthg_2004__51",
+      "law": "AufenthG",
+      "section": "§ 51",
+      "characters": 7574,
+      "e5_tokens_with_prefix": 1712,
+      "bge_m3_tokens": 1710
+    },
+    {
+      "id": "aufenthg_2004__52",
+      "law": "AufenthG",
+      "section": "§ 52",
+      "characters": 6220,
+      "e5_tokens_with_prefix": 1406,
+      "bge_m3_tokens": 1404
+    },
+    {
+      "id": "aufenthg_2004__53",
+      "law": "AufenthG",
+      "section": "§ 53",
+      "characters": 2314,
+      "e5_tokens_with_prefix": 506,
+      "bge_m3_tokens": 504
+    },
+    {
+      "id": "aufenthg_2004__54",
+      "law": "AufenthG",
+      "section": "§ 54",
+      "characters": 9628,
+      "e5_tokens_with_prefix": 2203,
+      "bge_m3_tokens": 2201
+    },
+    {
+      "id": "aufenthg_2004__55",
+      "law": "AufenthG",
+      "section": "§ 55",
+      "characters": 2045,
+      "e5_tokens_with_prefix": 439,
+      "bge_m3_tokens": 437
+    },
+    {
+      "id": "aufenthg_2004__56",
+      "law": "AufenthG",
+      "section": "§ 56",
+      "characters": 2663,
+      "e5_tokens_with_prefix": 600,
+      "bge_m3_tokens": 598
+    },
+    {
+      "id": "aufenthg_2004__56a",
+      "law": "AufenthG",
+      "section": "§ 56a",
+      "characters": 6453,
+      "e5_tokens_with_prefix": 1396,
+      "bge_m3_tokens": 1394
+    },
+    {
+      "id": "aufenthg_2004__57",
+      "law": "AufenthG",
+      "section": "§ 57",
+      "characters": 1048,
+      "e5_tokens_with_prefix": 245,
+      "bge_m3_tokens": 243
+    },
+    {
+      "id": "aufenthg_2004__58",
+      "law": "AufenthG",
+      "section": "§ 58",
+      "characters": 6747,
+      "e5_tokens_with_prefix": 1515,
+      "bge_m3_tokens": 1513
+    },
+    {
+      "id": "aufenthg_2004__58a",
+      "law": "AufenthG",
+      "section": "§ 58a",
+      "characters": 1748,
+      "e5_tokens_with_prefix": 381,
+      "bge_m3_tokens": 379
+    },
+    {
+      "id": "aufenthg_2004__59",
+      "law": "AufenthG",
+      "section": "§ 59",
+      "characters": 5131,
+      "e5_tokens_with_prefix": 1154,
+      "bge_m3_tokens": 1152
+    },
+    {
+      "id": "aufenthg_2004__60",
+      "law": "AufenthG",
+      "section": "§ 60",
+      "characters": 6293,
+      "e5_tokens_with_prefix": 1410,
+      "bge_m3_tokens": 1408
+    },
+    {
+      "id": "aufenthg_2004__60a",
+      "law": "AufenthG",
+      "section": "§ 60a",
+      "characters": 8336,
+      "e5_tokens_with_prefix": 1852,
+      "bge_m3_tokens": 1850
+    },
+    {
+      "id": "aufenthg_2004__60b",
+      "law": "AufenthG",
+      "section": "§ 60b",
+      "characters": 4793,
+      "e5_tokens_with_prefix": 1092,
+      "bge_m3_tokens": 1090
+    },
+    {
+      "id": "aufenthg_2004__60c",
+      "law": "AufenthG",
+      "section": "§ 60c",
+      "characters": 5329,
+      "e5_tokens_with_prefix": 1149,
+      "bge_m3_tokens": 1147
+    },
+    {
+      "id": "aufenthg_2004__60d",
+      "law": "AufenthG",
+      "section": "§ 60d",
+      "characters": 4040,
+      "e5_tokens_with_prefix": 866,
+      "bge_m3_tokens": 864
+    },
+    {
+      "id": "aufenthg_2004__61",
+      "law": "AufenthG",
+      "section": "§ 61",
+      "characters": 3494,
+      "e5_tokens_with_prefix": 774,
+      "bge_m3_tokens": 772
+    },
+    {
+      "id": "aufenthg_2004__62",
+      "law": "AufenthG",
+      "section": "§ 62",
+      "characters": 7932,
+      "e5_tokens_with_prefix": 1791,
+      "bge_m3_tokens": 1789
+    },
+    {
+      "id": "aufenthg_2004__62a",
+      "law": "AufenthG",
+      "section": "§ 62a",
+      "characters": 1574,
+      "e5_tokens_with_prefix": 363,
+      "bge_m3_tokens": 361
+    },
+    {
+      "id": "aufenthg_2004__62b",
+      "law": "AufenthG",
+      "section": "§ 62b",
+      "characters": 2116,
+      "e5_tokens_with_prefix": 493,
+      "bge_m3_tokens": 491
+    },
+    {
+      "id": "aufenthg_2004__62c",
+      "law": "AufenthG",
+      "section": "§ 62c",
+      "characters": 2671,
+      "e5_tokens_with_prefix": 606,
+      "bge_m3_tokens": 604
+    },
+    {
+      "id": "aufenthg_2004__63",
+      "law": "AufenthG",
+      "section": "§ 63",
+      "characters": 1166,
+      "e5_tokens_with_prefix": 259,
+      "bge_m3_tokens": 257
+    },
+    {
+      "id": "aufenthg_2004__64",
+      "law": "AufenthG",
+      "section": "§ 64",
+      "characters": 1112,
+      "e5_tokens_with_prefix": 262,
+      "bge_m3_tokens": 260
+    },
+    {
+      "id": "aufenthg_2004__65",
+      "law": "AufenthG",
+      "section": "§ 65",
+      "characters": 355,
+      "e5_tokens_with_prefix": 82,
+      "bge_m3_tokens": 80
+    },
+    {
+      "id": "aufenthg_2004__66",
+      "law": "AufenthG",
+      "section": "§ 66",
+      "characters": 3862,
+      "e5_tokens_with_prefix": 860,
+      "bge_m3_tokens": 858
+    },
+    {
+      "id": "aufenthg_2004__67",
+      "law": "AufenthG",
+      "section": "§ 67",
+      "characters": 1481,
+      "e5_tokens_with_prefix": 318,
+      "bge_m3_tokens": 316
+    },
+    {
+      "id": "aufenthg_2004__68",
+      "law": "AufenthG",
+      "section": "§ 68",
+      "characters": 2058,
+      "e5_tokens_with_prefix": 426,
+      "bge_m3_tokens": 424
+    },
+    {
+      "id": "aufenthg_2004__69",
+      "law": "AufenthG",
+      "section": "§ 69",
+      "characters": 6099,
+      "e5_tokens_with_prefix": 1331,
+      "bge_m3_tokens": 1329
+    },
+    {
+      "id": "aufenthg_2004__70",
+      "law": "AufenthG",
+      "section": "§ 70",
+      "characters": 413,
+      "e5_tokens_with_prefix": 93,
+      "bge_m3_tokens": 91
+    },
+    {
+      "id": "aufenthg_2004__71",
+      "law": "AufenthG",
+      "section": "§ 71",
+      "characters": 8564,
+      "e5_tokens_with_prefix": 2005,
+      "bge_m3_tokens": 2003
+    },
+    {
+      "id": "aufenthg_2004__71a",
+      "law": "AufenthG",
+      "section": "§ 71a",
+      "characters": 1132,
+      "e5_tokens_with_prefix": 275,
+      "bge_m3_tokens": 273
+    },
+    {
+      "id": "aufenthg_2004__72",
+      "law": "AufenthG",
+      "section": "§ 72",
+      "characters": 4539,
+      "e5_tokens_with_prefix": 1099,
+      "bge_m3_tokens": 1097
+    },
+    {
+      "id": "aufenthg_2004__72a",
+      "law": "AufenthG",
+      "section": "§ 72a",
+      "characters": 6207,
+      "e5_tokens_with_prefix": 1284,
+      "bge_m3_tokens": 1282
+    },
+    {
+      "id": "aufenthg_2004__73",
+      "law": "AufenthG",
+      "section": "§ 73",
+      "characters": 15454,
+      "e5_tokens_with_prefix": 3400,
+      "bge_m3_tokens": 3398
+    },
+    {
+      "id": "aufenthg_2004__73a",
+      "law": "AufenthG",
+      "section": "§ 73a",
+      "characters": 1268,
+      "e5_tokens_with_prefix": 273,
+      "bge_m3_tokens": 271
+    },
+    {
+      "id": "aufenthg_2004__73b",
+      "law": "AufenthG",
+      "section": "§ 73b",
+      "characters": 2449,
+      "e5_tokens_with_prefix": 544,
+      "bge_m3_tokens": 542
+    },
+    {
+      "id": "aufenthg_2004__73c",
+      "law": "AufenthG",
+      "section": "§ 73c",
+      "characters": 631,
+      "e5_tokens_with_prefix": 138,
+      "bge_m3_tokens": 136
+    },
+    {
+      "id": "aufenthg_2004__74",
+      "law": "AufenthG",
+      "section": "§ 74",
+      "characters": 1085,
+      "e5_tokens_with_prefix": 224,
+      "bge_m3_tokens": 222
+    },
+    {
+      "id": "aufenthg_2004__74a",
+      "law": "AufenthG",
+      "section": "§ 74a",
+      "characters": 719,
+      "e5_tokens_with_prefix": 158,
+      "bge_m3_tokens": 156
+    },
+    {
+      "id": "aufenthg_2004__75",
+      "law": "AufenthG",
+      "section": "§ 75",
+      "characters": 4019,
+      "e5_tokens_with_prefix": 887,
+      "bge_m3_tokens": 885
+    },
+    {
+      "id": "aufenthg_2004__77",
+      "law": "AufenthG",
+      "section": "§ 77",
+      "characters": 3694,
+      "e5_tokens_with_prefix": 859,
+      "bge_m3_tokens": 857
+    },
+    {
+      "id": "aufenthg_2004__78",
+      "law": "AufenthG",
+      "section": "§ 78",
+      "characters": 9560,
+      "e5_tokens_with_prefix": 2147,
+      "bge_m3_tokens": 2145
+    },
+    {
+      "id": "aufenthg_2004__78a",
+      "law": "AufenthG",
+      "section": "§ 78a",
+      "characters": 3337,
+      "e5_tokens_with_prefix": 785,
+      "bge_m3_tokens": 783
+    },
+    {
+      "id": "aufenthg_2004__79",
+      "law": "AufenthG",
+      "section": "§ 79",
+      "characters": 2824,
+      "e5_tokens_with_prefix": 600,
+      "bge_m3_tokens": 598
+    },
+    {
+      "id": "aufenthg_2004__80",
+      "law": "AufenthG",
+      "section": "§ 80",
+      "characters": 1530,
+      "e5_tokens_with_prefix": 336,
+      "bge_m3_tokens": 334
+    },
+    {
+      "id": "aufenthg_2004__81",
+      "law": "AufenthG",
+      "section": "§ 81",
+      "characters": 4439,
+      "e5_tokens_with_prefix": 970,
+      "bge_m3_tokens": 968
+    },
+    {
+      "id": "aufenthg_2004__81a",
+      "law": "AufenthG",
+      "section": "§ 81a",
+      "characters": 3974,
+      "e5_tokens_with_prefix": 825,
+      "bge_m3_tokens": 823
+    },
+    {
+      "id": "aufenthg_2004__82",
+      "law": "AufenthG",
+      "section": "§ 82",
+      "characters": 5381,
+      "e5_tokens_with_prefix": 1158,
+      "bge_m3_tokens": 1156
+    },
+    {
+      "id": "aufenthg_2004__83",
+      "law": "AufenthG",
+      "section": "§ 83",
+      "characters": 533,
+      "e5_tokens_with_prefix": 118,
+      "bge_m3_tokens": 116
+    },
+    {
+      "id": "aufenthg_2004__84",
+      "law": "AufenthG",
+      "section": "§ 84",
+      "characters": 2370,
+      "e5_tokens_with_prefix": 564,
+      "bge_m3_tokens": 562
+    },
+    {
+      "id": "aufenthg_2004__85",
+      "law": "AufenthG",
+      "section": "§ 85",
+      "characters": 99,
+      "e5_tokens_with_prefix": 24,
+      "bge_m3_tokens": 22
+    },
+    {
+      "id": "aufenthg_2004__85a",
+      "law": "AufenthG",
+      "section": "§ 85a",
+      "characters": 2856,
+      "e5_tokens_with_prefix": 614,
+      "bge_m3_tokens": 612
+    },
+    {
+      "id": "aufenthg_2004__85b",
+      "law": "AufenthG",
+      "section": "§ 85b",
+      "characters": 3590,
+      "e5_tokens_with_prefix": 742,
+      "bge_m3_tokens": 740
+    },
+    {
+      "id": "aufenthg_2004__85c",
+      "law": "AufenthG",
+      "section": "§ 85c",
+      "characters": 3121,
+      "e5_tokens_with_prefix": 656,
+      "bge_m3_tokens": 654
+    },
+    {
+      "id": "aufenthg_2004__85d",
+      "law": "AufenthG",
+      "section": "§ 85d",
+      "characters": 2048,
+      "e5_tokens_with_prefix": 444,
+      "bge_m3_tokens": 442
+    },
+    {
+      "id": "aufenthg_2004__86",
+      "law": "AufenthG",
+      "section": "§ 86",
+      "characters": 536,
+      "e5_tokens_with_prefix": 102,
+      "bge_m3_tokens": 100
+    },
+    {
+      "id": "aufenthg_2004__86a",
+      "law": "AufenthG",
+      "section": "§ 86a",
+      "characters": 1575,
+      "e5_tokens_with_prefix": 335,
+      "bge_m3_tokens": 333
+    },
+    {
+      "id": "aufenthg_2004__86b",
+      "law": "AufenthG",
+      "section": "§ 86b",
+      "characters": 566,
+      "e5_tokens_with_prefix": 131,
+      "bge_m3_tokens": 129
+    },
+    {
+      "id": "aufenthg_2004__87",
+      "law": "AufenthG",
+      "section": "§ 87",
+      "characters": 6063,
+      "e5_tokens_with_prefix": 1303,
+      "bge_m3_tokens": 1301
+    },
+    {
+      "id": "aufenthg_2004__88",
+      "law": "AufenthG",
+      "section": "§ 88",
+      "characters": 1752,
+      "e5_tokens_with_prefix": 382,
+      "bge_m3_tokens": 380
+    },
+    {
+      "id": "aufenthg_2004__88a",
+      "law": "AufenthG",
+      "section": "§ 88a",
+      "characters": 8764,
+      "e5_tokens_with_prefix": 1784,
+      "bge_m3_tokens": 1782
+    },
+    {
+      "id": "aufenthg_2004__89",
+      "law": "AufenthG",
+      "section": "§ 89",
+      "characters": 3536,
+      "e5_tokens_with_prefix": 797,
+      "bge_m3_tokens": 795
+    },
+    {
+      "id": "aufenthg_2004__90",
+      "law": "AufenthG",
+      "section": "§ 90",
+      "characters": 3266,
+      "e5_tokens_with_prefix": 742,
+      "bge_m3_tokens": 740
+    },
+    {
+      "id": "aufenthg_2004__90a",
+      "law": "AufenthG",
+      "section": "§ 90a",
+      "characters": 990,
+      "e5_tokens_with_prefix": 239,
+      "bge_m3_tokens": 237
+    },
+    {
+      "id": "aufenthg_2004__90b",
+      "law": "AufenthG",
+      "section": "§ 90b",
+      "characters": 774,
+      "e5_tokens_with_prefix": 173,
+      "bge_m3_tokens": 171
+    },
+    {
+      "id": "aufenthg_2004__90c",
+      "law": "AufenthG",
+      "section": "§ 90c",
+      "characters": 932,
+      "e5_tokens_with_prefix": 197,
+      "bge_m3_tokens": 195
+    },
+    {
+      "id": "aufenthg_2004__91",
+      "law": "AufenthG",
+      "section": "§ 91",
+      "characters": 570,
+      "e5_tokens_with_prefix": 120,
+      "bge_m3_tokens": 118
+    },
+    {
+      "id": "aufenthg_2004__91a",
+      "law": "AufenthG",
+      "section": "§ 91a",
+      "characters": 1237,
+      "e5_tokens_with_prefix": 271,
+      "bge_m3_tokens": 269
+    },
+    {
+      "id": "aufenthg_2004__91b",
+      "law": "AufenthG",
+      "section": "§ 91b",
+      "characters": 662,
+      "e5_tokens_with_prefix": 136,
+      "bge_m3_tokens": 134
+    },
+    {
+      "id": "aufenthg_2004__91c",
+      "law": "AufenthG",
+      "section": "§ 91c",
+      "characters": 6831,
+      "e5_tokens_with_prefix": 1394,
+      "bge_m3_tokens": 1392
+    },
+    {
+      "id": "aufenthg_2004__91d",
+      "law": "AufenthG",
+      "section": "§ 91d",
+      "characters": 4659,
+      "e5_tokens_with_prefix": 1010,
+      "bge_m3_tokens": 1008
+    },
+    {
+      "id": "aufenthg_2004__91e",
+      "law": "AufenthG",
+      "section": "§ 91e",
+      "characters": 338,
+      "e5_tokens_with_prefix": 90,
+      "bge_m3_tokens": 88
+    },
+    {
+      "id": "aufenthg_2004__91f",
+      "law": "AufenthG",
+      "section": "§ 91f",
+      "characters": 11234,
+      "e5_tokens_with_prefix": 2396,
+      "bge_m3_tokens": 2394
+    },
+    {
+      "id": "aufenthg_2004__91g",
+      "law": "AufenthG",
+      "section": "§ 91g",
+      "characters": 4554,
+      "e5_tokens_with_prefix": 1000,
+      "bge_m3_tokens": 998
+    },
+    {
+      "id": "aufenthg_2004__91h",
+      "law": "AufenthG",
+      "section": "§ 91h",
+      "characters": 2840,
+      "e5_tokens_with_prefix": 703,
+      "bge_m3_tokens": 701
+    },
+    {
+      "id": "aufenthg_2004__91j",
+      "law": "AufenthG",
+      "section": "§ 91j",
+      "characters": 1771,
+      "e5_tokens_with_prefix": 434,
+      "bge_m3_tokens": 432
+    },
+    {
+      "id": "aufenthg_2004__91k",
+      "law": "AufenthG",
+      "section": "§ 91k",
+      "characters": 525,
+      "e5_tokens_with_prefix": 127,
+      "bge_m3_tokens": 125
+    },
+    {
+      "id": "aufenthg_2004__92",
+      "law": "AufenthG",
+      "section": "§ 92",
+      "characters": 1065,
+      "e5_tokens_with_prefix": 225,
+      "bge_m3_tokens": 223
+    },
+    {
+      "id": "aufenthg_2004__93",
+      "law": "AufenthG",
+      "section": "§ 93",
+      "characters": 1775,
+      "e5_tokens_with_prefix": 358,
+      "bge_m3_tokens": 356
+    },
+    {
+      "id": "aufenthg_2004__94",
+      "law": "AufenthG",
+      "section": "§ 94",
+      "characters": 1259,
+      "e5_tokens_with_prefix": 256,
+      "bge_m3_tokens": 254
+    },
+    {
+      "id": "aufenthg_2004__95",
+      "law": "AufenthG",
+      "section": "§ 95",
+      "characters": 3531,
+      "e5_tokens_with_prefix": 886,
+      "bge_m3_tokens": 884
+    },
+    {
+      "id": "aufenthg_2004__95a",
+      "law": "AufenthG",
+      "section": "§ 95a",
+      "characters": 452,
+      "e5_tokens_with_prefix": 107,
+      "bge_m3_tokens": 105
+    },
+    {
+      "id": "aufenthg_2004__96",
+      "law": "AufenthG",
+      "section": "§ 96",
+      "characters": 3219,
+      "e5_tokens_with_prefix": 779,
+      "bge_m3_tokens": 777
+    },
+    {
+      "id": "aufenthg_2004__97",
+      "law": "AufenthG",
+      "section": "§ 97",
+      "characters": 830,
+      "e5_tokens_with_prefix": 206,
+      "bge_m3_tokens": 204
+    },
+    {
+      "id": "aufenthg_2004__97a",
+      "law": "AufenthG",
+      "section": "§ 97a",
+      "characters": 322,
+      "e5_tokens_with_prefix": 68,
+      "bge_m3_tokens": 66
+    },
+    {
+      "id": "aufenthg_2004__98",
+      "law": "AufenthG",
+      "section": "§ 98",
+      "characters": 4894,
+      "e5_tokens_with_prefix": 1266,
+      "bge_m3_tokens": 1264
+    },
+    {
+      "id": "aufenthg_2004__98a",
+      "law": "AufenthG",
+      "section": "§ 98a",
+      "characters": 2383,
+      "e5_tokens_with_prefix": 510,
+      "bge_m3_tokens": 508
+    },
+    {
+      "id": "aufenthg_2004__98b",
+      "law": "AufenthG",
+      "section": "§ 98b",
+      "characters": 1196,
+      "e5_tokens_with_prefix": 291,
+      "bge_m3_tokens": 289
+    },
+    {
+      "id": "aufenthg_2004__98c",
+      "law": "AufenthG",
+      "section": "§ 98c",
+      "characters": 1245,
+      "e5_tokens_with_prefix": 293,
+      "bge_m3_tokens": 291
+    },
+    {
+      "id": "aufenthg_2004__99",
+      "law": "AufenthG",
+      "section": "§ 99",
+      "characters": 14149,
+      "e5_tokens_with_prefix": 3159,
+      "bge_m3_tokens": 3157
+    },
+    {
+      "id": "aufenthg_2004__100",
+      "law": "AufenthG",
+      "section": "§ 100",
+      "characters": 576,
+      "e5_tokens_with_prefix": 127,
+      "bge_m3_tokens": 125
+    },
+    {
+      "id": "aufenthg_2004__101",
+      "law": "AufenthG",
+      "section": "§ 101",
+      "characters": 1197,
+      "e5_tokens_with_prefix": 284,
+      "bge_m3_tokens": 282
+    },
+    {
+      "id": "aufenthg_2004__102",
+      "law": "AufenthG",
+      "section": "§ 102",
+      "characters": 1057,
+      "e5_tokens_with_prefix": 231,
+      "bge_m3_tokens": 229
+    },
+    {
+      "id": "aufenthg_2004__103",
+      "law": "AufenthG",
+      "section": "§ 103",
+      "characters": 548,
+      "e5_tokens_with_prefix": 125,
+      "bge_m3_tokens": 123
+    },
+    {
+      "id": "aufenthg_2004__104",
+      "law": "AufenthG",
+      "section": "§ 104",
+      "characters": 7404,
+      "e5_tokens_with_prefix": 1716,
+      "bge_m3_tokens": 1714
+    },
+    {
+      "id": "aufenthg_2004__104a",
+      "law": "AufenthG",
+      "section": "§ 104a",
+      "characters": 6215,
+      "e5_tokens_with_prefix": 1337,
+      "bge_m3_tokens": 1335
+    },
+    {
+      "id": "aufenthg_2004__104b",
+      "law": "AufenthG",
+      "section": "§ 104b",
+      "characters": 863,
+      "e5_tokens_with_prefix": 194,
+      "bge_m3_tokens": 192
+    },
+    {
+      "id": "aufenthg_2004__104c",
+      "law": "AufenthG",
+      "section": "§ 104c",
+      "characters": 539,
+      "e5_tokens_with_prefix": 126,
+      "bge_m3_tokens": 124
+    },
+    {
+      "id": "aufenthg_2004__105",
+      "law": "AufenthG",
+      "section": "§ 105",
+      "characters": 673,
+      "e5_tokens_with_prefix": 148,
+      "bge_m3_tokens": 146
+    },
+    {
+      "id": "aufenthg_2004__105a",
+      "law": "AufenthG",
+      "section": "§ 105a",
+      "characters": 864,
+      "e5_tokens_with_prefix": 299,
+      "bge_m3_tokens": 297
+    },
+    {
+      "id": "aufenthg_2004__105b",
+      "law": "AufenthG",
+      "section": "§ 105b",
+      "characters": 519,
+      "e5_tokens_with_prefix": 119,
+      "bge_m3_tokens": 117
+    },
+    {
+      "id": "aufenthg_2004__105c",
+      "law": "AufenthG",
+      "section": "§ 105c",
+      "characters": 276,
+      "e5_tokens_with_prefix": 63,
+      "bge_m3_tokens": 61
+    },
+    {
+      "id": "aufenthg_2004__105d",
+      "law": "AufenthG",
+      "section": "§ 105d",
+      "characters": 740,
+      "e5_tokens_with_prefix": 174,
+      "bge_m3_tokens": 172
+    },
+    {
+      "id": "aufenthg_2004__106",
+      "law": "AufenthG",
+      "section": "§ 106",
+      "characters": 1152,
+      "e5_tokens_with_prefix": 284,
+      "bge_m3_tokens": 282
+    },
+    {
+      "id": "aufenthg_2004__107",
+      "law": "AufenthG",
+      "section": "§ 107",
+      "characters": 194,
+      "e5_tokens_with_prefix": 44,
+      "bge_m3_tokens": 42
+    },
+    {
+      "id": "beschv_2013__1",
+      "law": "BeschV",
+      "section": "§ 1",
+      "characters": 2449,
+      "e5_tokens_with_prefix": 515,
+      "bge_m3_tokens": 513
+    },
+    {
+      "id": "beschv_2013__2",
+      "law": "BeschV",
+      "section": "§ 2",
+      "characters": 2084,
+      "e5_tokens_with_prefix": 427,
+      "bge_m3_tokens": 425
+    },
+    {
+      "id": "beschv_2013__2a",
+      "law": "BeschV",
+      "section": "§ 2a",
+      "characters": 1107,
+      "e5_tokens_with_prefix": 232,
+      "bge_m3_tokens": 230
+    },
+    {
+      "id": "beschv_2013__3",
+      "law": "BeschV",
+      "section": "§ 3",
+      "characters": 329,
+      "e5_tokens_with_prefix": 66,
+      "bge_m3_tokens": 64
+    },
+    {
+      "id": "beschv_2013__5",
+      "law": "BeschV",
+      "section": "§ 5",
+      "characters": 985,
+      "e5_tokens_with_prefix": 201,
+      "bge_m3_tokens": 199
+    },
+    {
+      "id": "beschv_2013__6",
+      "law": "BeschV",
+      "section": "§ 6",
+      "characters": 2295,
+      "e5_tokens_with_prefix": 467,
+      "bge_m3_tokens": 465
+    },
+    {
+      "id": "beschv_2013__8",
+      "law": "BeschV",
+      "section": "§ 8",
+      "characters": 746,
+      "e5_tokens_with_prefix": 160,
+      "bge_m3_tokens": 158
+    },
+    {
+      "id": "beschv_2013__9",
+      "law": "BeschV",
+      "section": "§ 9",
+      "characters": 1449,
+      "e5_tokens_with_prefix": 288,
+      "bge_m3_tokens": 286
+    },
+    {
+      "id": "beschv_2013__10",
+      "law": "BeschV",
+      "section": "§ 10",
+      "characters": 1394,
+      "e5_tokens_with_prefix": 252,
+      "bge_m3_tokens": 250
+    },
+    {
+      "id": "beschv_2013__10a",
+      "law": "BeschV",
+      "section": "§ 10a",
+      "characters": 571,
+      "e5_tokens_with_prefix": 121,
+      "bge_m3_tokens": 119
+    },
+    {
+      "id": "beschv_2013__11",
+      "law": "BeschV",
+      "section": "§ 11",
+      "characters": 693,
+      "e5_tokens_with_prefix": 155,
+      "bge_m3_tokens": 153
+    },
+    {
+      "id": "beschv_2013__12",
+      "law": "BeschV",
+      "section": "§ 12",
+      "characters": 418,
+      "e5_tokens_with_prefix": 85,
+      "bge_m3_tokens": 83
+    },
+    {
+      "id": "beschv_2013__13",
+      "law": "BeschV",
+      "section": "§ 13",
+      "characters": 813,
+      "e5_tokens_with_prefix": 163,
+      "bge_m3_tokens": 161
+    },
+    {
+      "id": "beschv_2013__14",
+      "law": "BeschV",
+      "section": "§ 14",
+      "characters": 1663,
+      "e5_tokens_with_prefix": 354,
+      "bge_m3_tokens": 352
+    },
+    {
+      "id": "beschv_2013__15",
+      "law": "BeschV",
+      "section": "§ 15",
+      "characters": 1532,
+      "e5_tokens_with_prefix": 312,
+      "bge_m3_tokens": 310
+    },
+    {
+      "id": "beschv_2013__15a",
+      "law": "BeschV",
+      "section": "§ 15a",
+      "characters": 6438,
+      "e5_tokens_with_prefix": 1421,
+      "bge_m3_tokens": 1419
+    },
+    {
+      "id": "beschv_2013__15b",
+      "law": "BeschV",
+      "section": "§ 15b",
+      "characters": 373,
+      "e5_tokens_with_prefix": 72,
+      "bge_m3_tokens": 70
+    },
+    {
+      "id": "beschv_2013__15c",
+      "law": "BeschV",
+      "section": "§ 15c",
+      "characters": 867,
+      "e5_tokens_with_prefix": 174,
+      "bge_m3_tokens": 172
+    },
+    {
+      "id": "beschv_2013__15d",
+      "law": "BeschV",
+      "section": "§ 15d",
+      "characters": 2741,
+      "e5_tokens_with_prefix": 570,
+      "bge_m3_tokens": 568
+    },
+    {
+      "id": "beschv_2013__16",
+      "law": "BeschV",
+      "section": "§ 16",
+      "characters": 693,
+      "e5_tokens_with_prefix": 142,
+      "bge_m3_tokens": 140
+    },
+    {
+      "id": "beschv_2013__17",
+      "law": "BeschV",
+      "section": "§ 17",
+      "characters": 310,
+      "e5_tokens_with_prefix": 61,
+      "bge_m3_tokens": 59
+    },
+    {
+      "id": "beschv_2013__18",
+      "law": "BeschV",
+      "section": "§ 18",
+      "characters": 415,
+      "e5_tokens_with_prefix": 83,
+      "bge_m3_tokens": 81
+    },
+    {
+      "id": "beschv_2013__19",
+      "law": "BeschV",
+      "section": "§ 19",
+      "characters": 1887,
+      "e5_tokens_with_prefix": 407,
+      "bge_m3_tokens": 405
+    },
+    {
+      "id": "beschv_2013__20",
+      "law": "BeschV",
+      "section": "§ 20",
+      "characters": 1727,
+      "e5_tokens_with_prefix": 377,
+      "bge_m3_tokens": 375
+    },
+    {
+      "id": "beschv_2013__21",
+      "law": "BeschV",
+      "section": "§ 21",
+      "characters": 389,
+      "e5_tokens_with_prefix": 80,
+      "bge_m3_tokens": 78
+    },
+    {
+      "id": "beschv_2013__22",
+      "law": "BeschV",
+      "section": "§ 22",
+      "characters": 2987,
+      "e5_tokens_with_prefix": 644,
+      "bge_m3_tokens": 642
+    },
+    {
+      "id": "beschv_2013__22a",
+      "law": "BeschV",
+      "section": "§ 22a",
+      "characters": 604,
+      "e5_tokens_with_prefix": 116,
+      "bge_m3_tokens": 114
+    },
+    {
+      "id": "beschv_2013__23",
+      "law": "BeschV",
+      "section": "§ 23",
+      "characters": 939,
+      "e5_tokens_with_prefix": 180,
+      "bge_m3_tokens": 178
+    },
+    {
+      "id": "beschv_2013__24",
+      "law": "BeschV",
+      "section": "§ 24",
+      "characters": 632,
+      "e5_tokens_with_prefix": 138,
+      "bge_m3_tokens": 136
+    },
+    {
+      "id": "beschv_2013__24a",
+      "law": "BeschV",
+      "section": "§ 24a",
+      "characters": 1641,
+      "e5_tokens_with_prefix": 337,
+      "bge_m3_tokens": 335
+    },
+    {
+      "id": "beschv_2013__24b",
+      "law": "BeschV",
+      "section": "§ 24b",
+      "characters": 529,
+      "e5_tokens_with_prefix": 117,
+      "bge_m3_tokens": 115
+    },
+    {
+      "id": "beschv_2013__25",
+      "law": "BeschV",
+      "section": "§ 25",
+      "characters": 369,
+      "e5_tokens_with_prefix": 79,
+      "bge_m3_tokens": 77
+    },
+    {
+      "id": "beschv_2013__26",
+      "law": "BeschV",
+      "section": "§ 26",
+      "characters": 1265,
+      "e5_tokens_with_prefix": 274,
+      "bge_m3_tokens": 272
+    },
+    {
+      "id": "beschv_2013__27",
+      "law": "BeschV",
+      "section": "§ 27",
+      "characters": 136,
+      "e5_tokens_with_prefix": 33,
+      "bge_m3_tokens": 31
+    },
+    {
+      "id": "beschv_2013__28",
+      "law": "BeschV",
+      "section": "§ 28",
+      "characters": 228,
+      "e5_tokens_with_prefix": 50,
+      "bge_m3_tokens": 48
+    },
+    {
+      "id": "beschv_2013__29",
+      "law": "BeschV",
+      "section": "§ 29",
+      "characters": 2694,
+      "e5_tokens_with_prefix": 548,
+      "bge_m3_tokens": 546
+    },
+    {
+      "id": "beschv_2013__30",
+      "law": "BeschV",
+      "section": "§ 30",
+      "characters": 820,
+      "e5_tokens_with_prefix": 195,
+      "bge_m3_tokens": 193
+    },
+    {
+      "id": "beschv_2013__31",
+      "law": "BeschV",
+      "section": "§ 31",
+      "characters": 229,
+      "e5_tokens_with_prefix": 53,
+      "bge_m3_tokens": 51
+    },
+    {
+      "id": "beschv_2013__32",
+      "law": "BeschV",
+      "section": "§ 32",
+      "characters": 1213,
+      "e5_tokens_with_prefix": 272,
+      "bge_m3_tokens": 270
+    },
+    {
+      "id": "beschv_2013__34",
+      "law": "BeschV",
+      "section": "§ 34",
+      "characters": 827,
+      "e5_tokens_with_prefix": 174,
+      "bge_m3_tokens": 172
+    },
+    {
+      "id": "beschv_2013__35",
+      "law": "BeschV",
+      "section": "§ 35",
+      "characters": 1163,
+      "e5_tokens_with_prefix": 222,
+      "bge_m3_tokens": 220
+    },
+    {
+      "id": "beschv_2013__36",
+      "law": "BeschV",
+      "section": "§ 36",
+      "characters": 3364,
+      "e5_tokens_with_prefix": 702,
+      "bge_m3_tokens": 700
+    },
+    {
+      "id": "beschv_2013__37",
+      "law": "BeschV",
+      "section": "§ 37",
+      "characters": 176,
+      "e5_tokens_with_prefix": 37,
+      "bge_m3_tokens": 35
+    },
+    {
+      "id": "beschv_2013__38",
+      "law": "BeschV",
+      "section": "§ 38",
+      "characters": 240,
+      "e5_tokens_with_prefix": 50,
+      "bge_m3_tokens": 48
+    },
+    {
+      "id": "beschv_2013__39",
+      "law": "BeschV",
+      "section": "§ 39",
+      "characters": 193,
+      "e5_tokens_with_prefix": 51,
+      "bge_m3_tokens": 49
+    },
+    {
+      "id": "bgb__535",
+      "law": "BGB",
+      "section": "§ 535",
+      "characters": 444,
+      "e5_tokens_with_prefix": 102,
+      "bge_m3_tokens": 100
+    },
+    {
+      "id": "bgb__536",
+      "law": "BGB",
+      "section": "§ 536",
+      "characters": 1072,
+      "e5_tokens_with_prefix": 264,
+      "bge_m3_tokens": 262
+    },
+    {
+      "id": "bgb__536a",
+      "law": "BGB",
+      "section": "§ 536a",
+      "characters": 609,
+      "e5_tokens_with_prefix": 144,
+      "bge_m3_tokens": 142
+    },
+    {
+      "id": "bgb__536b",
+      "law": "BGB",
+      "section": "§ 536b",
+      "characters": 475,
+      "e5_tokens_with_prefix": 127,
+      "bge_m3_tokens": 125
+    },
+    {
+      "id": "bgb__536c",
+      "law": "BGB",
+      "section": "§ 536c",
+      "characters": 741,
+      "e5_tokens_with_prefix": 176,
+      "bge_m3_tokens": 174
+    },
+    {
+      "id": "bgb__536d",
+      "law": "BGB",
+      "section": "§ 536d",
+      "characters": 214,
+      "e5_tokens_with_prefix": 49,
+      "bge_m3_tokens": 47
+    },
+    {
+      "id": "bgb__537",
+      "law": "BGB",
+      "section": "§ 537",
+      "characters": 552,
+      "e5_tokens_with_prefix": 130,
+      "bge_m3_tokens": 128
+    },
+    {
+      "id": "bgb__538",
+      "law": "BGB",
+      "section": "§ 538",
+      "characters": 148,
+      "e5_tokens_with_prefix": 38,
+      "bge_m3_tokens": 36
+    },
+    {
+      "id": "bgb__539",
+      "law": "BGB",
+      "section": "§ 539",
+      "characters": 309,
+      "e5_tokens_with_prefix": 75,
+      "bge_m3_tokens": 73
+    },
+    {
+      "id": "bgb__540",
+      "law": "BGB",
+      "section": "§ 540",
+      "characters": 572,
+      "e5_tokens_with_prefix": 135,
+      "bge_m3_tokens": 133
+    },
+    {
+      "id": "bgb__541",
+      "law": "BGB",
+      "section": "§ 541",
+      "characters": 145,
+      "e5_tokens_with_prefix": 40,
+      "bge_m3_tokens": 38
+    },
+    {
+      "id": "bgb__542",
+      "law": "BGB",
+      "section": "§ 542",
+      "characters": 334,
+      "e5_tokens_with_prefix": 72,
+      "bge_m3_tokens": 70
+    },
+    {
+      "id": "bgb__543",
+      "law": "BGB",
+      "section": "§ 543",
+      "characters": 2279,
+      "e5_tokens_with_prefix": 523,
+      "bge_m3_tokens": 521
+    },
+    {
+      "id": "bgb__544",
+      "law": "BGB",
+      "section": "§ 544",
+      "characters": 347,
+      "e5_tokens_with_prefix": 76,
+      "bge_m3_tokens": 74
+    },
+    {
+      "id": "bgb__545",
+      "law": "BGB",
+      "section": "§ 545",
+      "characters": 408,
+      "e5_tokens_with_prefix": 90,
+      "bge_m3_tokens": 88
+    },
+    {
+      "id": "bgb__546",
+      "law": "BGB",
+      "section": "§ 546",
+      "characters": 277,
+      "e5_tokens_with_prefix": 65,
+      "bge_m3_tokens": 63
+    },
+    {
+      "id": "bgb__546a",
+      "law": "BGB",
+      "section": "§ 546a",
+      "characters": 323,
+      "e5_tokens_with_prefix": 74,
+      "bge_m3_tokens": 72
+    },
+    {
+      "id": "bgb__547",
+      "law": "BGB",
+      "section": "§ 547",
+      "characters": 479,
+      "e5_tokens_with_prefix": 114,
+      "bge_m3_tokens": 112
+    },
+    {
+      "id": "bgb__548",
+      "law": "BGB",
+      "section": "§ 548",
+      "characters": 509,
+      "e5_tokens_with_prefix": 128,
+      "bge_m3_tokens": 126
+    },
+    {
+      "id": "bgb__548a",
+      "law": "BGB",
+      "section": "§ 548a",
+      "characters": 105,
+      "e5_tokens_with_prefix": 25,
+      "bge_m3_tokens": 23
+    },
+    {
+      "id": "bgb__549",
+      "law": "BGB",
+      "section": "§ 549",
+      "characters": 1427,
+      "e5_tokens_with_prefix": 384,
+      "bge_m3_tokens": 382
+    },
+    {
+      "id": "bgb__550",
+      "law": "BGB",
+      "section": "§ 550",
+      "characters": 225,
+      "e5_tokens_with_prefix": 54,
+      "bge_m3_tokens": 52
+    },
+    {
+      "id": "bgb__551",
+      "law": "BGB",
+      "section": "§ 551",
+      "characters": 1172,
+      "e5_tokens_with_prefix": 248,
+      "bge_m3_tokens": 246
+    },
+    {
+      "id": "bgb__552",
+      "law": "BGB",
+      "section": "§ 552",
+      "characters": 333,
+      "e5_tokens_with_prefix": 77,
+      "bge_m3_tokens": 75
+    },
+    {
+      "id": "bgb__553",
+      "law": "BGB",
+      "section": "§ 553",
+      "characters": 703,
+      "e5_tokens_with_prefix": 164,
+      "bge_m3_tokens": 162
+    },
+    {
+      "id": "bgb__554",
+      "law": "BGB",
+      "section": "§ 554",
+      "characters": 650,
+      "e5_tokens_with_prefix": 141,
+      "bge_m3_tokens": 139
+    },
+    {
+      "id": "bgb__555",
+      "law": "BGB",
+      "section": "§ 555",
+      "characters": 112,
+      "e5_tokens_with_prefix": 29,
+      "bge_m3_tokens": 27
+    },
+    {
+      "id": "bgb__555a",
+      "law": "BGB",
+      "section": "§ 555a",
+      "characters": 622,
+      "e5_tokens_with_prefix": 145,
+      "bge_m3_tokens": 143
+    },
+    {
+      "id": "bgb__555b",
+      "law": "BGB",
+      "section": "§ 555b",
+      "characters": 1228,
+      "e5_tokens_with_prefix": 279,
+      "bge_m3_tokens": 277
+    },
+    {
+      "id": "bgb__555c",
+      "law": "BGB",
+      "section": "§ 555c",
+      "characters": 1228,
+      "e5_tokens_with_prefix": 281,
+      "bge_m3_tokens": 279
+    },
+    {
+      "id": "bgb__555d",
+      "law": "BGB",
+      "section": "§ 555d",
+      "characters": 1905,
+      "e5_tokens_with_prefix": 442,
+      "bge_m3_tokens": 440
+    },
+    {
+      "id": "bgb__555e",
+      "law": "BGB",
+      "section": "§ 555e",
+      "characters": 367,
+      "e5_tokens_with_prefix": 88,
+      "bge_m3_tokens": 86
+    },
+    {
+      "id": "bgb__555f",
+      "law": "BGB",
+      "section": "§ 555f",
+      "characters": 315,
+      "e5_tokens_with_prefix": 69,
+      "bge_m3_tokens": 67
+    },
+    {
+      "id": "bgb__556",
+      "law": "BGB",
+      "section": "§ 556",
+      "characters": 2471,
+      "e5_tokens_with_prefix": 532,
+      "bge_m3_tokens": 530
+    },
+    {
+      "id": "bgb__556a",
+      "law": "BGB",
+      "section": "§ 556a",
+      "characters": 1328,
+      "e5_tokens_with_prefix": 279,
+      "bge_m3_tokens": 277
+    },
+    {
+      "id": "bgb__556b",
+      "law": "BGB",
+      "section": "§ 556b",
+      "characters": 605,
+      "e5_tokens_with_prefix": 142,
+      "bge_m3_tokens": 140
+    },
+    {
+      "id": "bgb__556c",
+      "law": "BGB",
+      "section": "§ 556c",
+      "characters": 1372,
+      "e5_tokens_with_prefix": 289,
+      "bge_m3_tokens": 287
+    },
+    {
+      "id": "bgb__556d",
+      "law": "BGB",
+      "section": "§ 556d",
+      "characters": 1514,
+      "e5_tokens_with_prefix": 325,
+      "bge_m3_tokens": 323
+    },
+    {
+      "id": "bgb__556e",
+      "law": "BGB",
+      "section": "§ 556e",
+      "characters": 926,
+      "e5_tokens_with_prefix": 229,
+      "bge_m3_tokens": 227
+    },
+    {
+      "id": "bgb__556f",
+      "law": "BGB",
+      "section": "§ 556f",
+      "characters": 212,
+      "e5_tokens_with_prefix": 58,
+      "bge_m3_tokens": 56
+    },
+    {
+      "id": "bgb__556g",
+      "law": "BGB",
+      "section": "§ 556g",
+      "characters": 2704,
+      "e5_tokens_with_prefix": 650,
+      "bge_m3_tokens": 648
+    },
+    {
+      "id": "bgb__557",
+      "law": "BGB",
+      "section": "§ 557",
+      "characters": 515,
+      "e5_tokens_with_prefix": 122,
+      "bge_m3_tokens": 120
+    },
+    {
+      "id": "bgb__557a",
+      "law": "BGB",
+      "section": "§ 557a",
+      "characters": 1045,
+      "e5_tokens_with_prefix": 242,
+      "bge_m3_tokens": 240
+    },
+    {
+      "id": "bgb__557b",
+      "law": "BGB",
+      "section": "§ 557b",
+      "characters": 1188,
+      "e5_tokens_with_prefix": 282,
+      "bge_m3_tokens": 280
+    },
+    {
+      "id": "bgb__558",
+      "law": "BGB",
+      "section": "§ 558",
+      "characters": 2573,
+      "e5_tokens_with_prefix": 584,
+      "bge_m3_tokens": 582
+    },
+    {
+      "id": "bgb__558a",
+      "law": "BGB",
+      "section": "§ 558a",
+      "characters": 1277,
+      "e5_tokens_with_prefix": 314,
+      "bge_m3_tokens": 312
+    },
+    {
+      "id": "bgb__558b",
+      "law": "BGB",
+      "section": "§ 558b",
+      "characters": 773,
+      "e5_tokens_with_prefix": 184,
+      "bge_m3_tokens": 182
+    },
+    {
+      "id": "bgb__558c",
+      "law": "BGB",
+      "section": "§ 558c",
+      "characters": 1024,
+      "e5_tokens_with_prefix": 203,
+      "bge_m3_tokens": 201
+    },
+    {
+      "id": "bgb__558d",
+      "law": "BGB",
+      "section": "§ 558d",
+      "characters": 1488,
+      "e5_tokens_with_prefix": 316,
+      "bge_m3_tokens": 314
+    },
+    {
+      "id": "bgb__558e",
+      "law": "BGB",
+      "section": "§ 558e",
+      "characters": 360,
+      "e5_tokens_with_prefix": 84,
+      "bge_m3_tokens": 82
+    },
+    {
+      "id": "bgb__559",
+      "law": "BGB",
+      "section": "§ 559",
+      "characters": 3067,
+      "e5_tokens_with_prefix": 691,
+      "bge_m3_tokens": 689
+    },
+    {
+      "id": "bgb__559a",
+      "law": "BGB",
+      "section": "§ 559a",
+      "characters": 1495,
+      "e5_tokens_with_prefix": 342,
+      "bge_m3_tokens": 340
+    },
+    {
+      "id": "bgb__559b",
+      "law": "BGB",
+      "section": "§ 559b",
+      "characters": 726,
+      "e5_tokens_with_prefix": 169,
+      "bge_m3_tokens": 167
+    },
+    {
+      "id": "bgb__559c",
+      "law": "BGB",
+      "section": "§ 559c",
+      "characters": 2362,
+      "e5_tokens_with_prefix": 542,
+      "bge_m3_tokens": 540
+    },
+    {
+      "id": "bgb__559d",
+      "law": "BGB",
+      "section": "§ 559d",
+      "characters": 863,
+      "e5_tokens_with_prefix": 186,
+      "bge_m3_tokens": 184
+    },
+    {
+      "id": "bgb__559e",
+      "law": "BGB",
+      "section": "§ 559e",
+      "characters": 1469,
+      "e5_tokens_with_prefix": 345,
+      "bge_m3_tokens": 343
+    },
+    {
+      "id": "bgb__559f",
+      "law": "BGB",
+      "section": "§ 559f",
+      "characters": 1590,
+      "e5_tokens_with_prefix": 364,
+      "bge_m3_tokens": 362
+    },
+    {
+      "id": "bgb__560",
+      "law": "BGB",
+      "section": "§ 560",
+      "characters": 1320,
+      "e5_tokens_with_prefix": 284,
+      "bge_m3_tokens": 282
+    },
+    {
+      "id": "bgb__561",
+      "law": "BGB",
+      "section": "§ 561",
+      "characters": 381,
+      "e5_tokens_with_prefix": 99,
+      "bge_m3_tokens": 97
+    },
+    {
+      "id": "bgb__562",
+      "law": "BGB",
+      "section": "§ 562",
+      "characters": 374,
+      "e5_tokens_with_prefix": 89,
+      "bge_m3_tokens": 87
+    },
+    {
+      "id": "bgb__562a",
+      "law": "BGB",
+      "section": "§ 562a",
+      "characters": 349,
+      "e5_tokens_with_prefix": 70,
+      "bge_m3_tokens": 68
+    },
+    {
+      "id": "bgb__562b",
+      "law": "BGB",
+      "section": "§ 562b",
+      "characters": 706,
+      "e5_tokens_with_prefix": 155,
+      "bge_m3_tokens": 153
+    },
+    {
+      "id": "bgb__562c",
+      "law": "BGB",
+      "section": "§ 562c",
+      "characters": 215,
+      "e5_tokens_with_prefix": 56,
+      "bge_m3_tokens": 54
+    },
+    {
+      "id": "bgb__562d",
+      "law": "BGB",
+      "section": "§ 562d",
+      "characters": 246,
+      "e5_tokens_with_prefix": 64,
+      "bge_m3_tokens": 62
+    },
+    {
+      "id": "bgb__563",
+      "law": "BGB",
+      "section": "§ 563",
+      "characters": 1491,
+      "e5_tokens_with_prefix": 322,
+      "bge_m3_tokens": 320
+    },
+    {
+      "id": "bgb__563a",
+      "law": "BGB",
+      "section": "§ 563a",
+      "characters": 414,
+      "e5_tokens_with_prefix": 96,
+      "bge_m3_tokens": 94
+    },
+    {
+      "id": "bgb__563b",
+      "law": "BGB",
+      "section": "§ 563b",
+      "characters": 921,
+      "e5_tokens_with_prefix": 216,
+      "bge_m3_tokens": 214
+    },
+    {
+      "id": "bgb__564",
+      "law": "BGB",
+      "section": "§ 564",
+      "characters": 497,
+      "e5_tokens_with_prefix": 112,
+      "bge_m3_tokens": 110
+    },
+    {
+      "id": "bgb__565",
+      "law": "BGB",
+      "section": "§ 565",
+      "characters": 614,
+      "e5_tokens_with_prefix": 151,
+      "bge_m3_tokens": 149
+    },
+    {
+      "id": "bgb__566",
+      "law": "BGB",
+      "section": "§ 566",
+      "characters": 693,
+      "e5_tokens_with_prefix": 168,
+      "bge_m3_tokens": 166
+    },
+    {
+      "id": "bgb__566a",
+      "law": "BGB",
+      "section": "§ 566a",
+      "characters": 347,
+      "e5_tokens_with_prefix": 83,
+      "bge_m3_tokens": 81
+    },
+    {
+      "id": "bgb__566b",
+      "law": "BGB",
+      "section": "§ 566b",
+      "characters": 581,
+      "e5_tokens_with_prefix": 141,
+      "bge_m3_tokens": 139
+    },
+    {
+      "id": "bgb__566c",
+      "law": "BGB",
+      "section": "§ 566c",
+      "characters": 702,
+      "e5_tokens_with_prefix": 164,
+      "bge_m3_tokens": 162
+    },
+    {
+      "id": "bgb__566d",
+      "law": "BGB",
+      "section": "§ 566d",
+      "characters": 474,
+      "e5_tokens_with_prefix": 106,
+      "bge_m3_tokens": 104
+    },
+    {
+      "id": "bgb__566e",
+      "law": "BGB",
+      "section": "§ 566e",
+      "characters": 418,
+      "e5_tokens_with_prefix": 94,
+      "bge_m3_tokens": 92
+    },
+    {
+      "id": "bgb__567",
+      "law": "BGB",
+      "section": "§ 567",
+      "characters": 496,
+      "e5_tokens_with_prefix": 121,
+      "bge_m3_tokens": 119
+    },
+    {
+      "id": "bgb__567a",
+      "law": "BGB",
+      "section": "§ 567a",
+      "characters": 435,
+      "e5_tokens_with_prefix": 103,
+      "bge_m3_tokens": 101
+    },
+    {
+      "id": "bgb__567b",
+      "law": "BGB",
+      "section": "§ 567b",
+      "characters": 287,
+      "e5_tokens_with_prefix": 82,
+      "bge_m3_tokens": 80
+    },
+    {
+      "id": "bgb__568",
+      "law": "BGB",
+      "section": "§ 568",
+      "characters": 213,
+      "e5_tokens_with_prefix": 52,
+      "bge_m3_tokens": 50
+    },
+    {
+      "id": "bgb__569",
+      "law": "BGB",
+      "section": "§ 569",
+      "characters": 2967,
+      "e5_tokens_with_prefix": 698,
+      "bge_m3_tokens": 696
+    },
+    {
+      "id": "bgb__570",
+      "law": "BGB",
+      "section": "§ 570",
+      "characters": 89,
+      "e5_tokens_with_prefix": 25,
+      "bge_m3_tokens": 23
+    },
+    {
+      "id": "bgb__571",
+      "law": "BGB",
+      "section": "§ 571",
+      "characters": 740,
+      "e5_tokens_with_prefix": 186,
+      "bge_m3_tokens": 184
+    },
+    {
+      "id": "bgb__572",
+      "law": "BGB",
+      "section": "§ 572",
+      "characters": 331,
+      "e5_tokens_with_prefix": 75,
+      "bge_m3_tokens": 73
+    },
+    {
+      "id": "bgb__573",
+      "law": "BGB",
+      "section": "§ 573",
+      "characters": 1275,
+      "e5_tokens_with_prefix": 272,
+      "bge_m3_tokens": 270
+    },
+    {
+      "id": "bgb__573a",
+      "law": "BGB",
+      "section": "§ 573a",
+      "characters": 675,
+      "e5_tokens_with_prefix": 150,
+      "bge_m3_tokens": 148
+    },
+    {
+      "id": "bgb__573b",
+      "law": "BGB",
+      "section": "§ 573b",
+      "characters": 821,
+      "e5_tokens_with_prefix": 180,
+      "bge_m3_tokens": 178
+    },
+    {
+      "id": "bgb__573c",
+      "law": "BGB",
+      "section": "§ 573c",
+      "characters": 605,
+      "e5_tokens_with_prefix": 137,
+      "bge_m3_tokens": 135
+    },
+    {
+      "id": "bgb__573d",
+      "law": "BGB",
+      "section": "§ 573d",
+      "characters": 549,
+      "e5_tokens_with_prefix": 133,
+      "bge_m3_tokens": 131
+    },
+    {
+      "id": "bgb__574",
+      "law": "BGB",
+      "section": "§ 574",
+      "characters": 886,
+      "e5_tokens_with_prefix": 198,
+      "bge_m3_tokens": 196
+    },
+    {
+      "id": "bgb__574a",
+      "law": "BGB",
+      "section": "§ 574a",
+      "characters": 846,
+      "e5_tokens_with_prefix": 189,
+      "bge_m3_tokens": 187
+    },
+    {
+      "id": "bgb__574b",
+      "law": "BGB",
+      "section": "§ 574b",
+      "characters": 698,
+      "e5_tokens_with_prefix": 142,
+      "bge_m3_tokens": 140
+    },
+    {
+      "id": "bgb__574c",
+      "law": "BGB",
+      "section": "§ 574c",
+      "characters": 950,
+      "e5_tokens_with_prefix": 204,
+      "bge_m3_tokens": 202
+    },
+    {
+      "id": "bgb__575",
+      "law": "BGB",
+      "section": "§ 575",
+      "characters": 1381,
+      "e5_tokens_with_prefix": 297,
+      "bge_m3_tokens": 295
+    },
+    {
+      "id": "bgb__575a",
+      "law": "BGB",
+      "section": "§ 575a",
+      "characters": 782,
+      "e5_tokens_with_prefix": 184,
+      "bge_m3_tokens": 182
+    },
+    {
+      "id": "bgb__576",
+      "law": "BGB",
+      "section": "§ 576",
+      "characters": 870,
+      "e5_tokens_with_prefix": 188,
+      "bge_m3_tokens": 186
+    },
+    {
+      "id": "bgb__576a",
+      "law": "BGB",
+      "section": "§ 576a",
+      "characters": 578,
+      "e5_tokens_with_prefix": 140,
+      "bge_m3_tokens": 138
+    },
+    {
+      "id": "bgb__576b",
+      "law": "BGB",
+      "section": "§ 576b",
+      "characters": 512,
+      "e5_tokens_with_prefix": 106,
+      "bge_m3_tokens": 104
+    },
+    {
+      "id": "bgb__577",
+      "law": "BGB",
+      "section": "§ 577",
+      "characters": 966,
+      "e5_tokens_with_prefix": 219,
+      "bge_m3_tokens": 217
+    },
+    {
+      "id": "bgb__577a",
+      "law": "BGB",
+      "section": "§ 577a",
+      "characters": 1681,
+      "e5_tokens_with_prefix": 382,
+      "bge_m3_tokens": 380
+    },
+    {
+      "id": "bgb__578",
+      "law": "BGB",
+      "section": "§ 578",
+      "characters": 1639,
+      "e5_tokens_with_prefix": 428,
+      "bge_m3_tokens": 426
+    },
+    {
+      "id": "bgb__578a",
+      "law": "BGB",
+      "section": "§ 578a",
+      "characters": 737,
+      "e5_tokens_with_prefix": 175,
+      "bge_m3_tokens": 173
+    },
+    {
+      "id": "bgb__578b",
+      "law": "BGB",
+      "section": "§ 578b",
+      "characters": 1849,
+      "e5_tokens_with_prefix": 413,
+      "bge_m3_tokens": 411
+    },
+    {
+      "id": "bgb__579",
+      "law": "BGB",
+      "section": "§ 579",
+      "characters": 475,
+      "e5_tokens_with_prefix": 118,
+      "bge_m3_tokens": 116
+    },
+    {
+      "id": "bgb__580",
+      "law": "BGB",
+      "section": "§ 580",
+      "characters": 231,
+      "e5_tokens_with_prefix": 57,
+      "bge_m3_tokens": 55
+    },
+    {
+      "id": "bgb__580a",
+      "law": "BGB",
+      "section": "§ 580a",
+      "characters": 1425,
+      "e5_tokens_with_prefix": 309,
+      "bge_m3_tokens": 307
+    },
+    {
+      "id": "milog__1",
+      "law": "MiLoG",
+      "section": "§ 1",
+      "characters": 730,
+      "e5_tokens_with_prefix": 157,
+      "bge_m3_tokens": 155
+    },
+    {
+      "id": "milog__2",
+      "law": "MiLoG",
+      "section": "§ 2",
+      "characters": 1588,
+      "e5_tokens_with_prefix": 325,
+      "bge_m3_tokens": 323
+    },
+    {
+      "id": "milog__3",
+      "law": "MiLoG",
+      "section": "§ 3",
+      "characters": 378,
+      "e5_tokens_with_prefix": 83,
+      "bge_m3_tokens": 81
+    },
+    {
+      "id": "milog__4",
+      "law": "MiLoG",
+      "section": "§ 4",
+      "characters": 385,
+      "e5_tokens_with_prefix": 84,
+      "bge_m3_tokens": 82
+    },
+    {
+      "id": "milog__5",
+      "law": "MiLoG",
+      "section": "§ 5",
+      "characters": 982,
+      "e5_tokens_with_prefix": 192,
+      "bge_m3_tokens": 190
+    },
+    {
+      "id": "milog__6",
+      "law": "MiLoG",
+      "section": "§ 6",
+      "characters": 724,
+      "e5_tokens_with_prefix": 153,
+      "bge_m3_tokens": 151
+    },
+    {
+      "id": "milog__7",
+      "law": "MiLoG",
+      "section": "§ 7",
+      "characters": 955,
+      "e5_tokens_with_prefix": 185,
+      "bge_m3_tokens": 183
+    },
+    {
+      "id": "milog__8",
+      "law": "MiLoG",
+      "section": "§ 8",
+      "characters": 631,
+      "e5_tokens_with_prefix": 128,
+      "bge_m3_tokens": 126
+    },
+    {
+      "id": "milog__9",
+      "law": "MiLoG",
+      "section": "§ 9",
+      "characters": 1137,
+      "e5_tokens_with_prefix": 238,
+      "bge_m3_tokens": 236
+    },
+    {
+      "id": "milog__10",
+      "law": "MiLoG",
+      "section": "§ 10",
+      "characters": 1593,
+      "e5_tokens_with_prefix": 344,
+      "bge_m3_tokens": 342
+    },
+    {
+      "id": "milog__11",
+      "law": "MiLoG",
+      "section": "§ 11",
+      "characters": 926,
+      "e5_tokens_with_prefix": 195,
+      "bge_m3_tokens": 193
+    },
+    {
+      "id": "milog__12",
+      "law": "MiLoG",
+      "section": "§ 12",
+      "characters": 627,
+      "e5_tokens_with_prefix": 121,
+      "bge_m3_tokens": 119
+    },
+    {
+      "id": "milog__13",
+      "law": "MiLoG",
+      "section": "§ 13",
+      "characters": 70,
+      "e5_tokens_with_prefix": 18,
+      "bge_m3_tokens": 16
+    },
+    {
+      "id": "milog__14",
+      "law": "MiLoG",
+      "section": "§ 14",
+      "characters": 121,
+      "e5_tokens_with_prefix": 30,
+      "bge_m3_tokens": 28
+    },
+    {
+      "id": "milog__15",
+      "law": "MiLoG",
+      "section": "§ 15",
+      "characters": 692,
+      "e5_tokens_with_prefix": 162,
+      "bge_m3_tokens": 160
+    },
+    {
+      "id": "milog__16",
+      "law": "MiLoG",
+      "section": "§ 16",
+      "characters": 5854,
+      "e5_tokens_with_prefix": 1218,
+      "bge_m3_tokens": 1216
+    },
+    {
+      "id": "milog__17",
+      "law": "MiLoG",
+      "section": "§ 17",
+      "characters": 6997,
+      "e5_tokens_with_prefix": 1495,
+      "bge_m3_tokens": 1493
+    },
+    {
+      "id": "milog__18",
+      "law": "MiLoG",
+      "section": "§ 18",
+      "characters": 1062,
+      "e5_tokens_with_prefix": 231,
+      "bge_m3_tokens": 229
+    },
+    {
+      "id": "milog__19",
+      "law": "MiLoG",
+      "section": "§ 19",
+      "characters": 1878,
+      "e5_tokens_with_prefix": 404,
+      "bge_m3_tokens": 402
+    },
+    {
+      "id": "milog__20",
+      "law": "MiLoG",
+      "section": "§ 20",
+      "characters": 279,
+      "e5_tokens_with_prefix": 60,
+      "bge_m3_tokens": 58
+    },
+    {
+      "id": "milog__21",
+      "law": "MiLoG",
+      "section": "§ 21",
+      "characters": 3923,
+      "e5_tokens_with_prefix": 863,
+      "bge_m3_tokens": 861
+    },
+    {
+      "id": "milog__22",
+      "law": "MiLoG",
+      "section": "§ 22",
+      "characters": 2368,
+      "e5_tokens_with_prefix": 471,
+      "bge_m3_tokens": 469
+    },
+    {
+      "id": "milog__23",
+      "law": "MiLoG",
+      "section": "§ 23",
+      "characters": 45,
+      "e5_tokens_with_prefix": 15,
+      "bge_m3_tokens": 13
+    }
+  ]
+}

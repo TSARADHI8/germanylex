@@ -1,0 +1,473 @@
+{
+  "meta": {
+    "script": "src/embedding_smoke_test.py",
+    "seed": 42,
+    "split_used": "dev only",
+    "n_questions": 10,
+    "pool_ids": [
+      "arbzg__2",
+      "arbzg__3",
+      "arbzg__4",
+      "arbzg__21",
+      "arbzg__23",
+      "arbzg__24",
+      "aufenthg_2004__4",
+      "aufenthg_2004__4a",
+      "aufenthg_2004__5",
+      "aufenthg_2004__14",
+      "aufenthg_2004__15a",
+      "aufenthg_2004__16a",
+      "aufenthg_2004__16b",
+      "aufenthg_2004__16c",
+      "aufenthg_2004__16f",
+      "aufenthg_2004__18b",
+      "aufenthg_2004__19f",
+      "aufenthg_2004__21",
+      "aufenthg_2004__47",
+      "aufenthg_2004__48",
+      "aufenthg_2004__52",
+      "aufenthg_2004__57",
+      "aufenthg_2004__63",
+      "beschv_2013__8",
+      "beschv_2013__10",
+      "bgb__535",
+      "bgb__536",
+      "bgb__536a",
+      "bgb__542",
+      "bgb__543",
+      "bgb__553",
+      "bgb__558c",
+      "bgb__559c",
+      "bgb__566",
+      "bgb__566a",
+      "bgb__566b",
+      "bgb__567",
+      "bgb__573b",
+      "bgb__573c",
+      "bgb__573d",
+      "bgb__574",
+      "bgb__574a",
+      "bgb__574b",
+      "bgb__578a"
+    ],
+    "passage_format": "heading_text",
+    "query_language_note": "most dev questions are English paraphrases of German posts; passages are German",
+    "specifications": {
+      "e5": {
+        "pooling": "mean",
+        "query_prefix": "query: ",
+        "passage_prefix": "passage: ",
+        "dim": 768,
+        "limit": 512,
+        "params_m": 278,
+        "languages": "94",
+        "layers": 12
+      },
+      "bge_m3": {
+        "pooling": "cls",
+        "query_prefix": "",
+        "passage_prefix": "",
+        "dim": 1024,
+        "limit": 8192,
+        "params_m": 568,
+        "languages": "100+",
+        "layers": 24
+      }
+    },
+    "caveat": "10 questions and a ~45-section pool: one question = 10 percentage points. Indicative only."
+  },
+  "results": {
+    "bge_m3": {
+      "info": {
+        "hf_id": "BAAI/bge-m3",
+        "pooling": "cls",
+        "max_length_used": 1024,
+        "documented_input_limit": 8192,
+        "passage_format": "heading_text",
+        "load_seconds": 88.7,
+        "parameters": 567754752,
+        "weights_mb_fp32": 2271,
+        "rss_mb_after_load": null,
+        "passages_over_max_length": 4,
+        "gold_sections_truncated": [
+          "aufenthg_2004__16b"
+        ],
+        "passage_tokens": {
+          "min": 32,
+          "median": 205,
+          "max": 1405
+        },
+        "encode_seconds": 124.8,
+        "rss_mb_after_encode": null
+      },
+      "validity_passages": {
+        "shape": [
+          44,
+          1024
+        ],
+        "expected_dim": 1024,
+        "dim_matches_spec": true,
+        "dtype": "float32",
+        "all_finite": true,
+        "norm_min": 1.0,
+        "norm_max": 1.0,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true,
+        "min_pairwise_cos": 0.3415,
+        "mean_pairwise_cos": 0.5465,
+        "max_pairwise_cos": 0.8575,
+        "batch_invariance_min_cos": 1.0
+      },
+      "validity_queries": {
+        "shape": [
+          10,
+          1024
+        ],
+        "expected_dim": 1024,
+        "dim_matches_spec": true,
+        "dtype": "float32",
+        "all_finite": true,
+        "norm_min": 1.0,
+        "norm_max": 1.0,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true,
+        "min_pairwise_cos": 0.2746,
+        "mean_pairwise_cos": 0.4752,
+        "max_pairwise_cos": 0.7338,
+        "batch_invariance_min_cos": 1.0
+      },
+      "retrieval": {
+        "n_questions": 10,
+        "pool_size": 44,
+        "hit_at_1": 0.4,
+        "hit_at_3": 0.8,
+        "hit_at_5": 0.9,
+        "mrr": 0.6325,
+        "mean_margin_gold_minus_best_other": 0.02329999953508377,
+        "similarity_range": {
+          "min": 0.1951,
+          "mean": 0.3833,
+          "max": 0.6304
+        },
+        "per_question": [
+          {
+            "question_id": "q001",
+            "primary_gold": [
+              "aufenthg_2004__16b"
+            ],
+            "primary_gold_ranks": {
+              "aufenthg_2004__16b": 1
+            },
+            "best_primary_rank": 1,
+            "supporting_gold_ranks": {
+              "aufenthg_2004__4a": 13
+            },
+            "gold_sim": 0.5345,
+            "best_non_gold_sim": 0.5312,
+            "top3": [
+              {
+                "id": "aufenthg_2004__16b",
+                "sim": 0.5345,
+                "is_gold": true
+              },
+              {
+                "id": "aufenthg_2004__16c",
+                "sim": 0.5312,
+                "is_gold": false
+              },
+              {
+                "id": "arbzg__3",
+                "sim": 0.5025,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q002",
+            "primary_gold": [
+              "aufenthg_2004__4a"
+            ],
+            "primary_gold_ranks": {
+              "aufenthg_2004__4a": 2
+            },
+            "best_primary_rank": 2,
+            "supporting_gold_ranks": {},
+            "gold_sim": 0.4988,
+            "best_non_gold_sim": 0.5096,
+            "top3": [
+              {
+                "id": "beschv_2013__10",
+                "sim": 0.5096,
+                "is_gold": false
+              },
+              {
+                "id": "aufenthg_2004__4a",
+                "sim": 0.4988,
+                "is_gold": true
+              },
+              {
+                "id": "aufenthg_2004__52",
+                "sim": 0.4927,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q005",
+            "primary_gold": [
+              "aufenthg_2004__4a"
+            ],
+            "primary_gold_ranks": {
+              "aufenthg_2004__4a": 2
+            },
+            "best_primary_rank": 2,
+            "supporting_gold_ranks": {
+              "aufenthg_2004__21": 1
+            },
+            "gold_sim": 0.5091,
+            "best_non_gold_sim": 0.4906,
+            "top3": [
+              {
+                "id": "aufenthg_2004__21",
+                "sim": 0.5412,
+                "is_gold": true
+              },
+              {
+                "id": "aufenthg_2004__4a",
+                "sim": 0.5091,
+                "is_gold": true
+              },
+              {
+                "id": "aufenthg_2004__16b",
+                "sim": 0.4906,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q013",
+            "primary_gold": [
+              "bgb__536"
+            ],
+            "primary_gold_ranks": {
+              "bgb__536": 8
+            },
+            "best_primary_rank": 8,
+            "supporting_gold_ranks": {
+              "bgb__543": 1
+            },
+            "gold_sim": 0.4839,
+            "best_non_gold_sim": 0.5021,
+            "top3": [
+              {
+                "id": "bgb__543",
+                "sim": 0.5182,
+                "is_gold": true
+              },
+              {
+                "id": "bgb__574a",
+                "sim": 0.5021,
+                "is_gold": false
+              },
+              {
+                "id": "bgb__573c",
+                "sim": 0.501,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q014",
+            "primary_gold": [
+              "bgb__573c"
+            ],
+            "primary_gold_ranks": {
+              "bgb__573c": 5
+            },
+            "best_primary_rank": 5,
+            "supporting_gold_ranks": {
+              "bgb__542": 2
+            },
+            "gold_sim": 0.5446,
+            "best_non_gold_sim": 0.5744,
+            "top3": [
+              {
+                "id": "bgb__543",
+                "sim": 0.5744,
+                "is_gold": false
+              },
+              {
+                "id": "bgb__542",
+                "sim": 0.5729,
+                "is_gold": true
+              },
+              {
+                "id": "bgb__573d",
+                "sim": 0.5589,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q015",
+            "primary_gold": [
+              "bgb__566a"
+            ],
+            "primary_gold_ranks": {
+              "bgb__566a": 2
+            },
+            "best_primary_rank": 2,
+            "supporting_gold_ranks": {
+              "bgb__566": 1
+            },
+            "gold_sim": 0.5079,
+            "best_non_gold_sim": 0.4916,
+            "top3": [
+              {
+                "id": "bgb__566",
+                "sim": 0.5248,
+                "is_gold": true
+              },
+              {
+                "id": "bgb__566a",
+                "sim": 0.5079,
+                "is_gold": true
+              },
+              {
+                "id": "bgb__535",
+                "sim": 0.4916,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q019",
+            "primary_gold": [
+              "bgb__574"
+            ],
+            "primary_gold_ranks": {
+              "bgb__574": 2
+            },
+            "best_primary_rank": 2,
+            "supporting_gold_ranks": {
+              "bgb__574b": 1
+            },
+            "gold_sim": 0.5206,
+            "best_non_gold_sim": 0.5167,
+            "top3": [
+              {
+                "id": "bgb__574b",
+                "sim": 0.5468,
+                "is_gold": true
+              },
+              {
+                "id": "bgb__574",
+                "sim": 0.5206,
+                "is_gold": true
+              },
+              {
+                "id": "bgb__573b",
+                "sim": 0.5167,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q022",
+            "primary_gold": [
+              "arbzg__3"
+            ],
+            "primary_gold_ranks": {
+              "arbzg__3": 1
+            },
+            "best_primary_rank": 1,
+            "supporting_gold_ranks": {},
+            "gold_sim": 0.6304,
+            "best_non_gold_sim": 0.5556,
+            "top3": [
+              {
+                "id": "arbzg__3",
+                "sim": 0.6304,
+                "is_gold": true
+              },
+              {
+                "id": "arbzg__4",
+                "sim": 0.5556,
+                "is_gold": false
+              },
+              {
+                "id": "aufenthg_2004__16b",
+                "sim": 0.4845,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q023",
+            "primary_gold": [
+              "arbzg__3"
+            ],
+            "primary_gold_ranks": {
+              "arbzg__3": 1
+            },
+            "best_primary_rank": 1,
+            "supporting_gold_ranks": {
+              "arbzg__4": 2
+            },
+            "gold_sim": 0.5897,
+            "best_non_gold_sim": 0.4943,
+            "top3": [
+              {
+                "id": "arbzg__3",
+                "sim": 0.5897,
+                "is_gold": true
+              },
+              {
+                "id": "arbzg__4",
+                "sim": 0.5717,
+                "is_gold": true
+              },
+              {
+                "id": "aufenthg_2004__16b",
+                "sim": 0.4943,
+                "is_gold": false
+              }
+            ]
+          },
+          {
+            "question_id": "q026",
+            "primary_gold": [
+              "arbzg__3"
+            ],
+            "primary_gold_ranks": {
+              "arbzg__3": 1
+            },
+            "best_primary_rank": 1,
+            "supporting_gold_ranks": {
+              "arbzg__4": 3
+            },
+            "gold_sim": 0.5592,
+            "best_non_gold_sim": 0.4795,
+            "top3": [
+              {
+                "id": "arbzg__3",
+                "sim": 0.5592,
+                "is_gold": true
+              },
+              {
+                "id": "arbzg__2",
+                "sim": 0.4795,
+                "is_gold": false
+              },
+              {
+                "id": "arbzg__4",
+                "sim": 0.4649,
+                "is_gold": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
