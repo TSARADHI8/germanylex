@@ -15,11 +15,13 @@ Usage (repo root):
     python src/retrieve.py "Can my spouse work while the Blue Card is pending?"
     python src/retrieve.py "Wie lange ist die Kündigungsfrist für Mieter?" "No hot water in my flat" -k 5
     python src/retrieve.py "..." --json                       # machine-readable output
+    python src/retrieve.py "..." --sections 10                # chunks grouped into ranked legal sections
     python src/retrieve.py --verify-dev                       # check against the saved dev evaluation
 
 Use from Python:
     from retrieve import Retriever
     hits = Retriever().retrieve("my question", k=10)          # list of dicts, best first
+    sections = Retriever().retrieve_sections("my question", n=10)   # ranked sections (best chunk = section score)
 """
 from __future__ import annotations
 
@@ -75,6 +77,14 @@ class Retriever:
                          "retrieval_date": meta["retrieval_date"], "text": doc})
         return hits
 
+    def retrieve_sections(self, question: str, n: int = 20) -> list[dict]:
+        """Top-n legal sections, best first. All chunks are ranked by ChromaDB (the index is small),
+        grouped by section, and a section's score is its best chunk, exactly as in the evaluation.
+        Ranking every chunk avoids the misses an approximate search can make with a small pool."""
+        if n < 1:
+            raise ValueError(f"n must be at least 1, got {n}.")
+        return group_by_section(self.retrieve(question, k=self.n_records))[:n]
+
 
 def best_per_section(hits: list[dict]) -> list[tuple[str, float]]:
     """Section score = its best chunk (the aggregation used in the evaluation); best section first."""
@@ -82,6 +92,38 @@ def best_per_section(hits: list[dict]) -> list[tuple[str, float]]:
     for h in hits:
         best[h["section_id"]] = max(best.get(h["section_id"], -1.0), h["similarity"])
     return sorted(best.items(), key=lambda kv: -kv[1])
+
+
+def group_by_section(hits: list[dict]) -> list[dict]:
+    """Chunk hits (best first) -> sections ranked by their best chunk. Each section keeps the
+    chunks that were retrieved for it (best first), so the grouping can be inspected."""
+    secs: dict[str, dict] = {}
+    for h in hits:
+        s = secs.setdefault(h["section_id"], {
+            "section_id": h["section_id"], "law": h["law"], "law_title": h["law_title"],
+            "section": h["section"], "heading": h["heading"], "area": h["area"],
+            "source_url": h["source_url"], "retrieval_date": h["retrieval_date"],
+            "n_chunks_in_section": h["n_chunks"], "score": h["similarity"], "chunks": []})
+        s["score"] = max(s["score"], h["similarity"])
+        s["chunks"].append({"chunk_id": h["chunk_id"], "chunk_rank": h["rank"], "similarity": h["similarity"],
+                            "paragraphs": h["paragraphs"], "text": h["text"]})
+    ranked = sorted(secs.values(), key=lambda s: -s["score"])
+    for i, s in enumerate(ranked, start=1):
+        s["rank"] = i
+    return ranked
+
+
+def print_sections(question: str, sections: list[dict], full: bool):
+    print(f"\nQuestion: {question}\n" + "-" * 78)
+    for s in sections:
+        print(f"#{s['rank']}  section score {s['score']:.4f}  (= best chunk)")
+        print(f"    {s['law']} {s['section']}  {s['heading']}   [{s['area']}]")
+        print(f"    {s['source_url']}")
+        for c in s["chunks"]:
+            print(f"    - chunk {c['chunk_id']}  similarity {c['similarity']:.4f}  (chunk rank {c['chunk_rank']})")
+        best = s["chunks"][0]["text"]
+        body = best if full else best.replace("\n", " ")[:220] + ("..." if len(best) > 220 else "")
+        print("    " + body.replace("\n", "\n    "))
 
 
 def print_hits(question: str, hits: list[dict], full: bool):
@@ -123,6 +165,7 @@ def main(make_embedder=HFEmbedder, argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("questions", nargs="*", help="one or more questions")
     ap.add_argument("-k", type=int, default=5, help="number of chunks to return (default 5)")
+    ap.add_argument("--sections", type=int, metavar="N", help="group the chunks into the top-N ranked sections instead")
     ap.add_argument("--full", action="store_true", help="print the complete chunk text")
     ap.add_argument("--json", action="store_true", help="print the hits as JSON")
     ap.add_argument("--verify-dev", action="store_true", help="reproduce the saved dev evaluation from the index")
@@ -139,10 +182,13 @@ def main(make_embedder=HFEmbedder, argv=None):
         return 0 if verify_dev(r, args.eval_file, args.dev_report) else 1
     out = {}
     for q in args.questions:
-        hits = r.retrieve(q, k=args.k)
+        if args.sections:
+            hits = r.retrieve_sections(q, n=args.sections)
+        else:
+            hits = r.retrieve(q, k=args.k)
         out[q] = hits
         if not args.json:
-            print_hits(q, hits, args.full)
+            (print_sections if args.sections else print_hits)(q, hits, args.full)
     if args.json:
         print(json.dumps(out, ensure_ascii=False, indent=2))
     return 0

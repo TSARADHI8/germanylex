@@ -1,0 +1,738 @@
+{
+  "meta": {
+    "script": "src/evaluate_retrieval.py",
+    "run_date": "2026-11-21",
+    "split": "dev",
+    "model": "BAAI/bge-m3",
+    "collection": "germanylex_chunks",
+    "n_chunks": 718,
+    "n_sections": 398,
+    "ks": [
+      1,
+      3,
+      5,
+      10,
+      20
+    ],
+    "aggregation": "section score = best chunk similarity; rank over all sections",
+    "retrieval_seconds": 7.5,
+    "input_sha256": {
+      "arbzg.jsonl": "9f7b50d1a5d769f34b449fa111a53b902b7beaa3d083b0435db5596d3754822a",
+      "aufenthg_2004.jsonl": "8ddee03daa602a4cc686c30586f863f2dc070f9882f93258c3b0b686890794ce",
+      "beschv_2013.jsonl": "237e93c123b2962b184b5e0c999c926d73d8ebf3ca9c1ead14256a75d6c14b83",
+      "bgb.jsonl": "7105cdf01713c3a53e9da2009785c964ec7037becae426f3ca6a89c91a152123",
+      "chunking_manifest.json": "a12e4db50b4b49d92a23792a9a9b4cbd9746f99cfaa5b40dde8bf71050932972",
+      "milog.jsonl": "d1c0fa097ba1bd489fe78b11ec6bac250ee29aa4ba02ea3eb17e5447896b2d7e",
+      "questions_v1.jsonl": "b544395faa46567f0d3153f8f176a060297a3b47e76959e2581bc8119ac1e906"
+    },
+    "inputs_unchanged": true,
+    "note": "Development set."
+  },
+  "metrics": {
+    "n_scored": 10,
+    "n_out_of_scope_not_scored": 0,
+    "hit_at": {
+      "1": 4,
+      "3": 5,
+      "5": 8,
+      "10": 8,
+      "20": 10
+    },
+    "hit_rate_at": {
+      "1": 0.4,
+      "3": 0.5,
+      "5": 0.8,
+      "10": 0.8,
+      "20": 1.0
+    },
+    "any_gold_hit_at": {
+      "1": 6,
+      "3": 7,
+      "5": 9,
+      "10": 9,
+      "20": 10
+    },
+    "any_gold_hit_rate_at": {
+      "1": 0.6,
+      "3": 0.7,
+      "5": 0.9,
+      "10": 0.9,
+      "20": 1.0
+    },
+    "mrr": 0.5142,
+    "any_gold_mrr": 0.7053,
+    "median_primary_rank": 3.5,
+    "worst_primary_rank": 19
+  },
+  "consistency": {
+    "available": true,
+    "report": "chunk_embedding_comparison.json",
+    "gold_ranks_compared": 18,
+    "identical": 18,
+    "differences": []
+  },
+  "per_question": [
+    {
+      "question_id": "q001",
+      "question": "How many hours can a student from India work on a student visa in Germany?",
+      "primary_gold": [
+        "aufenthg_2004__16b"
+      ],
+      "gold_ranks": {
+        "aufenthg_2004__16b": 1,
+        "aufenthg_2004__4a": 88
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "aufenthg_2004__16b",
+          "label": "AufenthG § 16b Studium",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.5448,
+          "n_chunks_in_section": 4
+        },
+        {
+          "id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "role": "supporting",
+          "rank": 88,
+          "score": 0.4178,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__16b",
+          "label": "AufenthG § 16b Studium",
+          "score": 0.5448,
+          "best_chunk": "aufenthg_2004__16b__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__17",
+          "label": "AufenthG § 17 Suche eines Ausbildungs- oder Studienplatzes",
+          "score": 0.5409,
+          "best_chunk": "aufenthg_2004__17__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.5389,
+          "best_chunk": "beschv_2013__15d__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.5301,
+          "best_chunk": "arbzg__15__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "beschv_2013__15a",
+          "label": "BeschV § 15a Saisonabhängige Beschäftigung",
+          "score": 0.5287,
+          "best_chunk": "beschv_2013__15a__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q002",
+      "question": "Can a dependent spouse start working immediately while the Blue Card application is still being processed?",
+      "primary_gold": [
+        "aufenthg_2004__4a"
+      ],
+      "gold_ranks": {
+        "aufenthg_2004__4a": 19
+      },
+      "best_primary_rank": 19,
+      "best_any_gold_rank": 19,
+      "gold_detail": [
+        {
+          "id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "role": "primary",
+          "rank": 19,
+          "score": 0.5054,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "beschv_2013__15c",
+          "label": "BeschV § 15c Haushaltshilfen",
+          "score": 0.5732,
+          "best_chunk": "beschv_2013__15c__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__81a",
+          "label": "AufenthG § 81a Beschleunigtes Fachkräfteverfahren",
+          "score": 0.5614,
+          "best_chunk": "aufenthg_2004__81a__c03"
+        },
+        {
+          "rank": 3,
+          "section_id": "aufenthg_2004__42",
+          "label": "AufenthG § 42 Verordnungsermächtigung und Weisungsrecht",
+          "score": 0.5569,
+          "best_chunk": "aufenthg_2004__42__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__29",
+          "label": "AufenthG § 29 Familiennachzug zu Ausländern",
+          "score": 0.55,
+          "best_chunk": "aufenthg_2004__29__c04"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__81",
+          "label": "AufenthG § 81 Beantragung des Aufenthaltstitels",
+          "score": 0.5406,
+          "best_chunk": "aufenthg_2004__81__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q005",
+      "question": "Can I keep a freelance side business while on a full-time work permit?",
+      "primary_gold": [
+        "aufenthg_2004__4a"
+      ],
+      "gold_ranks": {
+        "aufenthg_2004__4a": 4,
+        "aufenthg_2004__21": 1
+      },
+      "best_primary_rank": 4,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "role": "primary",
+          "rank": 4,
+          "score": 0.5073,
+          "n_chunks_in_section": 2
+        },
+        {
+          "id": "aufenthg_2004__21",
+          "label": "AufenthG § 21 Selbständige Tätigkeit",
+          "role": "supporting",
+          "rank": 1,
+          "score": 0.535,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__21",
+          "label": "AufenthG § 21 Selbständige Tätigkeit",
+          "score": 0.535,
+          "best_chunk": "aufenthg_2004__21__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.5173,
+          "best_chunk": "beschv_2013__15d__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.5089,
+          "best_chunk": "arbzg__15__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "score": 0.5073,
+          "best_chunk": "aufenthg_2004__4a__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__16b",
+          "label": "AufenthG § 16b Studium",
+          "score": 0.5057,
+          "best_chunk": "aufenthg_2004__16b__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q013",
+      "question": "There has been no hot water since I moved in. Can I terminate the lease without notice?",
+      "primary_gold": [
+        "bgb__543"
+      ],
+      "gold_ranks": {
+        "bgb__543": 4,
+        "bgb__536": 34
+      },
+      "best_primary_rank": 4,
+      "best_any_gold_rank": 4,
+      "gold_detail": [
+        {
+          "id": "bgb__543",
+          "label": "BGB § 543 Außerordentliche fristlose Kündigung aus wichtigem Grund",
+          "role": "primary",
+          "rank": 4,
+          "score": 0.5221,
+          "n_chunks_in_section": 2
+        },
+        {
+          "id": "bgb__536",
+          "label": "BGB § 536 Mietminderung bei Sach- und Rechtsmängeln",
+          "role": "supporting",
+          "rank": 34,
+          "score": 0.4839,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__550",
+          "label": "BGB § 550 Form des Mietvertrags",
+          "score": 0.5319,
+          "best_chunk": "bgb__550__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__556g",
+          "label": "BGB § 556g Rechtsfolgen; Auskunft über die Miete",
+          "score": 0.5293,
+          "best_chunk": "bgb__556g__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__575",
+          "label": "BGB § 575 Zeitmietvertrag",
+          "score": 0.523,
+          "best_chunk": "bgb__575__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__543",
+          "label": "BGB § 543 Außerordentliche fristlose Kündigung aus wichtigem Grund",
+          "score": 0.5221,
+          "best_chunk": "bgb__543__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__536c",
+          "label": "BGB § 536c Während der Mietzeit auftretende Mängel; Mängelanzeige durch den Mieter",
+          "score": 0.5201,
+          "best_chunk": "bgb__536c__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q014",
+      "question": "How can I end my rental contract early because I am leaving the country?",
+      "primary_gold": [
+        "bgb__573c"
+      ],
+      "gold_ranks": {
+        "bgb__573c": 18,
+        "bgb__542": 4
+      },
+      "best_primary_rank": 18,
+      "best_any_gold_rank": 4,
+      "gold_detail": [
+        {
+          "id": "bgb__573c",
+          "label": "BGB § 573c Fristen der ordentlichen Kündigung",
+          "role": "primary",
+          "rank": 18,
+          "score": 0.5446,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "bgb__542",
+          "label": "BGB § 542 Ende des Mietverhältnisses",
+          "role": "supporting",
+          "rank": 4,
+          "score": 0.5729,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__543",
+          "label": "BGB § 543 Außerordentliche fristlose Kündigung aus wichtigem Grund",
+          "score": 0.5773,
+          "best_chunk": "bgb__543__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__82",
+          "label": "AufenthG § 82 Mitwirkung des Ausländers",
+          "score": 0.5763,
+          "best_chunk": "aufenthg_2004__82__c04"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__576",
+          "label": "BGB § 576 Fristen der ordentlichen Kündigung bei Werkmietwohnungen",
+          "score": 0.573,
+          "best_chunk": "bgb__576__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__542",
+          "label": "BGB § 542 Ende des Mietverhältnisses",
+          "score": 0.5729,
+          "best_chunk": "bgb__542__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__575a",
+          "label": "BGB § 575a Außerordentliche Kündigung mit gesetzlicher Frist",
+          "score": 0.5645,
+          "best_chunk": "bgb__575a__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q015",
+      "question": "If a flat with a sitting tenant is sold, who holds the tenant's deposit?",
+      "primary_gold": [
+        "bgb__566a"
+      ],
+      "gold_ranks": {
+        "bgb__566a": 3,
+        "bgb__566": 2
+      },
+      "best_primary_rank": 3,
+      "best_any_gold_rank": 2,
+      "gold_detail": [
+        {
+          "id": "bgb__566a",
+          "label": "BGB § 566a Mietsicherheit",
+          "role": "primary",
+          "rank": 3,
+          "score": 0.5079,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "bgb__566",
+          "label": "BGB § 566 Kauf bricht nicht Miete",
+          "role": "supporting",
+          "rank": 2,
+          "score": 0.5248,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__563b",
+          "label": "BGB § 563b Haftung bei Eintritt oder Fortsetzung",
+          "score": 0.5426,
+          "best_chunk": "bgb__563b__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__566",
+          "label": "BGB § 566 Kauf bricht nicht Miete",
+          "score": 0.5248,
+          "best_chunk": "bgb__566__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__566a",
+          "label": "BGB § 566a Mietsicherheit",
+          "score": 0.5079,
+          "best_chunk": "bgb__566a__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__567b",
+          "label": "BGB § 567b Weiterveräußerung oder Belastung durch Erwerber",
+          "score": 0.4977,
+          "best_chunk": "bgb__567b__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__551",
+          "label": "BGB § 551 Begrenzung und Anlage von Mietsicherheiten",
+          "score": 0.4926,
+          "best_chunk": "bgb__551__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q019",
+      "question": "Should I object in advance to an owner-use termination that I expect?",
+      "primary_gold": [
+        "bgb__574"
+      ],
+      "gold_ranks": {
+        "bgb__574": 5,
+        "bgb__574b": 1
+      },
+      "best_primary_rank": 5,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "bgb__574",
+          "label": "BGB § 574 Widerspruch des Mieters gegen die Kündigung",
+          "role": "primary",
+          "rank": 5,
+          "score": 0.5206,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "bgb__574b",
+          "label": "BGB § 574b Form und Frist des Widerspruchs",
+          "role": "supporting",
+          "rank": 1,
+          "score": 0.5468,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__574b",
+          "label": "BGB § 574b Form und Frist des Widerspruchs",
+          "score": 0.5468,
+          "best_chunk": "bgb__574b__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__540",
+          "label": "BGB § 540 Gebrauchsüberlassung an Dritte",
+          "score": 0.5385,
+          "best_chunk": "bgb__540__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__556b",
+          "label": "BGB § 556b Fälligkeit der Miete, Aufrechnungs- und Zurückbehaltungsrecht",
+          "score": 0.5355,
+          "best_chunk": "bgb__556b__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__566d",
+          "label": "BGB § 566d Aufrechnung durch den Mieter",
+          "score": 0.5253,
+          "best_chunk": "bgb__566d__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__574",
+          "label": "BGB § 574 Widerspruch des Mieters gegen die Kündigung",
+          "score": 0.5206,
+          "best_chunk": "bgb__574__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q022",
+      "question": "Is working 15 minutes beyond 10 hours allowed under flextime?",
+      "primary_gold": [
+        "arbzg__3"
+      ],
+      "gold_ranks": {
+        "arbzg__3": 1
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.6304,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "score": 0.6304,
+          "best_chunk": "arbzg__3__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.6154,
+          "best_chunk": "arbzg__7__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.6025,
+          "best_chunk": "arbzg__15__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__14",
+          "label": "ArbZG § 14 Außergewöhnliche Fälle",
+          "score": 0.5904,
+          "best_chunk": "arbzg__14__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__21a",
+          "label": "ArbZG § 21a Beschäftigung im Straßentransport",
+          "score": 0.5837,
+          "best_chunk": "arbzg__21a__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q023",
+      "question": "Does the 10-hour daily maximum include breaks?",
+      "primary_gold": [
+        "arbzg__3"
+      ],
+      "gold_ranks": {
+        "arbzg__3": 1,
+        "arbzg__4": 2
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.5897,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "arbzg__4",
+          "label": "ArbZG § 4 Ruhepausen",
+          "role": "supporting",
+          "rank": 2,
+          "score": 0.5717,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "score": 0.5897,
+          "best_chunk": "arbzg__3__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__4",
+          "label": "ArbZG § 4 Ruhepausen",
+          "score": 0.5717,
+          "best_chunk": "arbzg__4__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.5705,
+          "best_chunk": "arbzg__7__c04"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__21a",
+          "label": "ArbZG § 21a Beschäftigung im Straßentransport",
+          "score": 0.5553,
+          "best_chunk": "arbzg__21a__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.555,
+          "best_chunk": "arbzg__15__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q026",
+      "question": "Is a working day of 9.5 hours permitted in retail?",
+      "primary_gold": [
+        "arbzg__3"
+      ],
+      "gold_ranks": {
+        "arbzg__3": 1,
+        "arbzg__4": 16
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.5592,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "arbzg__4",
+          "label": "ArbZG § 4 Ruhepausen",
+          "role": "supporting",
+          "rank": 16,
+          "score": 0.4649,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "score": 0.5592,
+          "best_chunk": "arbzg__3__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.5429,
+          "best_chunk": "arbzg__7__c04"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__13",
+          "label": "ArbZG § 13 Ermächtigung, Anordnung, Bewilligung",
+          "score": 0.5376,
+          "best_chunk": "arbzg__13__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.5361,
+          "best_chunk": "arbzg__15__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__10",
+          "label": "ArbZG § 10 Sonn- und Feiertagsbeschäftigung",
+          "score": 0.5221,
+          "best_chunk": "arbzg__10__c03"
+        }
+      ]
+    }
+  ]
+}
