@@ -1,0 +1,1186 @@
+{
+  "meta": {
+    "script": "src/compare_chunk_embeddings.py",
+    "run_date": "2026-11-21",
+    "split": "test",
+    "split_used": "test only",
+    "n_questions": 29,
+    "n_scored": 24,
+    "n_out_of_scope": 5,
+    "question_ids": [
+      "q003",
+      "q004",
+      "q006",
+      "q008",
+      "q011",
+      "q012",
+      "q016",
+      "q017",
+      "q018",
+      "q020",
+      "q021",
+      "q024",
+      "q025",
+      "q027",
+      "q028",
+      "q029",
+      "q030",
+      "q031",
+      "q032",
+      "q033",
+      "q034",
+      "q035",
+      "q036",
+      "q037",
+      "q038",
+      "q039",
+      "q040",
+      "q041",
+      "q042"
+    ],
+    "n_other_split_skipped": 10,
+    "n_with_supporting": 9,
+    "n_chunks": 718,
+    "n_sections": 398,
+    "passage_format": "heading_text",
+    "aggregation": "section score = max cosine over its chunks",
+    "input_sha256": {
+      "arbzg.jsonl": "9f7b50d1a5d769f34b449fa111a53b902b7beaa3d083b0435db5596d3754822a",
+      "aufenthg_2004.jsonl": "8ddee03daa602a4cc686c30586f863f2dc070f9882f93258c3b0b686890794ce",
+      "beschv_2013.jsonl": "237e93c123b2962b184b5e0c999c926d73d8ebf3ca9c1ead14256a75d6c14b83",
+      "bgb.jsonl": "7105cdf01713c3a53e9da2009785c964ec7037becae426f3ca6a89c91a152123",
+      "chunking_manifest.json": "a12e4db50b4b49d92a23792a9a9b4cbd9746f99cfaa5b40dde8bf71050932972",
+      "milog.jsonl": "d1c0fa097ba1bd489fe78b11ec6bac250ee29aa4ba02ea3eb17e5447896b2d7e",
+      "questions_v1.jsonl": "b544395faa46567f0d3153f8f176a060297a3b47e76959e2581bc8119ac1e906"
+    },
+    "inputs_unchanged": true,
+    "caveat": "24 scored test questions: one question = 4.2 percentage points. Indicative only."
+  },
+  "pairs": [],
+  "results": {
+    "bge_m3": {
+      "n_questions": 24,
+      "n_out_of_scope_not_scored": 5,
+      "n_sections": 398,
+      "n_chunks": 718,
+      "hit_at_1": 0.20833333333333334,
+      "hit_at_3": 0.375,
+      "hit_at_5": 0.5833333333333334,
+      "mrr": 0.3599,
+      "any_gold_hit_at_1": 0.20833333333333334,
+      "any_gold_hit_at_3": 0.375,
+      "any_gold_hit_at_5": 0.5833333333333334,
+      "any_gold_mrr": 0.3611,
+      "mean_margin_gold_minus_best_other": -0.0225,
+      "score_range": {
+        "min": 0.1371,
+        "mean": 0.3671,
+        "max": 0.6542
+      },
+      "per_question": [
+        {
+          "question_id": "q003",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 51
+          },
+          "best_primary_rank": 51,
+          "best_any_gold_rank": 51,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 66,
+          "gold_score": 0.4517,
+          "best_non_gold_score": 0.5612,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__15d",
+              "score": 0.5612,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__15a",
+              "score": 0.535,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__19",
+              "score": 0.5316,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q004",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 58
+          },
+          "best_primary_rank": 58,
+          "best_any_gold_rank": 58,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__21": 73
+          },
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)",
+            "(5)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 67,
+          "gold_score": 0.4059,
+          "best_non_gold_score": 0.4901,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__52",
+              "score": 0.4901,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__29",
+              "score": 0.4718,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__73c",
+              "score": 0.4712,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q006",
+          "primary_gold": [
+            "aufenthg_2004__20a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__20a": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 3,
+          "best_gold_chunk": "aufenthg_2004__20a__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.6376,
+          "best_non_gold_score": 0.5309,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__20a",
+              "score": 0.6376,
+              "is_gold": true
+            },
+            {
+              "id": "beschv_2013__15d",
+              "score": 0.5309,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__11",
+              "score": 0.525,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q008",
+          "primary_gold": [
+            "aufenthg_2004__4a"
+          ],
+          "primary_gold_ranks": {
+            "aufenthg_2004__4a": 37
+          },
+          "best_primary_rank": 37,
+          "best_any_gold_rank": 18,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__39": 18
+          },
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "aufenthg_2004__4a__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 62,
+          "gold_score": 0.4803,
+          "best_non_gold_score": 0.5628,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__52",
+              "score": 0.5628,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__18g",
+              "score": 0.5603,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__42",
+              "score": 0.5572,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q011",
+          "primary_gold": [
+            "beschv_2013__15"
+          ],
+          "primary_gold_ranks": {
+            "beschv_2013__15": 3
+          },
+          "best_primary_rank": 3,
+          "best_any_gold_rank": 3,
+          "supporting_gold_ranks": {
+            "aufenthg_2004__4a": 59
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "beschv_2013__15__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 3,
+          "gold_score": 0.5149,
+          "best_non_gold_score": 0.5329,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__17",
+              "score": 0.5329,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__21",
+              "score": 0.5219,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__15",
+              "score": 0.5149,
+              "is_gold": true
+            }
+          ]
+        },
+        {
+          "question_id": "q012",
+          "primary_gold": [
+            "bgb__536"
+          ],
+          "primary_gold_ranks": {
+            "bgb__536": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__536__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(1a)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.5549,
+          "best_non_gold_score": 0.5497,
+          "top3_sections": [
+            {
+              "id": "bgb__536",
+              "score": 0.5549,
+              "is_gold": true
+            },
+            {
+              "id": "bgb__546a",
+              "score": 0.5497,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__558b",
+              "score": 0.5472,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q016",
+          "primary_gold": [
+            "bgb__551"
+          ],
+          "primary_gold_ranks": {
+            "bgb__551": 6
+          },
+          "best_primary_rank": 6,
+          "best_any_gold_rank": 6,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__551__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 6,
+          "gold_score": 0.5013,
+          "best_non_gold_score": 0.5105,
+          "top3_sections": [
+            {
+              "id": "bgb__577a",
+              "score": 0.5105,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__563b",
+              "score": 0.5103,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__556g",
+              "score": 0.5064,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q017",
+          "primary_gold": [
+            "bgb__536"
+          ],
+          "primary_gold_ranks": {
+            "bgb__536": 7
+          },
+          "best_primary_rank": 7,
+          "best_any_gold_rank": 7,
+          "supporting_gold_ranks": {
+            "bgb__536c": 17
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__536__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(1a)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 7,
+          "gold_score": 0.5513,
+          "best_non_gold_score": 0.5836,
+          "top3_sections": [
+            {
+              "id": "bgb__558b",
+              "score": 0.5836,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__571",
+              "score": 0.5785,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__556b",
+              "score": 0.5751,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q018",
+          "primary_gold": [
+            "bgb__573"
+          ],
+          "primary_gold_ranks": {
+            "bgb__573": 4
+          },
+          "best_primary_rank": 4,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {
+            "bgb__568": 61,
+            "bgb__574b": 14
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__573__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 4,
+          "gold_score": 0.4938,
+          "best_non_gold_score": 0.5028,
+          "top3_sections": [
+            {
+              "id": "bgb__566d",
+              "score": 0.5028,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__536a",
+              "score": 0.5022,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__571",
+              "score": 0.4959,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q020",
+          "primary_gold": [
+            "bgb__573"
+          ],
+          "primary_gold_ranks": {
+            "bgb__573": 18
+          },
+          "best_primary_rank": 18,
+          "best_any_gold_rank": 18,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__573__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 21,
+          "gold_score": 0.4704,
+          "best_non_gold_score": 0.5098,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__36a",
+              "score": 0.5098,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__34",
+              "score": 0.4952,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__2",
+              "score": 0.4938,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q021",
+          "primary_gold": [
+            "bgb__540"
+          ],
+          "primary_gold_ranks": {
+            "bgb__540": 10
+          },
+          "best_primary_rank": 10,
+          "best_any_gold_rank": 10,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "bgb__540__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 10,
+          "gold_score": 0.4763,
+          "best_non_gold_score": 0.5219,
+          "top3_sections": [
+            {
+              "id": "bgb__553",
+              "score": 0.5219,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__563",
+              "score": 0.5201,
+              "is_gold": false
+            },
+            {
+              "id": "bgb__573b",
+              "score": 0.5032,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q024",
+          "primary_gold": [
+            "arbzg__5"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__5": 5
+          },
+          "best_primary_rank": 5,
+          "best_any_gold_rank": 5,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__5__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 5,
+          "gold_score": 0.5034,
+          "best_non_gold_score": 0.5358,
+          "top3_sections": [
+            {
+              "id": "arbzg__7",
+              "score": 0.5358,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__6",
+              "score": 0.5319,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__21a",
+              "score": 0.521,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q025",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 7
+          },
+          "best_primary_rank": 7,
+          "best_any_gold_rank": 7,
+          "supporting_gold_ranks": {
+            "arbzg__4": 17
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 10,
+          "gold_score": 0.5291,
+          "best_non_gold_score": 0.5656,
+          "top3_sections": [
+            {
+              "id": "arbzg__7",
+              "score": 0.5656,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__14",
+              "score": 0.5652,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__15",
+              "score": 0.5539,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q027",
+          "primary_gold": [
+            "arbzg__4"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__4": 4
+          },
+          "best_primary_rank": 4,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__4__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 5,
+          "gold_score": 0.5738,
+          "best_non_gold_score": 0.6006,
+          "top3_sections": [
+            {
+              "id": "arbzg__15",
+              "score": 0.6006,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.5986,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__3",
+              "score": 0.5817,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q028",
+          "primary_gold": [
+            "arbzg__5"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__5": 5
+          },
+          "best_primary_rank": 5,
+          "best_any_gold_rank": 5,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__5__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 5,
+          "gold_score": 0.5155,
+          "best_non_gold_score": 0.5483,
+          "top3_sections": [
+            {
+              "id": "arbzg__9",
+              "score": 0.5483,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.5473,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__15",
+              "score": 0.5215,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q029",
+          "primary_gold": [
+            "arbzg__11"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__11": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "arbzg__9": 5
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__11__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)",
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.6047,
+          "best_non_gold_score": 0.5435,
+          "top3_sections": [
+            {
+              "id": "arbzg__11",
+              "score": 0.6047,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__10",
+              "score": 0.5435,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__12",
+              "score": 0.5395,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q030",
+          "primary_gold": [
+            "milog__1"
+          ],
+          "primary_gold_ranks": {
+            "milog__1": 8
+          },
+          "best_primary_rank": 8,
+          "best_any_gold_rank": 8,
+          "supporting_gold_ranks": {
+            "milog__3": 51
+          },
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "milog__1__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 9,
+          "gold_score": 0.5357,
+          "best_non_gold_score": 0.6029,
+          "top3_sections": [
+            {
+              "id": "milog__22",
+              "score": 0.6029,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__1",
+              "score": 0.5576,
+              "is_gold": false
+            },
+            {
+              "id": "milog__2",
+              "score": 0.5574,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q031",
+          "primary_gold": [
+            "milog__22"
+          ],
+          "primary_gold_ranks": {
+            "milog__22": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "milog__22__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.5828,
+          "best_non_gold_score": 0.5521,
+          "top3_sections": [
+            {
+              "id": "milog__22",
+              "score": 0.5828,
+              "is_gold": true
+            },
+            {
+              "id": "beschv_2013__1",
+              "score": 0.5521,
+              "is_gold": false
+            },
+            {
+              "id": "milog__1",
+              "score": 0.5416,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q032",
+          "primary_gold": [
+            "milog__22"
+          ],
+          "primary_gold_ranks": {
+            "milog__22": 1
+          },
+          "best_primary_rank": 1,
+          "best_any_gold_rank": 1,
+          "supporting_gold_ranks": {
+            "milog__1": 3
+          },
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "milog__22__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 1,
+          "gold_score": 0.5202,
+          "best_non_gold_score": 0.485,
+          "top3_sections": [
+            {
+              "id": "milog__22",
+              "score": 0.5202,
+              "is_gold": true
+            },
+            {
+              "id": "aufenthg_2004__32",
+              "score": 0.485,
+              "is_gold": false
+            },
+            {
+              "id": "milog__1",
+              "score": 0.4824,
+              "is_gold": true
+            }
+          ]
+        },
+        {
+          "question_id": "q033",
+          "primary_gold": [
+            "milog__22"
+          ],
+          "primary_gold_ranks": {
+            "milog__22": 2
+          },
+          "best_primary_rank": 2,
+          "best_any_gold_rank": 2,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "milog__22__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 2,
+          "gold_score": 0.503,
+          "best_non_gold_score": 0.5031,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__19a",
+              "score": 0.5031,
+              "is_gold": false
+            },
+            {
+              "id": "milog__22",
+              "score": 0.503,
+              "is_gold": true
+            },
+            {
+              "id": "beschv_2013__1",
+              "score": 0.4916,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q034",
+          "primary_gold": [
+            "milog__22"
+          ],
+          "primary_gold_ranks": {
+            "milog__22": 3
+          },
+          "best_primary_rank": 3,
+          "best_any_gold_rank": 3,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "milog__22__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 3,
+          "gold_score": 0.4908,
+          "best_non_gold_score": 0.5358,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__15",
+              "score": 0.5358,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__16e",
+              "score": 0.512,
+              "is_gold": false
+            },
+            {
+              "id": "milog__22",
+              "score": 0.4908,
+              "is_gold": true
+            }
+          ]
+        },
+        {
+          "question_id": "q035",
+          "primary_gold": [
+            "milog__22"
+          ],
+          "primary_gold_ranks": {
+            "milog__22": 42
+          },
+          "best_primary_rank": 42,
+          "best_any_gold_rank": 42,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "milog__22__c02",
+          "best_gold_chunk_paragraphs": [
+            "(4)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 59,
+          "gold_score": 0.4376,
+          "best_non_gold_score": 0.5019,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__1",
+              "score": 0.5019,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__6",
+              "score": 0.5008,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__19a",
+              "score": 0.4998,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q036",
+          "out_of_scope": true,
+          "primary_gold": [],
+          "best_primary_rank": null,
+          "top3_sections": [
+            {
+              "id": "aufenthg_2004__19a",
+              "score": 0.5565,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__25b",
+              "score": 0.5428,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__15",
+              "score": 0.5401,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q037",
+          "out_of_scope": true,
+          "primary_gold": [],
+          "best_primary_rank": null,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__15a",
+              "score": 0.5535,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__15d",
+              "score": 0.5252,
+              "is_gold": false
+            },
+            {
+              "id": "milog__22",
+              "score": 0.5235,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q038",
+          "out_of_scope": true,
+          "primary_gold": [],
+          "best_primary_rank": null,
+          "top3_sections": [
+            {
+              "id": "milog__1",
+              "score": 0.5011,
+              "is_gold": false
+            },
+            {
+              "id": "beschv_2013__1",
+              "score": 0.4926,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__69",
+              "score": 0.4791,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q039",
+          "out_of_scope": true,
+          "primary_gold": [],
+          "best_primary_rank": null,
+          "top3_sections": [
+            {
+              "id": "milog__1",
+              "score": 0.5923,
+              "is_gold": false
+            },
+            {
+              "id": "milog__9",
+              "score": 0.5475,
+              "is_gold": false
+            },
+            {
+              "id": "milog__22",
+              "score": 0.4553,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q040",
+          "out_of_scope": true,
+          "primary_gold": [],
+          "best_primary_rank": null,
+          "top3_sections": [
+            {
+              "id": "milog__1",
+              "score": 0.5227,
+              "is_gold": false
+            },
+            {
+              "id": "milog__22",
+              "score": 0.492,
+              "is_gold": false
+            },
+            {
+              "id": "milog__3",
+              "score": 0.4893,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q041",
+          "primary_gold": [
+            "arbzg__3"
+          ],
+          "primary_gold_ranks": {
+            "arbzg__3": 2
+          },
+          "best_primary_rank": 2,
+          "best_any_gold_rank": 2,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 1,
+          "best_gold_chunk": "arbzg__3__c01",
+          "best_gold_chunk_paragraphs": [],
+          "best_gold_chunk_rank_among_all_chunks": 2,
+          "gold_score": 0.6537,
+          "best_non_gold_score": 0.6542,
+          "top3_sections": [
+            {
+              "id": "arbzg__15",
+              "score": 0.6542,
+              "is_gold": false
+            },
+            {
+              "id": "arbzg__3",
+              "score": 0.6537,
+              "is_gold": true
+            },
+            {
+              "id": "arbzg__7",
+              "score": 0.6293,
+              "is_gold": false
+            }
+          ]
+        },
+        {
+          "question_id": "q042",
+          "primary_gold": [
+            "milog__22"
+          ],
+          "primary_gold_ranks": {
+            "milog__22": 4
+          },
+          "best_primary_rank": 4,
+          "best_any_gold_rank": 4,
+          "supporting_gold_ranks": {},
+          "gold_section_n_chunks": 2,
+          "best_gold_chunk": "milog__22__c01",
+          "best_gold_chunk_paragraphs": [
+            "(1)",
+            "(2)",
+            "(3)"
+          ],
+          "best_gold_chunk_rank_among_all_chunks": 4,
+          "gold_score": 0.5038,
+          "best_non_gold_score": 0.5487,
+          "top3_sections": [
+            {
+              "id": "beschv_2013__15",
+              "score": 0.5487,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__16e",
+              "score": 0.5312,
+              "is_gold": false
+            },
+            {
+              "id": "aufenthg_2004__16b",
+              "score": 0.5271,
+              "is_gold": false
+            }
+          ]
+        }
+      ],
+      "info": {
+        "hf_id": "BAAI/bge-m3",
+        "pooling": "cls",
+        "dim": 1024,
+        "max_length_used": 1024,
+        "documented_input_limit": 8192,
+        "load_seconds": 14.3,
+        "parameters": 567754752,
+        "weights_mb_fp32": 2271,
+        "rss_mb_before_load": null,
+        "peak_rss_mb_during_load": null,
+        "variant": "bge_m3",
+        "label": "BGE-M3 (dense, no prefixes)",
+        "query_prefix": "",
+        "passage_prefix": "",
+        "passage_format": "heading_text",
+        "chunks_over_max_length": 0,
+        "chunk_tokens": {
+          "min": 15,
+          "median": 278,
+          "max": 469
+        },
+        "encode_chunks_seconds": 763.2,
+        "encode_questions_seconds": 4.12,
+        "ms_per_chunk": 1062.9,
+        "peak_rss_mb_during_encode": null,
+        "rss_mb_after_encode": null
+      },
+      "vector_checks_chunks": {
+        "shape": [
+          718,
+          1024
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      },
+      "vector_checks_questions": {
+        "shape": [
+          29,
+          1024
+        ],
+        "dim_matches_spec": true,
+        "all_finite": true,
+        "unit_length_ok": true,
+        "no_duplicate_vectors": true
+      }
+    }
+  }
+}
