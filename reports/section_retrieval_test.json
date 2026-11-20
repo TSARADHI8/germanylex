@@ -1,0 +1,1722 @@
+{
+  "meta": {
+    "script": "src/evaluate_retrieval.py",
+    "run_date": "2026-11-21",
+    "split": "test",
+    "model": "BAAI/bge-m3",
+    "collection": "germanylex_chunks",
+    "n_chunks": 718,
+    "n_sections": 398,
+    "ks": [
+      1,
+      3,
+      5,
+      10,
+      20
+    ],
+    "aggregation": "section score = best chunk similarity; rank over all sections",
+    "retrieval_seconds": 12.0,
+    "input_sha256": {
+      "arbzg.jsonl": "9f7b50d1a5d769f34b449fa111a53b902b7beaa3d083b0435db5596d3754822a",
+      "aufenthg_2004.jsonl": "8ddee03daa602a4cc686c30586f863f2dc070f9882f93258c3b0b686890794ce",
+      "beschv_2013.jsonl": "237e93c123b2962b184b5e0c999c926d73d8ebf3ca9c1ead14256a75d6c14b83",
+      "bgb.jsonl": "7105cdf01713c3a53e9da2009785c964ec7037becae426f3ca6a89c91a152123",
+      "chunking_manifest.json": "a12e4db50b4b49d92a23792a9a9b4cbd9746f99cfaa5b40dde8bf71050932972",
+      "milog.jsonl": "d1c0fa097ba1bd489fe78b11ec6bac250ee29aa4ba02ea3eb17e5447896b2d7e",
+      "questions_v1.jsonl": "b544395faa46567f0d3153f8f176a060297a3b47e76959e2581bc8119ac1e906"
+    },
+    "inputs_unchanged": true,
+    "note": "Held-out set re-measured with unchanged model, index and code. Reporting only, no tuning."
+  },
+  "metrics": {
+    "n_scored": 24,
+    "n_out_of_scope_not_scored": 5,
+    "hit_at": {
+      "1": 5,
+      "3": 9,
+      "5": 14,
+      "10": 19,
+      "20": 20
+    },
+    "hit_rate_at": {
+      "1": 0.2083,
+      "3": 0.375,
+      "5": 0.5833,
+      "10": 0.7917,
+      "20": 0.8333
+    },
+    "any_gold_hit_at": {
+      "1": 5,
+      "3": 9,
+      "5": 14,
+      "10": 19,
+      "20": 21
+    },
+    "any_gold_hit_rate_at": {
+      "1": 0.2083,
+      "3": 0.375,
+      "5": 0.5833,
+      "10": 0.7917,
+      "20": 0.875
+    },
+    "mrr": 0.3599,
+    "any_gold_mrr": 0.3611,
+    "median_primary_rank": 4.5,
+    "worst_primary_rank": 58
+  },
+  "consistency": {
+    "available": true,
+    "report": "chunk_embedding_comparison_test.json",
+    "gold_ranks_compared": 34,
+    "identical": 34,
+    "differences": []
+  },
+  "per_question": [
+    {
+      "question_id": "q003",
+      "question": "Can the holder of a spouse residence permit work 30 hours a week remotely for a Canadian company?",
+      "primary_gold": [
+        "aufenthg_2004__4a"
+      ],
+      "gold_ranks": {
+        "aufenthg_2004__4a": 51
+      },
+      "best_primary_rank": 51,
+      "best_any_gold_rank": 51,
+      "gold_detail": [
+        {
+          "id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "role": "primary",
+          "rank": 51,
+          "score": 0.4517,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.5612,
+          "best_chunk": "beschv_2013__15d__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__15a",
+          "label": "BeschV § 15a Saisonabhängige Beschäftigung",
+          "score": 0.535,
+          "best_chunk": "beschv_2013__15a__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "beschv_2013__19",
+          "label": "BeschV § 19 Werklieferungsverträge",
+          "score": 0.5316,
+          "best_chunk": "beschv_2013__19__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.5241,
+          "best_chunk": "arbzg__15__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__60d",
+          "label": "AufenthG § 60d Beschäftigungsduldung",
+          "score": 0.5205,
+          "best_chunk": "aufenthg_2004__60d__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q004",
+      "question": "Can I do online-tutoring contract work while on a family reunion visa?",
+      "primary_gold": [
+        "aufenthg_2004__4a"
+      ],
+      "gold_ranks": {
+        "aufenthg_2004__4a": 58,
+        "aufenthg_2004__21": 73
+      },
+      "best_primary_rank": 58,
+      "best_any_gold_rank": 58,
+      "gold_detail": [
+        {
+          "id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "role": "primary",
+          "rank": 58,
+          "score": 0.4059,
+          "n_chunks_in_section": 2
+        },
+        {
+          "id": "aufenthg_2004__21",
+          "label": "AufenthG § 21 Selbständige Tätigkeit",
+          "role": "supporting",
+          "rank": 73,
+          "score": 0.3965,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__52",
+          "label": "AufenthG § 52 Widerruf",
+          "score": 0.4901,
+          "best_chunk": "aufenthg_2004__52__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__29",
+          "label": "AufenthG § 29 Familiennachzug zu Ausländern",
+          "score": 0.4718,
+          "best_chunk": "aufenthg_2004__29__c04"
+        },
+        {
+          "rank": 3,
+          "section_id": "aufenthg_2004__73c",
+          "label": "AufenthG § 73c Zusammenarbeit mit externen Dienstleistungserbringern",
+          "score": 0.4712,
+          "best_chunk": "aufenthg_2004__73c__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "beschv_2013__15c",
+          "label": "BeschV § 15c Haushaltshilfen",
+          "score": 0.466,
+          "best_chunk": "beschv_2013__15c__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "beschv_2013__22",
+          "label": "BeschV § 22 Besondere Berufsgruppen",
+          "score": 0.4621,
+          "best_chunk": "beschv_2013__22__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q006",
+      "question": "On the Chancenkarte with its weekly hours limit, can I teach or tutor?",
+      "primary_gold": [
+        "aufenthg_2004__20a"
+      ],
+      "gold_ranks": {
+        "aufenthg_2004__20a": 1
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "aufenthg_2004__20a",
+          "label": "AufenthG § 20a Chancenkarte; Verordnungsermächtigung",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.6376,
+          "n_chunks_in_section": 3
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__20a",
+          "label": "AufenthG § 20a Chancenkarte; Verordnungsermächtigung",
+          "score": 0.6376,
+          "best_chunk": "aufenthg_2004__20a__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.5309,
+          "best_chunk": "beschv_2013__15d__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "beschv_2013__11",
+          "label": "BeschV § 11 Sprachlehrerinnen und Sprachlehrer, Spezialitätenköchinnen und Spezialitätenköche",
+          "score": 0.525,
+          "best_chunk": "beschv_2013__11__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__16b",
+          "label": "AufenthG § 16b Studium",
+          "score": 0.5185,
+          "best_chunk": "aufenthg_2004__16b__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__19",
+          "label": "AufenthG § 19 ICT-Karte für unternehmensintern transferierte Arbeitnehmer",
+          "score": 0.5008,
+          "best_chunk": "aufenthg_2004__19__c03"
+        }
+      ]
+    },
+    {
+      "question_id": "q008",
+      "question": "I have an employment visa tied to employer A. What is the procedure if I switch to employer B in December and apply for a Blue Card?",
+      "primary_gold": [
+        "aufenthg_2004__4a"
+      ],
+      "gold_ranks": {
+        "aufenthg_2004__4a": 37,
+        "aufenthg_2004__39": 18
+      },
+      "best_primary_rank": 37,
+      "best_any_gold_rank": 18,
+      "gold_detail": [
+        {
+          "id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "role": "primary",
+          "rank": 37,
+          "score": 0.4803,
+          "n_chunks_in_section": 2
+        },
+        {
+          "id": "aufenthg_2004__39",
+          "label": "AufenthG § 39 Zustimmung zur Beschäftigung",
+          "role": "supporting",
+          "rank": 18,
+          "score": 0.5073,
+          "n_chunks_in_section": 3
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__52",
+          "label": "AufenthG § 52 Widerruf",
+          "score": 0.5628,
+          "best_chunk": "aufenthg_2004__52__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__18g",
+          "label": "AufenthG § 18g Blaue Karte EU",
+          "score": 0.5603,
+          "best_chunk": "aufenthg_2004__18g__c04"
+        },
+        {
+          "rank": 3,
+          "section_id": "aufenthg_2004__42",
+          "label": "AufenthG § 42 Verordnungsermächtigung und Weisungsrecht",
+          "score": 0.5572,
+          "best_chunk": "aufenthg_2004__42__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__18i",
+          "label": "AufenthG § 18i Langfristige Mobilität für Inhaber einer Blauen Karte EU",
+          "score": 0.5406,
+          "best_chunk": "aufenthg_2004__18i__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__81",
+          "label": "AufenthG § 81 Beantragung des Aufenthaltstitels",
+          "score": 0.5366,
+          "best_chunk": "aufenthg_2004__81__c03"
+        }
+      ]
+    },
+    {
+      "question_id": "q011",
+      "question": "Does my French APS visa allow me to do a 3-month internship in Berlin?",
+      "primary_gold": [
+        "beschv_2013__15"
+      ],
+      "gold_ranks": {
+        "beschv_2013__15": 3,
+        "aufenthg_2004__4a": 59
+      },
+      "best_primary_rank": 3,
+      "best_any_gold_rank": 3,
+      "gold_detail": [
+        {
+          "id": "beschv_2013__15",
+          "label": "BeschV § 15 Praktika zu Weiterbildungszwecken",
+          "role": "primary",
+          "rank": 3,
+          "score": 0.5149,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "aufenthg_2004__4a",
+          "label": "AufenthG § 4a Zugang zur Erwerbstätigkeit",
+          "role": "supporting",
+          "rank": 59,
+          "score": 0.4465,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__17",
+          "label": "AufenthG § 17 Suche eines Ausbildungs- oder Studienplatzes",
+          "score": 0.5329,
+          "best_chunk": "aufenthg_2004__17__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__21",
+          "label": "AufenthG § 21 Selbständige Tätigkeit",
+          "score": 0.5219,
+          "best_chunk": "aufenthg_2004__21__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "beschv_2013__15",
+          "label": "BeschV § 15 Praktika zu Weiterbildungszwecken",
+          "score": 0.5149,
+          "best_chunk": "beschv_2013__15__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__16a",
+          "label": "AufenthG § 16a Berufsausbildung; berufliche Weiterbildung",
+          "score": 0.5137,
+          "best_chunk": "aufenthg_2004__16a__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__16d",
+          "label": "AufenthG § 16d Maßnahmen zur Anerkennung ausländischer Berufsqualifikationen",
+          "score": 0.5113,
+          "best_chunk": "aufenthg_2004__16d__c04"
+        }
+      ]
+    },
+    {
+      "question_id": "q012",
+      "question": "My apartment has had no heating for 10 days. Can I reduce the rent or claim compensation?",
+      "primary_gold": [
+        "bgb__536"
+      ],
+      "gold_ranks": {
+        "bgb__536": 1
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "bgb__536",
+          "label": "BGB § 536 Mietminderung bei Sach- und Rechtsmängeln",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.5549,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__536",
+          "label": "BGB § 536 Mietminderung bei Sach- und Rechtsmängeln",
+          "score": 0.5549,
+          "best_chunk": "bgb__536__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__546a",
+          "label": "BGB § 546a Entschädigung des Vermieters bei verspäteter Rückgabe",
+          "score": 0.5497,
+          "best_chunk": "bgb__546a__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__558b",
+          "label": "BGB § 558b Zustimmung zur Mieterhöhung",
+          "score": 0.5472,
+          "best_chunk": "bgb__558b__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__556b",
+          "label": "BGB § 556b Fälligkeit der Miete, Aufrechnungs- und Zurückbehaltungsrecht",
+          "score": 0.5454,
+          "best_chunk": "bgb__556b__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__536c",
+          "label": "BGB § 536c Während der Mietzeit auftretende Mängel; Mängelanzeige durch den Mieter",
+          "score": 0.5428,
+          "best_chunk": "bgb__536c__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q016",
+      "question": "When must the pledged deposit account be released to the tenant?",
+      "primary_gold": [
+        "bgb__551"
+      ],
+      "gold_ranks": {
+        "bgb__551": 6
+      },
+      "best_primary_rank": 6,
+      "best_any_gold_rank": 6,
+      "gold_detail": [
+        {
+          "id": "bgb__551",
+          "label": "BGB § 551 Begrenzung und Anlage von Mietsicherheiten",
+          "role": "primary",
+          "rank": 6,
+          "score": 0.5013,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__577a",
+          "label": "BGB § 577a Kündigungsbeschränkung bei Wohnungsumwandlung",
+          "score": 0.5105,
+          "best_chunk": "bgb__577a__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__563b",
+          "label": "BGB § 563b Haftung bei Eintritt oder Fortsetzung",
+          "score": 0.5103,
+          "best_chunk": "bgb__563b__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__556g",
+          "label": "BGB § 556g Rechtsfolgen; Auskunft über die Miete",
+          "score": 0.5064,
+          "best_chunk": "bgb__556g__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__535",
+          "label": "BGB § 535 Inhalt und Hauptpflichten des Mietvertrags",
+          "score": 0.505,
+          "best_chunk": "bgb__535__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__556",
+          "label": "BGB § 556 Vereinbarungen über Betriebskosten",
+          "score": 0.5023,
+          "best_chunk": "bgb__556__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q017",
+      "question": "After reducing the rent because of mould, how long does the landlord have to react or reclaim the money?",
+      "primary_gold": [
+        "bgb__536"
+      ],
+      "gold_ranks": {
+        "bgb__536": 7,
+        "bgb__536c": 17
+      },
+      "best_primary_rank": 7,
+      "best_any_gold_rank": 7,
+      "gold_detail": [
+        {
+          "id": "bgb__536",
+          "label": "BGB § 536 Mietminderung bei Sach- und Rechtsmängeln",
+          "role": "primary",
+          "rank": 7,
+          "score": 0.5513,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "bgb__536c",
+          "label": "BGB § 536c Während der Mietzeit auftretende Mängel; Mängelanzeige durch den Mieter",
+          "role": "supporting",
+          "rank": 17,
+          "score": 0.539,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__558b",
+          "label": "BGB § 558b Zustimmung zur Mieterhöhung",
+          "score": 0.5836,
+          "best_chunk": "bgb__558b__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__571",
+          "label": "BGB § 571 Weiterer Schadensersatz bei verspäteter Rückgabe von Wohnraum",
+          "score": 0.5785,
+          "best_chunk": "bgb__571__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__556b",
+          "label": "BGB § 556b Fälligkeit der Miete, Aufrechnungs- und Zurückbehaltungsrecht",
+          "score": 0.5751,
+          "best_chunk": "bgb__556b__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__556g",
+          "label": "BGB § 556g Rechtsfolgen; Auskunft über die Miete",
+          "score": 0.5678,
+          "best_chunk": "bgb__556g__c03"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__574b",
+          "label": "BGB § 574b Form und Frist des Widerspruchs",
+          "score": 0.5655,
+          "best_chunk": "bgb__574b__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q018",
+      "question": "I received an owner-use termination with formal defects. Is it invalid, and do I still need to object?",
+      "primary_gold": [
+        "bgb__573"
+      ],
+      "gold_ranks": {
+        "bgb__573": 4,
+        "bgb__568": 61,
+        "bgb__574b": 14
+      },
+      "best_primary_rank": 4,
+      "best_any_gold_rank": 4,
+      "gold_detail": [
+        {
+          "id": "bgb__573",
+          "label": "BGB § 573 Ordentliche Kündigung des Vermieters",
+          "role": "primary",
+          "rank": 4,
+          "score": 0.4938,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "bgb__568",
+          "label": "BGB § 568 Form und Inhalt der Kündigung",
+          "role": "supporting",
+          "rank": 61,
+          "score": 0.4362,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "bgb__574b",
+          "label": "BGB § 574b Form und Frist des Widerspruchs",
+          "role": "supporting",
+          "rank": 14,
+          "score": 0.4795,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__566d",
+          "label": "BGB § 566d Aufrechnung durch den Mieter",
+          "score": 0.5028,
+          "best_chunk": "bgb__566d__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__536a",
+          "label": "BGB § 536a Schadens- und Aufwendungsersatzanspruch des Mieters wegen eines Mangels",
+          "score": 0.5022,
+          "best_chunk": "bgb__536a__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__571",
+          "label": "BGB § 571 Weiterer Schadensersatz bei verspäteter Rückgabe von Wohnraum",
+          "score": 0.4959,
+          "best_chunk": "bgb__571__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__573",
+          "label": "BGB § 573 Ordentliche Kündigung des Vermieters",
+          "score": 0.4938,
+          "best_chunk": "bgb__573__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__554",
+          "label": "BGB § 554 Barrierereduzierung, E-Mobilität, Einbruchsschutz und Steckersolargeräte",
+          "score": 0.4912,
+          "best_chunk": "bgb__554__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q020",
+      "question": "Is a 7-year-old child's second home a valid reason for an owner-use termination?",
+      "primary_gold": [
+        "bgb__573"
+      ],
+      "gold_ranks": {
+        "bgb__573": 18
+      },
+      "best_primary_rank": 18,
+      "best_any_gold_rank": 18,
+      "gold_detail": [
+        {
+          "id": "bgb__573",
+          "label": "BGB § 573 Ordentliche Kündigung des Vermieters",
+          "role": "primary",
+          "rank": 18,
+          "score": 0.4704,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__36a",
+          "label": "AufenthG § 36a Familiennachzug zu subsidiär Schutzberechtigten",
+          "score": 0.5098,
+          "best_chunk": "aufenthg_2004__36a__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__34",
+          "label": "AufenthG § 34 Aufenthaltsrecht der Kinder",
+          "score": 0.4952,
+          "best_chunk": "aufenthg_2004__34__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "aufenthg_2004__2",
+          "label": "AufenthG § 2 Begriffsbestimmungen",
+          "score": 0.4938,
+          "best_chunk": "aufenthg_2004__2__c03"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__31",
+          "label": "AufenthG § 31 Eigenständiges Aufenthaltsrecht der Ehegatten",
+          "score": 0.4904,
+          "best_chunk": "aufenthg_2004__31__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__571",
+          "label": "BGB § 571 Weiterer Schadensersatz bei verspäteter Rückgabe von Wohnraum",
+          "score": 0.4902,
+          "best_chunk": "bgb__571__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q021",
+      "question": "Can I take a friend in as co-tenant or subtenant to start a shared flat?",
+      "primary_gold": [
+        "bgb__540"
+      ],
+      "gold_ranks": {
+        "bgb__540": 10
+      },
+      "best_primary_rank": 10,
+      "best_any_gold_rank": 10,
+      "gold_detail": [
+        {
+          "id": "bgb__540",
+          "label": "BGB § 540 Gebrauchsüberlassung an Dritte",
+          "role": "primary",
+          "rank": 10,
+          "score": 0.4763,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "bgb__553",
+          "label": "BGB § 553 Gestattung der Gebrauchsüberlassung an Dritte",
+          "score": 0.5219,
+          "best_chunk": "bgb__553__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "bgb__563",
+          "label": "BGB § 563 Eintrittsrecht bei Tod des Mieters",
+          "score": 0.5201,
+          "best_chunk": "bgb__563__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "bgb__573b",
+          "label": "BGB § 573b Teilkündigung des Vermieters",
+          "score": 0.5032,
+          "best_chunk": "bgb__573b__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "bgb__566e",
+          "label": "BGB § 566e Mitteilung des Eigentumsübergangs durch den Vermieter",
+          "score": 0.4984,
+          "best_chunk": "bgb__566e__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "bgb__575",
+          "label": "BGB § 575 Zeitmietvertrag",
+          "score": 0.4913,
+          "best_chunk": "bgb__575__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q024",
+      "question": "Does the 11-hour rest period apply between a private training course and a night shift?",
+      "primary_gold": [
+        "arbzg__5"
+      ],
+      "gold_ranks": {
+        "arbzg__5": 5
+      },
+      "best_primary_rank": 5,
+      "best_any_gold_rank": 5,
+      "gold_detail": [
+        {
+          "id": "arbzg__5",
+          "label": "ArbZG § 5 Ruhezeit",
+          "role": "primary",
+          "rank": 5,
+          "score": 0.5034,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.5358,
+          "best_chunk": "arbzg__7__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__6",
+          "label": "ArbZG § 6 Nacht- und Schichtarbeit",
+          "score": 0.5319,
+          "best_chunk": "arbzg__6__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__21a",
+          "label": "ArbZG § 21a Beschäftigung im Straßentransport",
+          "score": 0.521,
+          "best_chunk": "arbzg__21a__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.5065,
+          "best_chunk": "arbzg__15__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__5",
+          "label": "ArbZG § 5 Ruhezeit",
+          "score": 0.5034,
+          "best_chunk": "arbzg__5__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q025",
+      "question": "Is a 50-hour working week with 5-minute breaks legal?",
+      "primary_gold": [
+        "arbzg__3"
+      ],
+      "gold_ranks": {
+        "arbzg__3": 7,
+        "arbzg__4": 17
+      },
+      "best_primary_rank": 7,
+      "best_any_gold_rank": 7,
+      "gold_detail": [
+        {
+          "id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "role": "primary",
+          "rank": 7,
+          "score": 0.5291,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "arbzg__4",
+          "label": "ArbZG § 4 Ruhepausen",
+          "role": "supporting",
+          "rank": 17,
+          "score": 0.5068,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.5656,
+          "best_chunk": "arbzg__7__c04"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__14",
+          "label": "ArbZG § 14 Außergewöhnliche Fälle",
+          "score": 0.5652,
+          "best_chunk": "arbzg__14__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.5539,
+          "best_chunk": "arbzg__15__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__21a",
+          "label": "ArbZG § 21a Beschäftigung im Straßentransport",
+          "score": 0.5514,
+          "best_chunk": "arbzg__21a__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.5485,
+          "best_chunk": "beschv_2013__15d__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q027",
+      "question": "May the employer automatically deduct a break when daily work exceeds 9 hours?",
+      "primary_gold": [
+        "arbzg__4"
+      ],
+      "gold_ranks": {
+        "arbzg__4": 4
+      },
+      "best_primary_rank": 4,
+      "best_any_gold_rank": 4,
+      "gold_detail": [
+        {
+          "id": "arbzg__4",
+          "label": "ArbZG § 4 Ruhepausen",
+          "role": "primary",
+          "rank": 4,
+          "score": 0.5738,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.6006,
+          "best_chunk": "arbzg__15__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.5986,
+          "best_chunk": "arbzg__7__c04"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "score": 0.5817,
+          "best_chunk": "arbzg__3__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__4",
+          "label": "ArbZG § 4 Ruhepausen",
+          "score": 0.5738,
+          "best_chunk": "arbzg__4__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__14",
+          "label": "ArbZG § 14 Außergewöhnliche Fälle",
+          "score": 0.566,
+          "best_chunk": "arbzg__14__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q028",
+      "question": "Can I start early after a late shift, given the 11-hour rest period? (reader Fanio)",
+      "primary_gold": [
+        "arbzg__5"
+      ],
+      "gold_ranks": {
+        "arbzg__5": 5
+      },
+      "best_primary_rank": 5,
+      "best_any_gold_rank": 5,
+      "gold_detail": [
+        {
+          "id": "arbzg__5",
+          "label": "ArbZG § 5 Ruhezeit",
+          "role": "primary",
+          "rank": 5,
+          "score": 0.5155,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__9",
+          "label": "ArbZG § 9 Sonn- und Feiertagsruhe",
+          "score": 0.5483,
+          "best_chunk": "arbzg__9__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.5473,
+          "best_chunk": "arbzg__7__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.5215,
+          "best_chunk": "arbzg__15__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__4",
+          "label": "ArbZG § 4 Ruhepausen",
+          "score": 0.5201,
+          "best_chunk": "arbzg__4__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__5",
+          "label": "ArbZG § 5 Ruhezeit",
+          "score": 0.5155,
+          "best_chunk": "arbzg__5__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q029",
+      "question": "What if I work on Sundays and receive no compensatory day off? (reader Peggy K.)",
+      "primary_gold": [
+        "arbzg__11"
+      ],
+      "gold_ranks": {
+        "arbzg__11": 1,
+        "arbzg__9": 5
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "arbzg__11",
+          "label": "ArbZG § 11 Ausgleich für Sonn- und Feiertagsbeschäftigung",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.6047,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "arbzg__9",
+          "label": "ArbZG § 9 Sonn- und Feiertagsruhe",
+          "role": "supporting",
+          "rank": 5,
+          "score": 0.4966,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__11",
+          "label": "ArbZG § 11 Ausgleich für Sonn- und Feiertagsbeschäftigung",
+          "score": 0.6047,
+          "best_chunk": "arbzg__11__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__10",
+          "label": "ArbZG § 10 Sonn- und Feiertagsbeschäftigung",
+          "score": 0.5435,
+          "best_chunk": "arbzg__10__c03"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__12",
+          "label": "ArbZG § 12 Abweichende Regelungen",
+          "score": 0.5395,
+          "best_chunk": "arbzg__12__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__13",
+          "label": "ArbZG § 13 Ermächtigung, Anordnung, Bewilligung",
+          "score": 0.5207,
+          "best_chunk": "arbzg__13__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__9",
+          "label": "ArbZG § 9 Sonn- und Feiertagsruhe",
+          "score": 0.4966,
+          "best_chunk": "arbzg__9__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q030",
+      "question": "My employer says minimum wage applies only after a 6-month probation period. Is that right? (reader E.)",
+      "primary_gold": [
+        "milog__1"
+      ],
+      "gold_ranks": {
+        "milog__1": 8,
+        "milog__3": 51
+      },
+      "best_primary_rank": 8,
+      "best_any_gold_rank": 8,
+      "gold_detail": [
+        {
+          "id": "milog__1",
+          "label": "MiLoG § 1 Mindestlohn",
+          "role": "primary",
+          "rank": 8,
+          "score": 0.5357,
+          "n_chunks_in_section": 1
+        },
+        {
+          "id": "milog__3",
+          "label": "MiLoG § 3 Unabdingbarkeit des Mindestlohns",
+          "role": "supporting",
+          "rank": 51,
+          "score": 0.4841,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.6029,
+          "best_chunk": "milog__22__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__1",
+          "label": "BeschV § 1 Anwendungsbereich der Verordnung",
+          "score": 0.5576,
+          "best_chunk": "beschv_2013__1__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "milog__2",
+          "label": "MiLoG § 2 Fälligkeit des Mindestlohns",
+          "score": 0.5574,
+          "best_chunk": "milog__2__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "beschv_2013__6",
+          "label": "BeschV § 6 Beschäftigung bei ausgeprägter berufspraktischer Erfahrung",
+          "score": 0.5512,
+          "best_chunk": "beschv_2013__6__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.5509,
+          "best_chunk": "beschv_2013__15d__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q031",
+      "question": "Can I be paid below minimum wage for six months as a former long-term unemployed person? (reader Petra L.)",
+      "primary_gold": [
+        "milog__22"
+      ],
+      "gold_ranks": {
+        "milog__22": 1
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.5828,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.5828,
+          "best_chunk": "milog__22__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__1",
+          "label": "BeschV § 1 Anwendungsbereich der Verordnung",
+          "score": 0.5521,
+          "best_chunk": "beschv_2013__1__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "milog__1",
+          "label": "MiLoG § 1 Mindestlohn",
+          "score": 0.5416,
+          "best_chunk": "milog__1__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__18g",
+          "label": "AufenthG § 18g Blaue Karte EU",
+          "score": 0.5121,
+          "best_chunk": "aufenthg_2004__18g__c04"
+        },
+        {
+          "rank": 5,
+          "section_id": "milog__2",
+          "label": "MiLoG § 2 Fälligkeit des Mindestlohns",
+          "score": 0.5117,
+          "best_chunk": "milog__2__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q032",
+      "question": "Is an 18-year-old student without vocational training entitled to minimum wage? (reader Sabine F.)",
+      "primary_gold": [
+        "milog__22"
+      ],
+      "gold_ranks": {
+        "milog__22": 1,
+        "milog__1": 3
+      },
+      "best_primary_rank": 1,
+      "best_any_gold_rank": 1,
+      "gold_detail": [
+        {
+          "id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "role": "primary",
+          "rank": 1,
+          "score": 0.5202,
+          "n_chunks_in_section": 2
+        },
+        {
+          "id": "milog__1",
+          "label": "MiLoG § 1 Mindestlohn",
+          "role": "supporting",
+          "rank": 3,
+          "score": 0.4824,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.5202,
+          "best_chunk": "milog__22__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__32",
+          "label": "AufenthG § 32 Kindernachzug",
+          "score": 0.485,
+          "best_chunk": "aufenthg_2004__32__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "milog__1",
+          "label": "MiLoG § 1 Mindestlohn",
+          "score": 0.4824,
+          "best_chunk": "milog__1__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "beschv_2013__14",
+          "label": "BeschV § 14 Sonstige Beschäftigungen",
+          "score": 0.4759,
+          "best_chunk": "beschv_2013__14__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__18g",
+          "label": "AufenthG § 18g Blaue Karte EU",
+          "score": 0.4724,
+          "best_chunk": "aufenthg_2004__18g__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q033",
+      "question": "Is an orientation internship of up to three months exempt from the minimum wage?",
+      "primary_gold": [
+        "milog__22"
+      ],
+      "gold_ranks": {
+        "milog__22": 2
+      },
+      "best_primary_rank": 2,
+      "best_any_gold_rank": 2,
+      "gold_detail": [
+        {
+          "id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "role": "primary",
+          "rank": 2,
+          "score": 0.503,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__19a",
+          "label": "AufenthG § 19a Kurzfristige Mobilität für unternehmensintern transferierte Arbeitnehmer",
+          "score": 0.5031,
+          "best_chunk": "aufenthg_2004__19a__c04"
+        },
+        {
+          "rank": 2,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.503,
+          "best_chunk": "milog__22__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "beschv_2013__1",
+          "label": "BeschV § 1 Anwendungsbereich der Verordnung",
+          "score": 0.4916,
+          "best_chunk": "beschv_2013__1__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.4828,
+          "best_chunk": "beschv_2013__15d__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__44a",
+          "label": "AufenthG § 44a Verpflichtung zur Teilnahme an einem Integrationskurs",
+          "score": 0.4758,
+          "best_chunk": "aufenthg_2004__44a__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q034",
+      "question": "Ist ein freiwilliges Praktikum für max. 3 Monate im direkten Anschluss an ein Pflichtpraktikum möglich ohne MiLo?",
+      "primary_gold": [
+        "milog__22"
+      ],
+      "gold_ranks": {
+        "milog__22": 3
+      },
+      "best_primary_rank": 3,
+      "best_any_gold_rank": 3,
+      "gold_detail": [
+        {
+          "id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "role": "primary",
+          "rank": 3,
+          "score": 0.4908,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "beschv_2013__15",
+          "label": "BeschV § 15 Praktika zu Weiterbildungszwecken",
+          "score": 0.5358,
+          "best_chunk": "beschv_2013__15__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__16e",
+          "label": "AufenthG § 16e Studienbezogenes Praktikum EU",
+          "score": 0.512,
+          "best_chunk": "aufenthg_2004__16e__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.4908,
+          "best_chunk": "milog__22__c01"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.4632,
+          "best_chunk": "arbzg__15__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__42",
+          "label": "AufenthG § 42 Verordnungsermächtigung und Weisungsrecht",
+          "score": 0.4624,
+          "best_chunk": "aufenthg_2004__42__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q035",
+      "question": "A student enrolled at a university in Sydney does a required intermediate internship in Germany. Is it exempt from the minimum wage?",
+      "primary_gold": [
+        "milog__22"
+      ],
+      "gold_ranks": {
+        "milog__22": 42
+      },
+      "best_primary_rank": 42,
+      "best_any_gold_rank": 42,
+      "gold_detail": [
+        {
+          "id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "role": "primary",
+          "rank": 42,
+          "score": 0.4376,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "beschv_2013__1",
+          "label": "BeschV § 1 Anwendungsbereich der Verordnung",
+          "score": 0.5019,
+          "best_chunk": "beschv_2013__1__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__6",
+          "label": "BeschV § 6 Beschäftigung bei ausgeprägter berufspraktischer Erfahrung",
+          "score": 0.5008,
+          "best_chunk": "beschv_2013__6__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "aufenthg_2004__19a",
+          "label": "AufenthG § 19a Kurzfristige Mobilität für unternehmensintern transferierte Arbeitnehmer",
+          "score": 0.4998,
+          "best_chunk": "aufenthg_2004__19a__c04"
+        },
+        {
+          "rank": 4,
+          "section_id": "aufenthg_2004__25b",
+          "label": "AufenthG § 25b Aufenthaltsgewährung bei nachhaltiger Integration",
+          "score": 0.4934,
+          "best_chunk": "aufenthg_2004__25b__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "aufenthg_2004__16b",
+          "label": "AufenthG § 16b Studium",
+          "score": 0.4876,
+          "best_chunk": "aufenthg_2004__16b__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q036",
+      "question": "As an Italian citizen, what do I need for an internship in Germany?",
+      "out_of_scope": true,
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "aufenthg_2004__19a",
+          "label": "AufenthG § 19a Kurzfristige Mobilität für unternehmensintern transferierte Arbeitnehmer",
+          "score": 0.5565,
+          "best_chunk": "aufenthg_2004__19a__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__25b",
+          "label": "AufenthG § 25b Aufenthaltsgewährung bei nachhaltiger Integration",
+          "score": 0.5428,
+          "best_chunk": "aufenthg_2004__25b__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "beschv_2013__15",
+          "label": "BeschV § 15 Praktika zu Weiterbildungszwecken",
+          "score": 0.5401,
+          "best_chunk": "beschv_2013__15__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q037",
+      "question": "Habe ich als Mini-Jobberin Anspruch auf bezahlten Urlaub",
+      "out_of_scope": true,
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "beschv_2013__15a",
+          "label": "BeschV § 15a Saisonabhängige Beschäftigung",
+          "score": 0.5535,
+          "best_chunk": "beschv_2013__15a__c03"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__15d",
+          "label": "BeschV § 15d Kurzzeitige kontingentierte Beschäftigung",
+          "score": 0.5252,
+          "best_chunk": "beschv_2013__15d__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.5235,
+          "best_chunk": "milog__22__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q038",
+      "question": "i muss doch nicht unter 450€ versteuern lassen oder?",
+      "out_of_scope": true,
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "milog__1",
+          "label": "MiLoG § 1 Mindestlohn",
+          "score": 0.5011,
+          "best_chunk": "milog__1__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "beschv_2013__1",
+          "label": "BeschV § 1 Anwendungsbereich der Verordnung",
+          "score": 0.4926,
+          "best_chunk": "beschv_2013__1__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "aufenthg_2004__69",
+          "label": "AufenthG § 69 Gebühren",
+          "score": 0.4791,
+          "best_chunk": "aufenthg_2004__69__c03"
+        }
+      ]
+    },
+    {
+      "question_id": "q039",
+      "question": "Wie hoch war noch der Mindestlohn für 2026?",
+      "out_of_scope": true,
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "milog__1",
+          "label": "MiLoG § 1 Mindestlohn",
+          "score": 0.5923,
+          "best_chunk": "milog__1__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "milog__9",
+          "label": "MiLoG § 9 Beschluss der Mindestlohnkommission",
+          "score": 0.5475,
+          "best_chunk": "milog__9__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.4553,
+          "best_chunk": "milog__22__c02"
+        }
+      ]
+    },
+    {
+      "question_id": "q040",
+      "question": "Wenn in diesem Beispiel das Arbeitsentgelt 1.000 € betragen hätte, wäre es dann noch ein Minijob gewesen?",
+      "out_of_scope": true,
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "milog__1",
+          "label": "MiLoG § 1 Mindestlohn",
+          "score": 0.5227,
+          "best_chunk": "milog__1__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.492,
+          "best_chunk": "milog__22__c02"
+        },
+        {
+          "rank": 3,
+          "section_id": "milog__3",
+          "label": "MiLoG § 3 Unabdingbarkeit des Mindestlohns",
+          "score": 0.4893,
+          "best_chunk": "milog__3__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q041",
+      "question": "Wie ist es denn mit der monatlichen Arbeitszeit? Gibt es auch dafür eine Höchstgrenze?",
+      "primary_gold": [
+        "arbzg__3"
+      ],
+      "gold_ranks": {
+        "arbzg__3": 2
+      },
+      "best_primary_rank": 2,
+      "best_any_gold_rank": 2,
+      "gold_detail": [
+        {
+          "id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "role": "primary",
+          "rank": 2,
+          "score": 0.6537,
+          "n_chunks_in_section": 1
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "arbzg__15",
+          "label": "ArbZG § 15 Bewilligung, Ermächtigung",
+          "score": 0.6542,
+          "best_chunk": "arbzg__15__c02"
+        },
+        {
+          "rank": 2,
+          "section_id": "arbzg__3",
+          "label": "ArbZG § 3 Arbeitszeit der Arbeitnehmer",
+          "score": 0.6537,
+          "best_chunk": "arbzg__3__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "arbzg__7",
+          "label": "ArbZG § 7 Abweichende Regelungen",
+          "score": 0.6293,
+          "best_chunk": "arbzg__7__c04"
+        },
+        {
+          "rank": 4,
+          "section_id": "arbzg__21a",
+          "label": "ArbZG § 21a Beschäftigung im Straßentransport",
+          "score": 0.6274,
+          "best_chunk": "arbzg__21a__c02"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__6",
+          "label": "ArbZG § 6 Nacht- und Schichtarbeit",
+          "score": 0.6024,
+          "best_chunk": "arbzg__6__c01"
+        }
+      ]
+    },
+    {
+      "question_id": "q042",
+      "question": "Wie müssen freiwillige, studentische Praktika mit 35h in der Woche vergütet werden? Gilt hier Milo?",
+      "primary_gold": [
+        "milog__22"
+      ],
+      "gold_ranks": {
+        "milog__22": 4
+      },
+      "best_primary_rank": 4,
+      "best_any_gold_rank": 4,
+      "gold_detail": [
+        {
+          "id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "role": "primary",
+          "rank": 4,
+          "score": 0.5038,
+          "n_chunks_in_section": 2
+        }
+      ],
+      "top_sections": [
+        {
+          "rank": 1,
+          "section_id": "beschv_2013__15",
+          "label": "BeschV § 15 Praktika zu Weiterbildungszwecken",
+          "score": 0.5487,
+          "best_chunk": "beschv_2013__15__c01"
+        },
+        {
+          "rank": 2,
+          "section_id": "aufenthg_2004__16e",
+          "label": "AufenthG § 16e Studienbezogenes Praktikum EU",
+          "score": 0.5312,
+          "best_chunk": "aufenthg_2004__16e__c01"
+        },
+        {
+          "rank": 3,
+          "section_id": "aufenthg_2004__16b",
+          "label": "AufenthG § 16b Studium",
+          "score": 0.5271,
+          "best_chunk": "aufenthg_2004__16b__c02"
+        },
+        {
+          "rank": 4,
+          "section_id": "milog__22",
+          "label": "MiLoG § 22 Persönlicher Anwendungsbereich",
+          "score": 0.5038,
+          "best_chunk": "milog__22__c01"
+        },
+        {
+          "rank": 5,
+          "section_id": "arbzg__21a",
+          "label": "ArbZG § 21a Beschäftigung im Straßentransport",
+          "score": 0.5021,
+          "best_chunk": "arbzg__21a__c02"
+        }
+      ]
+    }
+  ]
+}
