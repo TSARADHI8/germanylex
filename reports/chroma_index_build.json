@@ -1,0 +1,95 @@
+{
+  "script": "src/build_chroma_index.py",
+  "built_on": "2026-11-21",
+  "collection": "germanylex_chunks",
+  "model": "BAAI/bge-m3",
+  "dim": 1024,
+  "distance": "cosine",
+  "passage_format": "heading_text",
+  "max_length": 1024,
+  "batch_size": 4,
+  "n_chunks": 718,
+  "n_sections": 398,
+  "chunk_files_sha256": {
+    "arbzg.jsonl": "9f7b50d1a5d769f34b449fa111a53b902b7beaa3d083b0435db5596d3754822a",
+    "aufenthg_2004.jsonl": "8ddee03daa602a4cc686c30586f863f2dc070f9882f93258c3b0b686890794ce",
+    "beschv_2013.jsonl": "237e93c123b2962b184b5e0c999c926d73d8ebf3ca9c1ead14256a75d6c14b83",
+    "bgb.jsonl": "7105cdf01713c3a53e9da2009785c964ec7037becae426f3ca6a89c91a152123",
+    "chunking_manifest.json": "a12e4db50b4b49d92a23792a9a9b4cbd9746f99cfaa5b40dde8bf71050932972",
+    "milog.jsonl": "d1c0fa097ba1bd489fe78b11ec6bac250ee29aa4ba02ea3eb17e5447896b2d7e"
+  },
+  "chunk_files_unchanged": true,
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "check": "collection holds one record per chunk",
+      "ok": true,
+      "detail": "718 records, 718 chunks"
+    },
+    {
+      "check": "ids are exactly the chunk ids",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "every document equals the chunk text",
+      "ok": true,
+      "detail": "718/718"
+    },
+    {
+      "check": "every metadata record equals the chunk file",
+      "ok": true,
+      "detail": "718/718"
+    },
+    {
+      "check": "embeddings are 718 x 1024",
+      "ok": true,
+      "detail": "shape (718, 1024)"
+    },
+    {
+      "check": "embeddings finite and unit length",
+      "ok": true,
+      "detail": "norm min 1.0000 max 1.0000"
+    },
+    {
+      "check": "no two chunks share the same vector",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "approximate search matches exact search (recall@10 >= 0.99)",
+      "ok": true,
+      "detail": "recall@10 1.0000; a vector finds its own chunk first for 718/718, in top-10 for 718/718"
+    },
+    {
+      "check": "metadata filter works (per-law counts)",
+      "ok": true,
+      "detail": "{\"ArbZG\": 36, \"AufenthG\": 478, \"BeschV\": 57, \"BGB\": 114, \"MiLoG\": 33}"
+    },
+    {
+      "check": "collection records the embedding model and dimension",
+      "ok": true,
+      "detail": "BAAI/bge-m3, dim 1024"
+    },
+    {
+      "check": "index uses cosine distance and the planned HNSW settings",
+      "ok": true,
+      "detail": "{\"space\": \"cosine\", \"max_neighbors\": 48, \"ef_construction\": 400, \"ef_search\": 400}"
+    }
+  ],
+  "stats": {
+    "records": 718,
+    "ann_recall_at_10": 1.0,
+    "self_top1": "718/718",
+    "per_law": {
+      "ArbZG": 36,
+      "AufenthG": 478,
+      "BeschV": 57,
+      "BGB": 114,
+      "MiLoG": 33
+    }
+  },
+  "encode_seconds": 729.4,
+  "ms_per_chunk": 1015.9,
+  "max_chunk_tokens": 469
+}
